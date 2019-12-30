@@ -73,11 +73,11 @@ public class Partie {
 		choixTrophee();
 		jeuDeCartes.melanger();
 		do {
+			razAJoue();
 			distribuerJeu();
 			offreJoueur();
 			suivant = meilleureOffre();
 			for (int i = 1; i < Joueur.NB_JOUEURS; i++) {
-				System.out.println(i + Joueur.NB_JOUEURS);
 				suivant = suivant.jouer();
 				if (suivant.isaJouer()) {
 					suivant = meilleureOffre();
@@ -94,6 +94,14 @@ public class Partie {
 		fusionJest();
 		updateScore();
 
+	}
+	
+	public void razAJoue() {
+		Iterator<Joueur> it = joueurs.iterator();
+		while(it.hasNext()) {
+			Joueur j = it.next();
+			j.setaJouer(false);
+		}
 	}
 	
 	public void offreJoueur() {
@@ -366,5 +374,6 @@ public class Partie {
 		partie.buildJeuDeCarte(0);
 
 		partie.lancerPartie();
+		
 	}
 }
