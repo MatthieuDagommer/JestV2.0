@@ -3,9 +3,10 @@ package fr.utt.rt.lo02.projet.modele;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Observable;
 
 
-public class Partie {
+public class Partie extends Observable {
 
 	private static Partie instance = null;
 	private ArrayList<Joueur> joueurs;
@@ -186,6 +187,9 @@ public class Partie {
 			trophes.add(jeuDeCartes.piocherCarte());
 			trophes.add(jeuDeCartes.piocherCarte());
 		}
+		
+		setChanged();
+		notifyObservers();
 	}
 
 	public void distribuerJeu() {
@@ -196,6 +200,9 @@ public class Partie {
 				j.addMain(jeuDeCartes.piocherCarte());
 			}
 		}
+		
+		setChanged();
+		notifyObservers();
 	}
 
 	public void distribuerTrophees() {
