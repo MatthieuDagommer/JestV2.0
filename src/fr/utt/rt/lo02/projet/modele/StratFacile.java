@@ -11,7 +11,6 @@ public class StratFacile implements StrategieJoueur {
 		Joueur victime = joueurs.get(0);
 		ceJoueur.addJest(victime.getOffreVisible());
 		victime.setOffreVisible(null);
-		System.out.println(ceJoueur.getNom() + " Prend dans " + victime.getNom());
 		return victime;
 	}
 
