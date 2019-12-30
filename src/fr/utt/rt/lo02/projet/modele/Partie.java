@@ -87,8 +87,6 @@ public class Partie {
 			if (!jeuDeCartes.estVide()) {
 				rammaserCartesRestante();
 			}
-			System.out.println(joueurs.toString());
-			System.out.println(jeuDeCartes.getTasDeCarte().size());
 		} while (!jeuDeCartes.estVide());
 		rammaserCartesRestanteJest();
 		updateScore();
@@ -352,7 +350,6 @@ public class Partie {
 			Joueur j = it.next();
 			if(j.getOffreCache()!=null && j.getOffreVisible() != null) {
 				copyJoueurs.add(j);
-				System.out.println(j.getNom());
 			}
 		}
 		if (copyJoueurs.size()>1) {
