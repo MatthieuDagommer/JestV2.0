@@ -18,7 +18,7 @@ public class Joueur {
 	public static int NB_JOUEURS = 0;
 
 	public void accept(Partie p) {
-		this.score = p.visitJest(jest);
+		this.score = p.visitJest(this.jest);
 	}
 
 	public Joueur(String nom) {

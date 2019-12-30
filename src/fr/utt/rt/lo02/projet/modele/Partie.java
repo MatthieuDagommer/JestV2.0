@@ -45,6 +45,7 @@ public class Partie {
 	public void addJoueur(Joueur j) {
 		if (this.joueurs.contains(j) == false) {
 			this.joueurs.add(j);
+			
 		}
 	}
 
@@ -71,13 +72,13 @@ public class Partie {
 	public void lancerPartie() {
 		Joueur suivant ;
 		choixTrophee();
-		jeuDeCartes.melanger();
 		do {
+			jeuDeCartes.melanger();
 			razAJoue();
 			distribuerJeu();
 			offreJoueur();
 			suivant = meilleureOffre();
-			for (int i = 1; i < Joueur.NB_JOUEURS; i++) {
+			for (int i = 0; i < Joueur.NB_JOUEURS; i++) {
 				suivant = suivant.jouer();
 				if (suivant.isaJouer()) {
 					suivant = meilleureOffre();
@@ -87,6 +88,7 @@ public class Partie {
 				rammaserCartesRestante();
 			}
 			System.out.println(joueurs.toString());
+			System.out.println(jeuDeCartes.getTasDeCarte().size());
 		} while (!jeuDeCartes.estVide());
 		rammaserCartesRestanteJest();
 		updateScore();
@@ -363,7 +365,7 @@ public class Partie {
 		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
 		Joueur ordi2 = new Joueur("ordi2", new StratFacile());
 		Joueur ordi3 = new Joueur("ordi3", new StratFacile());
-		Joueur ordi4 = new Joueur("ordi4", new StratFacile());
+		//Joueur ordi4 = new Joueur("ordi4", new StratFacile());
 
 		Partie partie = Partie.getInstance();
 
@@ -372,8 +374,10 @@ public class Partie {
 		partie.addJoueur(ordi3);
 
 		partie.buildJeuDeCarte(0);
+		partie.setRegle(new RegleStandard());
 
 		partie.lancerPartie();
 		
+		System.out.println(partie.bestJest(partie.getJoueurs()));
 	}
 }
