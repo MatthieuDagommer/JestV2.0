@@ -118,7 +118,11 @@ public class Joueur {
 
 	public Joueur jouer() {
 		this.aJouer = true;
-		return strategie.choisirCarte();
+		return strategie.choisirCarte(this);
+	}
+	
+	public void faireOffre() {
+		strategie.faireOffre(this);
 	}
 
 	public void addJest(Carte c) {
@@ -195,6 +199,13 @@ public class Joueur {
 
 	public void setaJouer(boolean aJouer) {
 		this.aJouer = aJouer;
+	}
+
+	@Override
+	public String toString() {
+		return "Joueur [nom=" + nom + ", main=" + main + ", offreVisible=" + offreVisible + ", offreCache=" + offreCache
+				+ ", jest=" + jest + ", jestAvecTrophes=" + jestAvecTrophes + ", strategie=" + strategie + ", score="
+				+ score + ", aJouer=" + aJouer + "]\n";
 	}
 
 

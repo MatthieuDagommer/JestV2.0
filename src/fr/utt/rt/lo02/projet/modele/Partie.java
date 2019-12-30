@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import player.Joueur;
+
 public class Partie {
 
 	private static Partie instance = null;
@@ -22,6 +24,7 @@ public class Partie {
 
 	private Partie() {
 		joueurs = new ArrayList<Joueur>();
+		trophes = new LinkedList<Carte>();
 	}
 
 	public static Partie getInstance() {
@@ -66,27 +69,40 @@ public class Partie {
 	}
 
 	public void lancerPartie() {
-		Joueur suivant = meilleureOffre();
+		Joueur suivant ;
 		choixTrophee();
 		jeuDeCartes.melanger();
 		do {
 			distribuerJeu();
-			for (int i = 0; i < Joueur.NB_JOUEURS; i++) {
+			offreJoueur();
+			suivant = meilleureOffre();
+			for (int i = 1; i < Joueur.NB_JOUEURS; i++) {
+				System.out.println(i + Joueur.NB_JOUEURS);
 				suivant = suivant.jouer();
-				if (suivant.isaJouer() && i < Joueur.NB_JOUEURS - 1) {
+				if (suivant.isaJouer()) {
 					suivant = meilleureOffre();
 				}
 			}
 			if (!jeuDeCartes.estVide()) {
 				rammaserCartesRestante();
 			}
+			System.out.println(joueurs.toString());
 		} while (!jeuDeCartes.estVide());
 		rammaserCartesRestanteJest();
 		updateScore();
 		distribuerTrophees();
 		fusionJest();
 		updateScore();
-		
+
+	}
+	
+	public void offreJoueur() {
+
+		Iterator<Joueur> it = joueurs.iterator();
+		while (it.hasNext()) {
+			Joueur j = (Joueur) it.next();
+			j.faireOffre();
+		}
 	}
 
 	private void fusionJest() {
@@ -317,5 +333,38 @@ public class Partie {
 		} else {
 			return bestJ;
 		}
+	}
+	
+	public ArrayList<Joueur> getOffreDispo(Joueur joueur){
+		ArrayList<Joueur> copyJoueurs = new ArrayList<Joueur>();
+		Iterator<Joueur> it = joueurs.iterator();
+		while(it.hasNext()) {
+			Joueur j = it.next();
+			if(j.getOffreCache()!=null && j.getOffreVisible() != null) {
+				copyJoueurs.add(j);
+				System.out.println(j.getNom());
+			}
+		}
+		if (copyJoueurs.size()>1) {
+			copyJoueurs.remove(joueur);
+		}
+		return copyJoueurs;
+	}
+
+	public static void main(String[] args) {
+		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
+		Joueur ordi2 = new Joueur("ordi2", new StratFacile());
+		Joueur ordi3 = new Joueur("ordi3", new StratFacile());
+		Joueur ordi4 = new Joueur("ordi4", new StratFacile());
+
+		Partie partie = Partie.getInstance();
+
+		partie.addJoueur(ordi1);
+		partie.addJoueur(ordi2);
+		partie.addJoueur(ordi3);
+
+		partie.buildJeuDeCarte(0);
+
+		partie.lancerPartie();
 	}
 }
