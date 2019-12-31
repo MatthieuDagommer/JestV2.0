@@ -76,7 +76,8 @@ public class VuePartie implements Observer {
 
 		}
 		
-		panelJest.add(new JPanel().add( new JLabel(new ImageIcon("image/tasVide.png"))));
+		VueJest vueJest = new VueJest();
+		panelJest.add(vueJest.getJest());
 		
 		JPanel panelTapis = new JPanel();
 		JLabel imgTapis = new JLabel(new ImageIcon("image/tapis.jpg"));

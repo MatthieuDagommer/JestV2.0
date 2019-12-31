@@ -81,6 +81,8 @@ public class Partie extends Observable {
 			offreJoueur();
 			suivant = meilleureOffre();
 			for (int i = 0; i < Joueur.NB_JOUEURS; i++) {
+				setChanged();
+				notifyObservers(suivant);
 				suivant = suivant.jouer();
 				if (suivant.isaJouer()) {
 					suivant = meilleureOffre();
