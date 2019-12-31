@@ -25,7 +25,6 @@ public class RegleStandard implements Regle {
 		if (nbCarte == 1 && asCarreau) {
 			score = -5;
 		}
-		System.out.println("Carreau" +score);
 		return score;
 	}
 
@@ -52,7 +51,6 @@ public class RegleStandard implements Regle {
 				score = 5;
 			}
 		}
-		System.out.println("Coeur"+score);
 		return score;
 	}
 
@@ -83,7 +81,6 @@ public class RegleStandard implements Regle {
 		if (nbTrefle == 1 && asTrefle) {
 			score+=4;
 		}
-		System.out.println("treflePic"+score);
 		return score;
 	}
 
@@ -106,7 +103,6 @@ public class RegleStandard implements Regle {
 				}
 			}
 		}
-		System.out.println("noir"+score);
 		return score;
 	}
 
