@@ -7,9 +7,12 @@ public class StratFacile implements StrategieJoueur {
 
 	@Override
 	public Joueur choisirCarte(Joueur ceJoueur) {
+		String message = "";
 		ArrayList<Joueur> joueurs = Partie.getInstance().getOffreDispo(ceJoueur);
 		Joueur victime = joueurs.get(0);
 		ceJoueur.addJest(victime.getOffreVisible());
+		message = ceJoueur.getNom() + " prend la carte "+victime.getOffreVisible()+" de "+victime.getNom();
+		System.out.println(message);
 		victime.setOffreVisible(null);
 		return victime;
 	}
