@@ -20,7 +20,7 @@ public class RegleStandard implements Regle {
 			}
 		}
 		if (nbCarte == 1 && jest.contains(new Carte(Valeur.AS, Couleur.CARREAU, Trophee.plus4))) {
-			score -= 4;
+			score = -5;
 		}
 		return score;
 	}

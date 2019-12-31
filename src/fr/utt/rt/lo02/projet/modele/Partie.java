@@ -142,6 +142,8 @@ public class Partie extends Observable {
 				j.setOffreVisible(null);
 			}
 		}
+		setChanged();
+		notifyObservers(this);
 	}
 
 	private void rammaserCartesRestanteJest() {
@@ -157,6 +159,8 @@ public class Partie extends Observable {
 				j.setOffreVisible(null);
 			}
 		}
+		setChanged();
+		notifyObservers(this);
 	}
 
 	private Joueur meilleureOffre() {
@@ -221,6 +225,8 @@ public class Partie extends Observable {
 			bestJest(joueurs).addJestAvecTrophes(joker);
 			message = "Le Trophe Joker est distribué à " + bestJest(joueurs);
 			System.out.println(message);
+			setChanged();
+			notifyObservers();
 		}
 		Iterator<Carte> it = trophes.iterator();
 		while (it.hasNext()) {
@@ -289,6 +295,8 @@ public class Partie extends Observable {
 
 			}
 			System.out.println(message);
+			setChanged();
+			notifyObservers();
 		}
 	}
 
