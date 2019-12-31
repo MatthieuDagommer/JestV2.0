@@ -22,100 +22,99 @@ import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 
-public class VuePartie implements Observer{
+public class VuePartie implements Observer {
 
 	private Partie modele;
-	
+
 	private PartieControleur controleur;
-	
+
 	private ArrayList<Joueur> joueurs;
-	
+
 	private JFrame fenetre;
-	
+
 	private JLabel trophe1;
 	private JLabel trophe2;
-	
+
 	private JPanel trophes;
-	
+
 	private JLabel pioche;
-	
+
 	private JTextArea log;
-	
+
 	private JScrollPane scrollPane;
-	
+
 	public VuePartie(final Partie modele) {
-		
+
 		this.setModele(modele);
 		modele.addObserver(this);
-		
+
 		joueurs = modele.getJoueurs();
-		
+
 		fenetre = new JFrame("JEST");
 		fenetre.setLayout(new BorderLayout());
 		fenetre.setResizable(true);
-		
-		
+
 		JPanel panelTapis = new JPanel();
 		JLabel imgTapis = new JLabel(new ImageIcon("image/tapis.jpg"));
-		
+
 		pioche = new JLabel(new ImageIcon("image/dosCarte.jpg"));
-		
+
 		trophe1 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
 		trophe2 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
-		
-		
+
 		imgTapis.setLayout(new GridLayout());
 		imgTapis.add(pioche);
 		imgTapis.add(trophe1);
 		imgTapis.add(trophe2);
 
 		panelTapis.add(imgTapis);
-		
+
 		setLog(new JTextArea());
 		getLog().setEditable(false);
 		getLog().setRows(5);
 		scrollPane = new JScrollPane(getLog());
-		
+
 		fenetre.add(scrollPane, BorderLayout.NORTH);
-		//fenetre.add(scroll, BorderLayout.WEST);
-		//fenetre.add(continuer, BorderLayout.SOUTH);
+		// fenetre.add(scroll, BorderLayout.WEST);
+		// fenetre.add(continuer, BorderLayout.SOUTH);
 		fenetre.add(panelTapis, BorderLayout.EAST);
-		
+
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.pack();
 		fenetre.setVisible(true);
-		fenetre.setLocationRelativeTo(null);;
-		
+		fenetre.setLocationRelativeTo(null);
+		;
+
 		afficherTrophes();
-		
+
 	}
-	
+
 	public void affacerPioche() {
 		this.pioche.setIcon(new ImageIcon("image/tasVide.png"));
 	}
-	
+
 	public void afficherTrophes() {
-		LinkedList<Carte> listetrophes= Partie.getInstance().getTrophes();
+		LinkedList<Carte> listetrophes = Partie.getInstance().getTrophes();
 		Iterator<Carte> it = listetrophes.iterator();
-		int i =0;
-		while(it.hasNext()) {
+		int i = 0;
+		while (it.hasNext()) {
 			VueCarte trophe = new VueCarte(it.next());
 			System.out.println(trophe.getChemin());
-			if(i==0) {
+			if (i == 0) {
 				this.trophe1.setIcon(new ImageIcon(trophe.getChemin()));
-			}else if(i==1) {
+			} else if (i == 1) {
 				this.trophe2.setIcon(new ImageIcon(trophe.getChemin()));
 			}
 			i++;
 		}
-		
+
 	}
-	
+
 	public void effacerTrophes() {
 		this.trophe1.setIcon(new ImageIcon("image/tasVide.png"));
 		this.trophe2.setIcon(new ImageIcon("image/tasVide.png"));
 	}
-	
+
 	public JLabel getPioche() {
 		return pioche;
 	}
@@ -127,7 +126,7 @@ public class VuePartie implements Observer{
 	public void setLog(JTextArea log) {
 		this.log = log;
 	}
-	
+
 	public JTextArea getLog() {
 		return log;
 	}
@@ -142,6 +141,6 @@ public class VuePartie implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		afficherTrophes();		
+		afficherTrophes();
 	}
 }
