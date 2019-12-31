@@ -1,6 +1,7 @@
 package fr.utt.rt.lo02.projet.vue;
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,6 +18,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import fr.utt.rt.lo02.projet.controleur.PartieControleur;
+import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 
@@ -30,7 +32,10 @@ public class VuePartie implements Observer{
 	
 	private JFrame fenetre;
 	
-	private LinkedList<VueCarte> trophes;
+	private JLabel trophe1;
+	private JLabel trophe2;
+	
+	private JPanel trophes;
 	
 	private JLabel pioche;
 	
@@ -40,7 +45,6 @@ public class VuePartie implements Observer{
 	
 	public VuePartie(final Partie modele) {
 		
-		trophes = new LinkedList<VueCarte>();
 		this.setModele(modele);
 		modele.addObserver(this);
 		
@@ -54,10 +58,17 @@ public class VuePartie implements Observer{
 		JPanel panelTapis = new JPanel();
 		JLabel imgTapis = new JLabel(new ImageIcon("image/tapis.jpg"));
 		
-		pioche = new JLabel(new ImageIcon("image/dasCarte.jpg"));
+		pioche = new JLabel(new ImageIcon("image/dosCarte.jpg"));
+		
+		trophe1 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
+		trophe2 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
+		
 		
 		imgTapis.setLayout(new GridLayout());
 		imgTapis.add(pioche);
+		imgTapis.add(trophe1);
+		imgTapis.add(trophe2);
+
 		panelTapis.add(imgTapis);
 		
 		setLog(new JTextArea());
@@ -75,8 +86,31 @@ public class VuePartie implements Observer{
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);;
 		
+		afficherTrophes();
+		
 	}
 	
+	public void affacerPioche() {
+		this.pioche.setIcon(new ImageIcon("image/tasVide.png"));
+	}
+	
+	public void afficherTrophes() {
+		this.trophe1.setIcon(new ImageIcon("image/AsTrefle.png"));
+		
+	}
+	
+	public void effacerTrophes() {
+		trophes.removeAll();
+	}
+	
+	public JLabel getPioche() {
+		return pioche;
+	}
+
+	public void setPioche(JLabel pioche) {
+		this.pioche = pioche;
+	}
+
 	public void setLog(JTextArea log) {
 		this.log = log;
 	}
