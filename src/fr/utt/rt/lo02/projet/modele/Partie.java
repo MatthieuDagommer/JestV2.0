@@ -196,7 +196,7 @@ public class Partie extends Observable {
 		}
 		message = "Les trophés sont " + trophes.toString();
 		System.out.println(message);
-
+		
 		setChanged();
 		notifyObservers();
 	}

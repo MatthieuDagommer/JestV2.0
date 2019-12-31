@@ -14,6 +14,8 @@ public class StratFacile extends StrategieJoueur {
 		message = ceJoueur.getNom() + " prend la carte "+victime.getOffreVisible()+" de "+victime.getNom();
 		System.out.println(message);
 		victime.setOffreVisible(null);
+		setChanged();
+		notifyObservers(victime);
 		return victime;
 	}
 
@@ -22,6 +24,8 @@ public class StratFacile extends StrategieJoueur {
 		LinkedList<Carte> main = ceJoueur.getMain();
 		ceJoueur.setOffreCache(main.pop());
 		ceJoueur.setOffreVisible(main.pop());
+		setChanged();
+		notifyObservers(ceJoueur);
 
 	}
 
