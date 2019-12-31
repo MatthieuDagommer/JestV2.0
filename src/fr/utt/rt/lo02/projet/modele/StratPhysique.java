@@ -1,6 +1,6 @@
 package fr.utt.rt.lo02.projet.modele;
 
-public class StratPhysique implements StrategieJoueur {
+public class StratPhysique extends StrategieJoueur {
 	
 
 

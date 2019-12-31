@@ -3,7 +3,7 @@ package fr.utt.rt.lo02.projet.modele;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class StratFacile implements StrategieJoueur {
+public class StratFacile extends StrategieJoueur {
 
 	@Override
 	public Joueur choisirCarte(Joueur ceJoueur) {
