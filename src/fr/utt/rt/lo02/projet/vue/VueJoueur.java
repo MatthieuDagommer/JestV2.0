@@ -8,6 +8,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -107,9 +108,26 @@ public class VueJoueur implements Observer {
 				majOffre();
 			} else {
 				switchBorder(j);
+				if(j == joueur) {
+					majOffre();
+				} else {
+					cacherOffre();
+				}
 			}
 		}
 
+	}
+
+	private void cacherOffre() {
+		offre.removeAll();
+		VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
+
+		offre.add(nom);
+		JLabel carte = carteVisible.getImage();
+		offre.add(carte);
+
+		carte = new JLabel(new ImageIcon("image/dosCarte.jpg"));
+		offre.add(carte);
 	}
 
 	public void switchBorder(Joueur j) {
