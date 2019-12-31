@@ -12,6 +12,8 @@ public class VueCarte {
 	private Carte carte;
 
 	private JLabel image;
+	
+	private String chemin;
 
 	public VueCarte(Carte carte) {
 		this.carte = carte;
@@ -59,8 +61,16 @@ public class VueCarte {
 			
 		
 		sb.append(".png");
-		
+		chemin = sb.toString();
 		this.image = new JLabel(new ImageIcon(sb.toString()));
+	}
+
+	public String getChemin() {
+		return chemin;
+	}
+
+	public void setChemin(String chemin) {
+		this.chemin = chemin;
 	}
 
 	public Carte getCarte() {

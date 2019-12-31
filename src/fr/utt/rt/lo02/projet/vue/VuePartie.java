@@ -95,12 +95,25 @@ public class VuePartie implements Observer{
 	}
 	
 	public void afficherTrophes() {
-		this.trophe1.setIcon(new ImageIcon("image/AsTrefle.png"));
+		LinkedList<Carte> listetrophes= Partie.getInstance().getTrophes();
+		Iterator<Carte> it = listetrophes.iterator();
+		int i =0;
+		while(it.hasNext()) {
+			VueCarte trophe = new VueCarte(it.next());
+			System.out.println(trophe.getChemin());
+			if(i==0) {
+				this.trophe1.setIcon(new ImageIcon(trophe.getChemin()));
+			}else if(i==1) {
+				this.trophe2.setIcon(new ImageIcon(trophe.getChemin()));
+			}
+			i++;
+		}
 		
 	}
 	
 	public void effacerTrophes() {
-		trophes.removeAll();
+		this.trophe1.setIcon(new ImageIcon("image/tasVide.png"));
+		this.trophe2.setIcon(new ImageIcon("image/tasVide.png"));
 	}
 	
 	public JLabel getPioche() {
@@ -129,7 +142,6 @@ public class VuePartie implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+		afficherTrophes();		
 	}
 }
