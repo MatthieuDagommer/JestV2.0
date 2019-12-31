@@ -1,7 +1,9 @@
 package fr.utt.rt.lo02.projet.vue;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,6 +12,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BoxLayout;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,13 +32,17 @@ public class VuePartie implements Observer {
 	private PartieControleur controleur;
 
 	private ArrayList<Joueur> joueurs;
+	
+	private ArrayList<VueJoueur> vueJoueurs;
 
+	private JPanel panelJoueur;
+	
+	private JPanel panelJest;
+	
 	private JFrame fenetre;
 
 	private JLabel trophe1;
 	private JLabel trophe2;
-
-	private JPanel trophes;
 
 	private JLabel pioche;
 
@@ -53,7 +60,24 @@ public class VuePartie implements Observer {
 		fenetre = new JFrame("JEST");
 		fenetre.setLayout(new BorderLayout());
 		fenetre.setResizable(true);
+		
+		panelJoueur = new JPanel();
+		panelJoueur.setLayout(new BoxLayout(panelJoueur, BoxLayout.X_AXIS));
+		
+		panelJest = new JPanel();
+		panelJest.setLayout(new BoxLayout(panelJest, BoxLayout.Y_AXIS));
 
+		Iterator<Joueur> it = joueurs.iterator();
+		vueJoueurs = new ArrayList<VueJoueur>();
+		while(it.hasNext()) {
+			VueJoueur vueJoueur = new VueJoueur(it.next());
+			vueJoueurs.add(vueJoueur);
+			panelJoueur.add(vueJoueur.getOffre());
+
+		}
+		
+		panelJest.add(new JPanel().add( new JLabel(new ImageIcon("image/tasVide.png"))));
+		
 		JPanel panelTapis = new JPanel();
 		JLabel imgTapis = new JLabel(new ImageIcon("image/tapis.jpg"));
 
@@ -66,7 +90,7 @@ public class VuePartie implements Observer {
 		imgTapis.add(pioche);
 		imgTapis.add(trophe1);
 		imgTapis.add(trophe2);
-
+		
 		panelTapis.add(imgTapis);
 
 		setLog(new JTextArea());
@@ -75,9 +99,12 @@ public class VuePartie implements Observer {
 		scrollPane = new JScrollPane(getLog());
 
 		fenetre.add(scrollPane, BorderLayout.NORTH);
-		// fenetre.add(scroll, BorderLayout.WEST);
+		//fenetre.add(scroll, BorderLayout.WEST);
 		// fenetre.add(continuer, BorderLayout.SOUTH);
+		fenetre.add(panelJoueur, BorderLayout.SOUTH);
+		fenetre.add(panelJest, BorderLayout.WEST);
 		fenetre.add(panelTapis, BorderLayout.EAST);
+		
 
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.pack();
@@ -89,8 +116,14 @@ public class VuePartie implements Observer {
 
 	}
 
-	public void affacerPioche() {
+	public void effacerPioche() {
 		this.pioche.setIcon(new ImageIcon("image/tasVide.png"));
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void afficherTrophes() {
@@ -99,7 +132,6 @@ public class VuePartie implements Observer {
 		int i = 0;
 		while (it.hasNext()) {
 			VueCarte trophe = new VueCarte(it.next());
-			System.out.println(trophe.getChemin());
 			if (i == 0) {
 				this.trophe1.setIcon(new ImageIcon(trophe.getChemin()));
 			} else if (i == 1) {
@@ -141,6 +173,16 @@ public class VuePartie implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		afficherTrophes();
+		if(arg instanceof String) {
+			String message = arg.toString();
+			if(message.equals("Les trophés sont distribués")) {
+				effacerTrophes();
+			}
+			else if(message.equals("La pioche est vide")) {
+				effacerPioche();
+			} else if(message.contains("Les trophés sont ")) {
+				afficherTrophes();
+			}
+		}
 	}
 }

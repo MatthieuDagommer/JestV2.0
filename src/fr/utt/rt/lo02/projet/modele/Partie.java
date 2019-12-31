@@ -90,6 +90,8 @@ public class Partie extends Observable {
 				rammaserCartesRestante();
 			}
 		} while (!jeuDeCartes.estVide());
+		setChanged();
+		notifyObservers("La pioche est vide");
 		rammaserCartesRestanteJest();
 		updateScore();
 		distribuerTrophees();
@@ -202,7 +204,7 @@ public class Partie extends Observable {
 		System.out.println(message);
 		
 		setChanged();
-		notifyObservers();
+		notifyObservers(message);
 	}
 
 	public void distribuerJeu() {
@@ -297,6 +299,10 @@ public class Partie extends Observable {
 			System.out.println(message);
 			setChanged();
 			notifyObservers();
+			
+			message = "Les trophés sont distribués";
+			setChanged();
+			notifyObservers(message);
 		}
 	}
 

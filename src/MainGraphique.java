@@ -6,8 +6,10 @@ import fr.utt.rt.lo02.projet.vue.VuePartie;
 
 public class MainGraphique implements Runnable {
 
+	private Partie partie;
+	
 	public MainGraphique() {
-		Partie partie = Partie.getInstance();
+		partie = Partie.getInstance();
 		partie.initialisation();
 		VuePartie vuePartie = new VuePartie(partie);
 
@@ -17,23 +19,24 @@ public class MainGraphique implements Runnable {
 
 		
 		
-		partie.lancerPartie();
-		System.out.println(partie.bestJest(partie.getJoueurs()));
+		//partie.lancerPartie();
+		//System.out.println(partie.bestJest(partie.getJoueurs()));
 	}
 
 	public static void main(String[] args) {
 		Thread partie = new Thread(new MainGraphique());
 		partie.start();
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		/*javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new MainGraphique();
 			}
-		});
+		});*/
 	}
 
 	@Override
 	public void run() {
-		new MainGraphique();
+			//new MainGraphique();
+		partie.lancerPartie();
 	}
 
 }
