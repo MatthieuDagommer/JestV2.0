@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Observable;
 
+import fr.utt.rt.lo02.projet.controleur.PartieControleur;
+
 
 public class Partie extends Observable {
 
@@ -323,7 +325,7 @@ public class Partie extends Observable {
 		return score;
 	}
 
-	private Joueur bestJest(ArrayList<Joueur> joueurs) {
+	public Joueur bestJest(ArrayList<Joueur> joueurs) {
 		updateScore();
 		Iterator<Joueur> it = joueurs.iterator();
 		Joueur bestJ = joueurs.get(0);
@@ -362,6 +364,10 @@ public class Partie extends Observable {
 			copyJoueurs.remove(joueur);
 		}
 		return copyJoueurs;
+	}
+	
+	public void initialisation() {
+		PartieControleur.initialisationJest();
 	}
 
 	public static void main(String[] args) {
