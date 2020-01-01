@@ -84,8 +84,10 @@ public class VueJoueur implements Observer {
 	private void cacherOffre() {
 		//offre.removeAll();
 		//VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
-		
-		offreCache.setIcon(new ImageIcon("image/dosCarte.jpg"));
+		if(this.joueur.getOffreCache() != null)
+			offreCache.setIcon(new ImageIcon("image/dosCarte.jpg"));
+		else
+			offreCache.setIcon(new ImageIcon("image/tasVide.png"));
 		//offre.add(nom);
 		//JLabel carte = carteVisible.getImage();
 		//offre.add(carte);

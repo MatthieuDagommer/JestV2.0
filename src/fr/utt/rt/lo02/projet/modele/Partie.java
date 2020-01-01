@@ -101,13 +101,15 @@ public class Partie extends Observable {
 					e.printStackTrace();
 				}
 				joueurActuel = joueurActuel.jouer();
-				if (joueurActuel.isaJouer()) {
+				if (joueurActuel.isaJouer() && i< Joueur.NB_JOUEURS-1) {
+					System.out.println("Dans le tour");
 					joueurActuel = meilleureOffre();
 				}
 			}
 			if (!jeuDeCartes.estVide()) {
 				rammaserCartesRestante();
 			}
+			System.out.println("Fin du tour");
 		} while (!jeuDeCartes.estVide());
 		setChanged();
 		notifyObservers("La pioche est vide");

@@ -42,4 +42,10 @@ public class StratFacile extends StrategieJoueur {
 		
 	}
 
+	@Override
+	public void cacher(Carte actuelC) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
