@@ -43,6 +43,7 @@ public class VuePartie implements Observer {
 
 	private JLabel trophe1;
 	private JLabel trophe2;
+	private JLabel trophe3;
 
 	private JLabel pioche;
 
@@ -70,7 +71,7 @@ public class VuePartie implements Observer {
 		Iterator<Joueur> it = joueurs.iterator();
 		vueJoueurs = new ArrayList<VueJoueur>();
 		while(it.hasNext()) {
-			VueJoueur vueJoueur = new VueJoueur(it.next());
+			VueJoueur vueJoueur = new VueJoueur(it.next(), this);
 			vueJoueurs.add(vueJoueur);
 			panelJoueur.add(vueJoueur.getOffre());
 
@@ -86,11 +87,13 @@ public class VuePartie implements Observer {
 
 		trophe1 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
 		trophe2 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
+		trophe3 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
 
 		imgTapis.setLayout(new GridLayout());
 		imgTapis.add(pioche);
 		imgTapis.add(trophe1);
 		imgTapis.add(trophe2);
+		imgTapis.add(trophe3);
 		
 		panelTapis.add(imgTapis);
 
@@ -116,6 +119,22 @@ public class VuePartie implements Observer {
 		afficherTrophes();
 
 	}
+	
+	public void ajouterCarteClicable(ArrayList<Joueur> joueurs) {
+		panelJoueur.removeAll();
+		Iterator<Joueur> it = this.joueurs.iterator();
+		vueJoueurs = new ArrayList<VueJoueur>();
+		while(it.hasNext()) {
+			Joueur j = it.next();
+			VueJoueur vueJoueur = new VueJoueur(j,this);
+			if(joueurs.contains(j)) {
+				vueJoueur.ajouterCarteClicable();
+			}
+			vueJoueurs.add(vueJoueur);
+			panelJoueur.add(vueJoueur.getOffre());
+
+		}
+	}
 
 	public void effacerPioche() {
 		this.pioche.setIcon(new ImageIcon("image/tasVide.png"));
@@ -137,6 +156,8 @@ public class VuePartie implements Observer {
 				this.trophe1.setIcon(new ImageIcon(trophe.getChemin()));
 			} else if (i == 1) {
 				this.trophe2.setIcon(new ImageIcon(trophe.getChemin()));
+			} else if(i==2) {
+				this.trophe3.setIcon(new ImageIcon(trophe.getChemin()));
 			}
 			i++;
 		}
@@ -146,6 +167,7 @@ public class VuePartie implements Observer {
 	public void effacerTrophes() {
 		this.trophe1.setIcon(new ImageIcon("image/tasVide.png"));
 		this.trophe2.setIcon(new ImageIcon("image/tasVide.png"));
+		this.trophe3.setIcon(new ImageIcon("image/tasVide.png"));
 	}
 
 	public JLabel getPioche() {
@@ -186,4 +208,10 @@ public class VuePartie implements Observer {
 			}
 		}
 	}
+
+	public PartieControleur getControleur() {
+		return controleur;
+	}
+
+
 }

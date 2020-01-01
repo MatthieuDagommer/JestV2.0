@@ -83,6 +83,12 @@ public class Partie extends Observable {
 			for (int i = 0; i < Joueur.NB_JOUEURS; i++) {
 				setChanged();
 				notifyObservers(suivant);
+				try {
+					Thread.sleep(2000);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				suivant = suivant.jouer();
 				if (suivant.isaJouer()) {
 					suivant = meilleureOffre();
@@ -199,6 +205,7 @@ public class Partie extends Observable {
 		} else if (Joueur.NB_JOUEURS == 4) {
 			trophes.add(jeuDeCartes.piocherCarte());
 		} else if (Joueur.NB_JOUEURS == 3 && jeuDeCartes.getExtension() == 1) {
+			trophes.add(jeuDeCartes.piocherCarte());
 			trophes.add(jeuDeCartes.piocherCarte());
 			trophes.add(jeuDeCartes.piocherCarte());
 		}

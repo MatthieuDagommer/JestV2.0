@@ -33,6 +33,7 @@ public class VueCarte {
 				sb.append("Quatre");
 				break;
 			case SIX:
+				sb.append("Six");
 				break;
 			case TROIS:
 				sb.append("Trois");

@@ -2,6 +2,8 @@ package fr.utt.rt.lo02.projet.vue;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Observable;
@@ -12,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import fr.utt.rt.lo02.projet.controleur.PartieControleur;
 import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
@@ -27,9 +30,12 @@ public class VueJoueur implements Observer {
 
 	private JLabel nom;
 
+	private VuePartie vuePartie;
+
 	// controleur
 
-	public VueJoueur(Joueur joueur) {
+	public VueJoueur(Joueur joueur, VuePartie vuePartie) {
+		this.vuePartie = vuePartie;
 		this.joueur = joueur;
 		this.nom = new JLabel(joueur.getNom());
 		Partie.getInstance().addObserver(this);
@@ -50,9 +56,6 @@ public class VueJoueur implements Observer {
 		VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
 		VueCarte carteCache = new VueCarte(joueur.getOffreCache());
 
-		/*
-		 * carteGraphique.add(carteVisible); carteGraphique.add(carteCache);
-		 */
 		offre.add(nom);
 		JLabel carte = carteVisible.getImage();
 		offre.add(carte);
@@ -66,6 +69,23 @@ public class VueJoueur implements Observer {
 		offre.removeAll();
 		drawOffre();
 		offre.updateUI();
+	}
+
+	public void ajouterCarteClicable() {
+		offre.removeAll();
+
+		VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
+		VueCarte carteCache = new VueCarte(joueur.getOffreCache());
+
+		offre.add(nom);
+
+		JLabel carteVisibleLabel = carteVisible.getImage();
+		carteVisibleLabel.addMouseListener(vuePartie.getControleur());
+		offre.add(carteVisibleLabel);
+
+		JLabel carteCacheLabel = carteCache.getImage();
+		carteCacheLabel.addMouseListener(vuePartie.getControleur());
+		offre.add(carteCacheLabel);
 	}
 
 	public Joueur getJoueur() {
@@ -108,12 +128,14 @@ public class VueJoueur implements Observer {
 				majOffre();
 			} else {
 				switchBorder(j);
-				if(j == joueur) {
+				if (j == joueur) {
 					majOffre();
 				} else {
 					cacherOffre();
 				}
 			}
+		} else {
+			majOffre();
 		}
 
 	}

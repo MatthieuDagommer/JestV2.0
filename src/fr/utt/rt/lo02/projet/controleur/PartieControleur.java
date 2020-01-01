@@ -2,6 +2,11 @@ package fr.utt.rt.lo02.projet.controleur;
 
 
 
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+
+import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 import fr.utt.rt.lo02.projet.modele.RegleStandard;
@@ -9,7 +14,7 @@ import fr.utt.rt.lo02.projet.modele.StratFacile;
 import fr.utt.rt.lo02.projet.vue.MenuInitialisation;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
 
-public class PartieControleur {
+public class PartieControleur implements MouseListener {
 
 	
 	private static Partie partie;
@@ -19,6 +24,8 @@ public class PartieControleur {
 	public PartieControleur(Partie partie, VuePartie vuePartie) {
 		setPartie(partie);
 		setVuePartie(vuePartie);
+		
+		
 	}
 	
 	
@@ -45,6 +52,18 @@ public class PartieControleur {
 		
 	}
 	
+	public static Carte choisirCarte(ArrayList<Joueur> joueurs) {
+		vuePartie.ajouterCarteClicable(joueurs);
+		
+		return null;
+	}
+	
+	public static void updateJTextArea(String message) {
+		getVuePartie().getLog().append(message + "\n");
+		//Pour placer le curseur à la fin, afin d'émuler un scroll automatique
+		getVuePartie().getLog().setCaretPosition(getVuePartie().getLog().getDocument().getLength());
+	}
+	
 	public static Partie getPartie() {
 		return partie;
 	}
@@ -59,5 +78,40 @@ public class PartieControleur {
 
 	public static void setVuePartie(VuePartie vuePartie) {
 		PartieControleur.vuePartie = vuePartie;
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
