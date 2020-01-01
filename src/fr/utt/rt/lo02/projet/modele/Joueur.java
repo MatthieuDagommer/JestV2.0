@@ -2,8 +2,9 @@ package fr.utt.rt.lo02.projet.modele;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Observable;
 
-public class Joueur {
+public class Joueur extends Observable{
 
 	private String nom;
 	private LinkedList<Carte> main;

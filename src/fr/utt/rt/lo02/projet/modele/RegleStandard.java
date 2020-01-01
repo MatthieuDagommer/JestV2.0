@@ -11,16 +11,19 @@ public class RegleStandard implements Regle {
 	public int visitCarreau(LinkedList<Carte> jest) {
 		int score = 0;
 		int nbCarte = 0;
+		boolean asCarreau = false;
 		Iterator<Carte> it = jest.iterator();
 		while (it.hasNext()) {
 			Carte c = it.next();
 			if (c.getValeur() != Valeur.JOKER && c.getCouleur() == Couleur.CARREAU) {
 				score -= c.getValeur().ordinal();
 				nbCarte += 1;
+				if(c.getValeur() == Valeur.AS)
+					asCarreau = true;
 			}
 		}
-		if (nbCarte == 1 && jest.contains(new Carte(Valeur.AS, Couleur.CARREAU, Trophee.plus4))) {
-			score -= 4;
+		if (nbCarte == 1 && asCarreau) {
+			score = -5;
 		}
 		return score;
 	}
@@ -29,6 +32,7 @@ public class RegleStandard implements Regle {
 	public int visitCoeur(LinkedList<Carte> jest) {
 		int score = 0;
 		int nbCoeur = 0;
+		boolean asCoeur = false;
 		if(jest.contains(Joker.getInstance())) {
 			Iterator<Carte> it = jest.iterator();
 			while(it.hasNext()) {
@@ -36,12 +40,14 @@ public class RegleStandard implements Regle {
 				if(c.getCouleur() == Couleur.COEUR) {
 					score -= c.getValeur().ordinal();
 					nbCoeur++;
+					if(c.getValeur() == Valeur.AS)
+						asCoeur = true;
 				}
 			}
 			if(nbCoeur == 4) {
 				score = 5;
 			}
-			if(nbCoeur == 1 && jest.contains(new Carte(Valeur.AS, Couleur.COEUR, Trophee.joker))) {
+			if(nbCoeur == 1 && asCoeur) {
 				score = 5;
 			}
 		}
@@ -53,21 +59,26 @@ public class RegleStandard implements Regle {
 		int score = 0;
 		int nbPic = 0;
 		int nbTrefle = 0;
+		boolean asPic = false, asTrefle = false;
 		Iterator<Carte> it = jest.iterator();
 		while (it.hasNext()) {
 			Carte c = it.next();
 			if (c.getCouleur() == Couleur.TREFLE) {
 				score += c.getValeur().ordinal();
 				nbTrefle++;
+				if(c.getValeur() == Valeur.AS)
+					asTrefle = true;
 			} else if (c.getCouleur() == Couleur.PIC) {
 				score += c.getValeur().ordinal();
 				nbPic++;
+				if(c.getValeur() == Valeur.AS)
+					asPic = true;
 			}
 		}
-		if (nbPic == 1 && jest.contains(new Carte(Valeur.AS, Couleur.PIC, Trophee.hauttrefle))) {
+		if (nbPic == 1 && asPic) {
 			score+=4;
 		}
-		if (nbTrefle == 1 && jest.contains(new Carte(Valeur.AS, Couleur.TREFLE, Trophee.hautpic))) {
+		if (nbTrefle == 1 && asTrefle) {
 			score+=4;
 		}
 		return score;

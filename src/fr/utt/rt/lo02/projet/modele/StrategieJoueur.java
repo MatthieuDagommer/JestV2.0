@@ -1,8 +1,12 @@
 package fr.utt.rt.lo02.projet.modele;
 
-public interface StrategieJoueur {
+import java.util.Observable;
+
+public abstract class StrategieJoueur extends Observable {
 	
-	public Joueur choisirCarte(Joueur ceJoueur);
+	public abstract Joueur choisirCarte(Joueur ceJoueur);
 	
-	public void faireOffre(Joueur ceJoueur); 
+	public abstract void faireOffre(Joueur ceJoueur);
+
+	public abstract void setVictime(Joueur joueur); 
 }
