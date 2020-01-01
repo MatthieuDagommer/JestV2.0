@@ -120,7 +120,7 @@ public class VuePartie implements Observer {
 
 	}
 	
-	public void ajouterCarteClicable(ArrayList<Joueur> joueurs) {
+	public void ajouterCarteClicable(ArrayList<Joueur> joueurs, Joueur ceJoueur) {
 		panelJoueur.removeAll();
 		Iterator<Joueur> it = this.joueurs.iterator();
 		vueJoueurs = new ArrayList<VueJoueur>();
@@ -128,7 +128,7 @@ public class VuePartie implements Observer {
 			Joueur j = it.next();
 			VueJoueur vueJoueur = new VueJoueur(j,this);
 			if(joueurs.contains(j)) {
-				vueJoueur.ajouterCarteClicable();
+				vueJoueur.ajouterCarteClicable(ceJoueur);
 			}
 			vueJoueurs.add(vueJoueur);
 			panelJoueur.add(vueJoueur.getOffre());

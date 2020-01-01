@@ -71,7 +71,7 @@ public class VueJoueur implements Observer {
 		offre.updateUI();
 	}
 
-	public void ajouterCarteClicable() {
+	public void ajouterCarteClicable(Joueur ceJoueur) {
 		offre.removeAll();
 
 		VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
@@ -80,11 +80,25 @@ public class VueJoueur implements Observer {
 		offre.add(nom);
 
 		JLabel carteVisibleLabel = carteVisible.getImage();
-		carteVisibleLabel.addMouseListener(vuePartie.getControleur());
+		carteVisibleLabel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ceJoueur.addJest(joueur.getOffreVisible());
+				joueur.setOffreVisible(null);
+				ceJoueur.getStrategie().setVictime(joueur);
+				majOffre();
+			}
+		});
 		offre.add(carteVisibleLabel);
 
 		JLabel carteCacheLabel = carteCache.getImage();
-		carteCacheLabel.addMouseListener(vuePartie.getControleur());
+		carteCacheLabel.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				ceJoueur.addJest(joueur.getOffreCache());
+				joueur.setOffreCache(null);
+				ceJoueur.getStrategie().setVictime(joueur);
+				majOffre();
+			}
+		});
 		offre.add(carteCacheLabel);
 	}
 

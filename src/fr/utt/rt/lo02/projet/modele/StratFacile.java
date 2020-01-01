@@ -30,4 +30,10 @@ public class StratFacile extends StrategieJoueur {
 
 	}
 
+	@Override
+	public void setVictime(Joueur joueur) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

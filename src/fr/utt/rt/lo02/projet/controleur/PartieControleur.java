@@ -44,18 +44,17 @@ public class PartieControleur implements MouseListener {
 		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
 		Joueur ordi2 = new Joueur("ordi2", new StratFacile());
 		Joueur ordi3 = new Joueur("ordi3", new StratFacile());
-		//Joueur ordi4 = new Joueur("ordi4", new StratFacile());
+		//Joueur moi = new Joueur("moi");
 
 		Partie.getInstance().addJoueur(ordi1);
 		Partie.getInstance().addJoueur(ordi2);
 		Partie.getInstance().addJoueur(ordi3);
+		//Partie.getInstance().addJoueur(moi);
 		
 	}
 	
-	public static Carte choisirCarte(ArrayList<Joueur> joueurs) {
-		vuePartie.ajouterCarteClicable(joueurs);
-		
-		return null;
+	public static void choisirCarte(ArrayList<Joueur> joueurs, Joueur ceJoueur) {
+		vuePartie.ajouterCarteClicable(joueurs, ceJoueur);
 	}
 	
 	public static void updateJTextArea(String message) {

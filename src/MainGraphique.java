@@ -7,11 +7,13 @@ import fr.utt.rt.lo02.projet.vue.VuePartie;
 public class MainGraphique implements Runnable {
 
 	private Partie partie;
+	private PartieControleur controleur;
+	private VuePartie vuePartie;
 	
 	public MainGraphique() {
 		partie = Partie.getInstance();
 		partie.initialisation();
-		VuePartie vuePartie = new VuePartie(partie);
+		vuePartie = new VuePartie(partie);
 
 		PartieControleur partieControleur = new PartieControleur(partie, vuePartie);
 
@@ -26,11 +28,11 @@ public class MainGraphique implements Runnable {
 	public static void main(String[] args) {
 		Thread partie = new Thread(new MainGraphique());
 		partie.start();
-		/*javax.swing.SwingUtilities.invokeLater(new Runnable() {
+		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new MainGraphique();
+				new Thread();
 			}
-		});*/
+		});
 	}
 
 	@Override
