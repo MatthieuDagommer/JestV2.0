@@ -85,9 +85,9 @@ public class VuePartie implements Observer {
 
 		pioche = new JLabel(new ImageIcon("image/dosCarte.jpg"));
 
-		trophe1 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
-		trophe2 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
-		trophe3 = new JLabel(new ImageIcon("image/dosCarte.jpg"));
+		trophe1 = new JLabel(new ImageIcon("image/tasVide.jpg"));
+		trophe2 = new JLabel(new ImageIcon("image/tasVide.jpg"));
+		trophe3 = new JLabel(new ImageIcon("image/tasVide.jpg"));
 
 		imgTapis.setLayout(new GridLayout());
 		imgTapis.add(pioche);
@@ -108,33 +108,28 @@ public class VuePartie implements Observer {
 		fenetre.add(panelJoueur, BorderLayout.SOUTH);
 		fenetre.add(panelJest, BorderLayout.WEST);
 		fenetre.add(panelTapis, BorderLayout.EAST);
-		
+		afficherTrophes();
 
 		fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fenetre.pack();
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
-		;
+		
 
-		afficherTrophes();
+		
 
 	}
 	
-	public void ajouterCarteClicable(ArrayList<Joueur> joueurs, Joueur ceJoueur) {
-		panelJoueur.removeAll();
-		Iterator<Joueur> it = this.joueurs.iterator();
-		vueJoueurs = new ArrayList<VueJoueur>();
-		while(it.hasNext()) {
-			Joueur j = it.next();
-			VueJoueur vueJoueur = new VueJoueur(j,this);
-			if(joueurs.contains(j)) {
-				vueJoueur.ajouterCarteClicable(ceJoueur);
-			}
-			vueJoueurs.add(vueJoueur);
-			panelJoueur.add(vueJoueur.getOffre());
 
-		}
+	public ArrayList<Joueur> getJoueurs() {
+		return joueurs;
 	}
+
+
+	public void setJoueurs(ArrayList<Joueur> joueurs) {
+		this.joueurs = joueurs;
+	}
+
 
 	public void effacerPioche() {
 		this.pioche.setIcon(new ImageIcon("image/tasVide.png"));
@@ -211,6 +206,16 @@ public class VuePartie implements Observer {
 
 	public PartieControleur getControleur() {
 		return controleur;
+	}
+
+
+	public ArrayList<VueJoueur> getVueJoueurs() {
+		return vueJoueurs;
+	}
+
+
+	public void setVueJoueurs(ArrayList<VueJoueur> vueJoueurs) {
+		this.vueJoueurs = vueJoueurs;
 	}
 
 

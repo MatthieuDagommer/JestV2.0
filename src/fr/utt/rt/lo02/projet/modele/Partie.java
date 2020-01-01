@@ -14,6 +14,17 @@ public class Partie extends Observable {
 	private LinkedList<Carte> trophes;
 	private Deck jeuDeCartes;
 	private Regle regle;
+	
+	private Joueur joueurActuel;
+	
+
+	public Joueur getJoueurActuel() {
+		return joueurActuel;
+	}
+
+	public void setJoueurActuel(Joueur joueurActuel) {
+		this.joueurActuel = joueurActuel;
+	}
 
 	public Regle getRegle() {
 		return regle;
@@ -24,6 +35,7 @@ public class Partie extends Observable {
 	}
 
 	private Partie() {
+		joueurActuel = null;
 		joueurs = new ArrayList<Joueur>();
 		trophes = new LinkedList<Carte>();
 	}
@@ -71,7 +83,6 @@ public class Partie extends Observable {
 	}
 
 	public void lancerPartie() {
-		Joueur suivant;
 		jeuDeCartes.melanger();
 		choixTrophee();
 		do {
@@ -79,19 +90,19 @@ public class Partie extends Observable {
 			razAJoue();
 			distribuerJeu();
 			offreJoueur();
-			suivant = meilleureOffre();
+			joueurActuel = meilleureOffre();
 			for (int i = 0; i < Joueur.NB_JOUEURS; i++) {
 				setChanged();
-				notifyObservers(suivant);
+				notifyObservers(joueurActuel);
 				try {
 					Thread.sleep(2000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				suivant = suivant.jouer();
-				if (suivant.isaJouer()) {
-					suivant = meilleureOffre();
+				joueurActuel = joueurActuel.jouer();
+				if (joueurActuel.isaJouer()) {
+					joueurActuel = meilleureOffre();
 				}
 			}
 			if (!jeuDeCartes.estVide()) {
@@ -224,9 +235,6 @@ public class Partie extends Observable {
 				j.addMain(jeuDeCartes.piocherCarte());
 			}
 		}
-
-		setChanged();
-		notifyObservers();
 	}
 
 	public void distribuerTrophees() {

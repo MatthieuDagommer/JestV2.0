@@ -36,4 +36,10 @@ public class StratFacile extends StrategieJoueur {
 		
 	}
 
+	@Override
+	public void choix(boolean b, Joueur joueur) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

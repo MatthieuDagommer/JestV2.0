@@ -8,5 +8,10 @@ public abstract class StrategieJoueur extends Observable {
 	
 	public abstract void faireOffre(Joueur ceJoueur);
 
-	public abstract void setVictime(Joueur joueur); 
+	public abstract void setVictime(Joueur joueur);
+
+
+	public abstract void choix(boolean b, Joueur joueur);
+
+	public abstract void cacher(Carte actuelC); 
 }

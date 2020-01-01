@@ -18,7 +18,6 @@ public class MainGraphique implements Runnable {
 		PartieControleur partieControleur = new PartieControleur(partie, vuePartie);
 
 		partie.addObserver(vuePartie);
-
 		
 		
 		//partie.lancerPartie();

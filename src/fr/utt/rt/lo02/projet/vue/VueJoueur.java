@@ -26,6 +26,9 @@ public class VueJoueur implements Observer {
 
 	private JPanel offre;
 
+	private JLabel offreVisible;
+	private JLabel offreCache;
+
 	private LinkedList<VueCarte> carteGraphique;
 
 	private JLabel nom;
@@ -57,49 +60,56 @@ public class VueJoueur implements Observer {
 		VueCarte carteCache = new VueCarte(joueur.getOffreCache());
 
 		offre.add(nom);
-		JLabel carte = carteVisible.getImage();
-		offre.add(carte);
+		offreVisible = carteVisible.getImage();
+		offre.add(offreVisible);
 
-		carte = carteCache.getImage();
-		offre.add(carte);
+		offreCache = carteCache.getImage();
+		offre.add(offreCache);
 
 	}
 
 	private void majOffre() {
-		offre.removeAll();
-		drawOffre();
-		offre.updateUI();
-	}
-
-	public void ajouterCarteClicable(Joueur ceJoueur) {
-		offre.removeAll();
-
+		//offre.removeAll();
+		//drawOffre();
 		VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
 		VueCarte carteCache = new VueCarte(joueur.getOffreCache());
 
-		offre.add(nom);
+		offreVisible.setIcon(carteVisible.getIcon());
+		//System.out.println(carteVisible.getChemin());
+		offreCache.setIcon(carteCache.getIcon());
+		
+		offre.updateUI();
+	}
+	
+	private void cacherOffre() {
+		//offre.removeAll();
+		//VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
+		
+		offreCache.setIcon(new ImageIcon("image/dosCarte.jpg"));
+		//offre.add(nom);
+		//JLabel carte = carteVisible.getImage();
+		//offre.add(carte);
 
-		JLabel carteVisibleLabel = carteVisible.getImage();
-		carteVisibleLabel.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				ceJoueur.addJest(joueur.getOffreVisible());
-				joueur.setOffreVisible(null);
-				ceJoueur.getStrategie().setVictime(joueur);
-				majOffre();
-			}
-		});
-		offre.add(carteVisibleLabel);
+		//carte = new JLabel(new ImageIcon("image/dosCarte.jpg"));
+		//offre.add(carte);
+		offre.updateUI();
+	}
 
-		JLabel carteCacheLabel = carteCache.getImage();
-		carteCacheLabel.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				ceJoueur.addJest(joueur.getOffreCache());
-				joueur.setOffreCache(null);
-				ceJoueur.getStrategie().setVictime(joueur);
-				majOffre();
-			}
-		});
-		offre.add(carteCacheLabel);
+
+	public JLabel getOffreVisible() {
+		return offreVisible;
+	}
+
+	public void setOffreVisible(JLabel offreVisible) {
+		this.offreVisible = offreVisible;
+	}
+
+	public JLabel getOffreCache() {
+		return offreCache;
+	}
+
+	public void setOffreCache(JLabel offreCache) {
+		this.offreCache = offreCache;
 	}
 
 	public Joueur getJoueur() {
@@ -145,6 +155,7 @@ public class VueJoueur implements Observer {
 				if (j == joueur) {
 					majOffre();
 				} else {
+					majOffre();
 					cacherOffre();
 				}
 			}
@@ -154,17 +165,6 @@ public class VueJoueur implements Observer {
 
 	}
 
-	private void cacherOffre() {
-		offre.removeAll();
-		VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
-
-		offre.add(nom);
-		JLabel carte = carteVisible.getImage();
-		offre.add(carte);
-
-		carte = new JLabel(new ImageIcon("image/dosCarte.jpg"));
-		offre.add(carte);
-	}
 
 	public void switchBorder(Joueur j) {
 		if (j == this.joueur) {
