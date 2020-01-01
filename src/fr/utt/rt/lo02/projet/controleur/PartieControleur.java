@@ -13,8 +13,11 @@ import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 import fr.utt.rt.lo02.projet.modele.RegleStandard;
+import fr.utt.rt.lo02.projet.modele.StratDifficile;
 import fr.utt.rt.lo02.projet.modele.StratFacile;
 import fr.utt.rt.lo02.projet.modele.StratPhysique;
+import fr.utt.rt.lo02.projet.modele.Variante1;
+import fr.utt.rt.lo02.projet.modele.Variante2;
 import fr.utt.rt.lo02.projet.vue.FenetreChoixOffre;
 import fr.utt.rt.lo02.projet.vue.MenuInitialisation;
 import fr.utt.rt.lo02.projet.vue.VueJoueur;
@@ -82,19 +85,25 @@ public class PartieControleur {
 		case 0:
 			Partie.getInstance().setRegle(new RegleStandard());
 			break;
+		case 1:
+			Partie.getInstance().setRegle(new Variante1());
+			break;
+		case 2:
+			Partie.getInstance().setRegle(new Variante2());
+			break;
 		default:
 			Partie.getInstance().setRegle(new RegleStandard());
 			break;
 		}
 		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
-		Joueur ordi2 = new Joueur("ordi2", new StratFacile());
-		// Joueur ordi3 = new Joueur("ordi3", new StratFacile());
+		Joueur ordi2 = new Joueur("ordi2", new StratDifficile());
+		 Joueur ordi3 = new Joueur("ordi3", new StratDifficile());
 		// Joueur ordi4 = new Joueur("ordi4", new StratFacile());
-		Joueur moi = new Joueur("moi");
+		Joueur moi = new Joueur(dialog.getNom());
 
 		Partie.getInstance().addJoueur(ordi1);
 		Partie.getInstance().addJoueur(ordi2);
-		// Partie.getInstance().addJoueur(ordi3);
+		 Partie.getInstance().addJoueur(ordi3);
 		// Partie.getInstance().addJoueur(ordi4);
 		Partie.getInstance().addJoueur(moi);
 

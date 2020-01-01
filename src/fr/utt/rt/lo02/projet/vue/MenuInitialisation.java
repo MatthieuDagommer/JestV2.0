@@ -105,4 +105,8 @@ public class MenuInitialisation extends JDialog {
 	public void setVariante(JTextArea variante) {
 		this.variante = variante;
 	}
+	
+	public String getNom() {
+		return nom.getText();
+	}
 }

@@ -95,7 +95,7 @@ public class Partie extends Observable {
 				setChanged();
 				notifyObservers(joueurActuel);
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(500);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
