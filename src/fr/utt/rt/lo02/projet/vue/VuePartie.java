@@ -193,13 +193,16 @@ public class VuePartie implements Observer {
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
 			String message = arg.toString();
-			if(message.equals("Les trophés sont distribués")) {
+			if(message.equals("Les trophï¿½s sont distribuï¿½s")) {
 				effacerTrophes();
 			}
 			else if(message.equals("La pioche est vide")) {
 				effacerPioche();
-			} else if(message.contains("Les trophés sont ")) {
+			} else if(message.contains("Les trophï¿½s sont ")) {
 				afficherTrophes();
+			}
+			else {
+				controleur.updateJTextArea(message);
 			}
 		}
 	}

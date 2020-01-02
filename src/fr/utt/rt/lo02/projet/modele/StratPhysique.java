@@ -54,7 +54,7 @@ public class StratPhysique extends StrategieJoueur {
 		if(this.carteVisibleVictime == true) {
 			ceJoueur.addJest(victime.getOffreVisible());
 			message = ceJoueur.getNom() + " prend la carte "+victime.getOffreVisible()+" de "+victime.getNom();
-
+			
 			victime.setOffreVisible(null);
 			
 		} else if (this.carteVisibleVictime == false) {
@@ -66,6 +66,8 @@ public class StratPhysique extends StrategieJoueur {
 		Joueur j = victime;
 		victime = null;
 		System.out.println(message);
+		setChanged();
+		notifyObservers(message);
 		setChanged();
 		notifyObservers(j);
 		return j;

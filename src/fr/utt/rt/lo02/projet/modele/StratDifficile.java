@@ -16,7 +16,8 @@ public class StratDifficile extends StrategieJoueur{
 		victime.setOffreVisible(null);
 		setChanged();
 		notifyObservers(victime);
-
+		setChanged();
+		notifyObservers(message);
 		return victime;
 	}
 

@@ -222,7 +222,7 @@ public class Partie extends Observable {
 			trophes.add(jeuDeCartes.piocherCarte());
 			trophes.add(jeuDeCartes.piocherCarte());
 		}
-		message = "Les trophés sont " + trophes.toString();
+		message = "Les trophï¿½s sont " + trophes.toString();
 		System.out.println(message);
 		
 		setChanged();
@@ -244,8 +244,10 @@ public class Partie extends Observable {
 		if (trophes.contains(Joker.getInstance())) {
 			Carte joker = trophes.remove(trophes.indexOf(Joker.getInstance()));
 			bestJest(joueurs).addJestAvecTrophes(joker);
-			message = "Le Trophe Joker est distribué à " + bestJest(joueurs);
+			message = "Le Trophe Joker est distribuï¿½ ï¿½ " + bestJest(joueurs);
 			System.out.println(message);
+			setChanged();
+			notifyObservers(message);
 			setChanged();
 			notifyObservers();
 		}
@@ -257,59 +259,59 @@ public class Partie extends Observable {
 				break;
 			case bascarreau:
 				lowestCarteInCouleur(Couleur.CARREAU).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+lowestCarteInCouleur(Couleur.CARREAU).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+lowestCarteInCouleur(Couleur.CARREAU).getNom();
 				break;
 			case bascoeur:
 				lowestCarteInCouleur(Couleur.COEUR).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+lowestCarteInCouleur(Couleur.COEUR).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+lowestCarteInCouleur(Couleur.COEUR).getNom();
 				break;
 			case baspic:
 				lowestCarteInCouleur(Couleur.PIC).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+lowestCarteInCouleur(Couleur.PIC).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+lowestCarteInCouleur(Couleur.PIC).getNom();
 				break;
 			case bastrefle:
 				lowestCarteInCouleur(Couleur.TREFLE).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+lowestCarteInCouleur(Couleur.TREFLE).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+lowestCarteInCouleur(Couleur.TREFLE).getNom();
 				break;
 			case bestJest:
 				bestJest(joueurs).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+bestJest(joueurs).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+bestJest(joueurs).getNom();
 				break;
 			case hautcarreau:
 				highestCarteInCouleur(Couleur.CARREAU).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+highestCarteInCouleur(Couleur.CARREAU).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+highestCarteInCouleur(Couleur.CARREAU).getNom();
 				break;
 			case hautcoeur:
 				highestCarteInCouleur(Couleur.COEUR).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+highestCarteInCouleur(Couleur.COEUR).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+highestCarteInCouleur(Couleur.COEUR).getNom();
 				break;
 			case hautpic:
 				highestCarteInCouleur(Couleur.PIC).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+highestCarteInCouleur(Couleur.PIC).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+highestCarteInCouleur(Couleur.PIC).getNom();
 				break;
 			case hauttrefle:
 				highestCarteInCouleur(Couleur.TREFLE).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+highestCarteInCouleur(Couleur.TREFLE).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+highestCarteInCouleur(Couleur.TREFLE).getNom();
 				break;
 			case joker:
 				hasJoker().addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+hasJoker().getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+hasJoker().getNom();
 				break;
 			case nojoker:
 				bestJestNoJoker().addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+bestJestNoJoker().getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+bestJestNoJoker().getNom();
 				break;
 			case plus2:
 				plusValeur(Valeur.DEUX).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+plusValeur(Valeur.DEUX).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+plusValeur(Valeur.DEUX).getNom();
 				break;
 			case plus3:
 				plusValeur(Valeur.TROIS).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+plusValeur(Valeur.TROIS).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+plusValeur(Valeur.TROIS).getNom();
 				break;
 			case plus4:
 				plusValeur(Valeur.QUATRE).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribué à "+plusValeur(Valeur.QUATRE).getNom();
+				message = "Le trophe "+c+" est distribuï¿½ ï¿½ "+plusValeur(Valeur.QUATRE).getNom();
 				break;
 			default:
 				break;
@@ -317,9 +319,9 @@ public class Partie extends Observable {
 			}
 			System.out.println(message);
 			setChanged();
-			notifyObservers();
+			notifyObservers(message);
 
-			message = "Les trophés sont distribués";
+			message = "Les trophï¿½s sont distribuï¿½s";
 			setChanged();
 			notifyObservers(message);
 		}

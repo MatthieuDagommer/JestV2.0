@@ -161,9 +161,16 @@ public class VueJoueur implements Observer {
 					cacherOffre();
 				}
 			}
-		} else {
+		} 
+		if(arg instanceof String) {
+			String message = arg.toString();
+			PartieControleur.updateJTextArea(message);
+		}
+		
+		else {
 			majOffre();
 		}
+		
 
 	}
 
