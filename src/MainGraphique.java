@@ -2,6 +2,7 @@ import fr.utt.rt.lo02.projet.controleur.PartieControleur;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 import fr.utt.rt.lo02.projet.modele.StratFacile;
+import fr.utt.rt.lo02.projet.vue.VueConsole;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
 import fr.utt.rt.lo02.projet.vue.VueTexte;
 
@@ -15,6 +16,7 @@ public class MainGraphique implements Runnable {
 		partie = Partie.getInstance();
 		partie.initialisation();
 		vuePartie = new VuePartie(partie);
+		//VueConsole vc = new VueConsole(partie);
 
 		PartieControleur partieControleur = new PartieControleur(partie, vuePartie);
 
@@ -33,7 +35,7 @@ public class MainGraphique implements Runnable {
 				new Thread();
 			}
 		});
-		VueTexte maConsoleText = new VueTexte(Partie.getInstance()); 
+		//VueTexte maConsoleText = new VueTexte(Partie.getInstance()); 
 	}
 
 	@Override
