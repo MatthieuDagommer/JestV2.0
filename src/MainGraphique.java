@@ -16,7 +16,7 @@ public class MainGraphique implements Runnable {
 		partie = Partie.getInstance();
 		partie.initialisation();
 		vuePartie = new VuePartie(partie);
-		//VueConsole vc = new VueConsole(partie);
+		VueConsole vc = new VueConsole(partie);
 
 		PartieControleur partieControleur = new PartieControleur(partie, vuePartie);
 
