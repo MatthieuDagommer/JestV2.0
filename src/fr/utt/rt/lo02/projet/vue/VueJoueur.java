@@ -69,34 +69,33 @@ public class VueJoueur implements Observer {
 	}
 
 	private void majOffre() {
-		//offre.removeAll();
-		//drawOffre();
+		// offre.removeAll();
+		// drawOffre();
 		VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
 		VueCarte carteCache = new VueCarte(joueur.getOffreCache());
 
 		offreVisible.setIcon(carteVisible.getIcon());
-		//System.out.println(carteVisible.getChemin());
+		// System.out.println(carteVisible.getChemin());
 		offreCache.setIcon(carteCache.getIcon());
-		
+
 		offre.updateUI();
 	}
-	
+
 	private void cacherOffre() {
-		//offre.removeAll();
-		//VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
-		if(this.joueur.getOffreCache() != null)
+		// offre.removeAll();
+		// VueCarte carteVisible = new VueCarte(joueur.getOffreVisible());
+		if (this.joueur.getOffreCache() != null)
 			offreCache.setIcon(new ImageIcon("image/dosCarte.jpg"));
 		else
 			offreCache.setIcon(new ImageIcon("image/tasVide.png"));
-		//offre.add(nom);
-		//JLabel carte = carteVisible.getImage();
-		//offre.add(carte);
+		// offre.add(nom);
+		// JLabel carte = carteVisible.getImage();
+		// offre.add(carte);
 
-		//carte = new JLabel(new ImageIcon("image/dosCarte.jpg"));
-		//offre.add(carte);
+		// carte = new JLabel(new ImageIcon("image/dosCarte.jpg"));
+		// offre.add(carte);
 		offre.updateUI();
 	}
-
 
 	public JLabel getOffreVisible() {
 		return offreVisible;
@@ -161,19 +160,15 @@ public class VueJoueur implements Observer {
 					cacherOffre();
 				}
 			}
-		} 
-		if(arg instanceof String) {
+		} else {
+			majOffre();
+		}
+		if (arg instanceof String) {
 			String message = arg.toString();
 			PartieControleur.updateJTextArea(message);
 		}
-		
-		else {
-			majOffre();
-		}
-		
 
 	}
-
 
 	public void switchBorder(Joueur j) {
 		if (j == this.joueur) {
