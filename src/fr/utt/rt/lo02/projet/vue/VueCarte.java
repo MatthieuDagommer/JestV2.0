@@ -65,6 +65,10 @@ public class VueCarte {
 		chemin = sb.toString();
 		this.image = new JLabel(new ImageIcon(sb.toString()));
 	}
+	
+	public ImageIcon getIcon() {
+		return new ImageIcon(chemin);
+	}
 
 	public String getChemin() {
 		return chemin;

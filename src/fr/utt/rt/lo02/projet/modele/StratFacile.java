@@ -13,6 +13,8 @@ public class StratFacile extends StrategieJoueur {
 		ceJoueur.addJest(victime.getOffreVisible());
 		message = ceJoueur.getNom() + " prend la carte "+victime.getOffreVisible()+" de "+victime.getNom();
 		System.out.println(message);
+		setChanged();
+		notifyObservers(message);
 		victime.setOffreVisible(null);
 		setChanged();
 		notifyObservers(victime);
@@ -32,6 +34,18 @@ public class StratFacile extends StrategieJoueur {
 
 	@Override
 	public void setVictime(Joueur joueur) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void choix(boolean b, Joueur joueur) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cacher(Carte actuelC) {
 		// TODO Auto-generated method stub
 		
 	}
