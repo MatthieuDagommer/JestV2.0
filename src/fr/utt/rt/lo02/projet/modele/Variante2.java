@@ -3,8 +3,18 @@ package fr.utt.rt.lo02.projet.modele;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Variante2.
+ */
 public class Variante2 implements Regle{
 
+	/**
+	 * Visit carreau.
+	 *
+	 * @param jest the jest
+	 * @return the int
+	 */
 	public int visitCarreau(LinkedList<Carte> jest) {
 		int score = 0;
 		int nbCarte = 0;
@@ -25,6 +35,12 @@ public class Variante2 implements Regle{
 		return score;
 	}
 
+	/**
+	 * Visit coeur.
+	 *
+	 * @param jest the jest
+	 * @return the int
+	 */
 	@Override
 	public int visitCoeur(LinkedList<Carte> jest) {
 		int score = 0;
@@ -51,6 +67,12 @@ public class Variante2 implements Regle{
 		return score;
 	}
 
+	/**
+	 * Visit trefle pic.
+	 *
+	 * @param jest the jest
+	 * @return the int
+	 */
 	@Override
 	public int visitTreflePic(LinkedList<Carte> jest) {
 		int score = 0;
@@ -81,6 +103,12 @@ public class Variante2 implements Regle{
 		return score;
 	}
 
+	/**
+	 * Visit noir.
+	 *
+	 * @param jest the jest
+	 * @return the int
+	 */
 	@Override
 	public int visitNoir(LinkedList<Carte> jest) {
 		int score = 0;

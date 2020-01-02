@@ -12,14 +12,29 @@ import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 import fr.utt.rt.lo02.projet.modele.StrategieJoueur;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class VueConsole.
+ */
 public class VueConsole implements Observer, Runnable {
 
+	/** The quitter. */
 	public static String QUITTER = "Quit";
+	
+	/** The prompt. */
 	public static String PROMPT = ">";
 
+	/** The partie. */
 	private Partie partie;
+	
+	/** The joueurs. */
 	private ArrayList<Joueur> joueurs;
 
+	/**
+	 * Instantiates a new vue console.
+	 *
+	 * @param partie the partie
+	 */
 	public VueConsole(Partie partie) {
 		this.partie = partie;
 		Partie.getInstance().addObserver(this);
@@ -35,6 +50,9 @@ public class VueConsole implements Observer, Runnable {
 		t.start();
 	}
 
+	/**
+	 * Run.
+	 */
 	@Override
 	public void run() {
 		
@@ -57,6 +75,11 @@ public class VueConsole implements Observer, Runnable {
 
 	}
 
+	/**
+	 * Lire chaine.
+	 *
+	 * @return the string
+	 */
 	private String lireChaine() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String resultat = null;
@@ -69,6 +92,12 @@ public class VueConsole implements Observer, Runnable {
 		return resultat;
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param o the o
+	 * @param arg the arg
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {

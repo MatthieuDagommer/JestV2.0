@@ -3,8 +3,18 @@ package fr.utt.rt.lo02.projet.modele;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StratFacile.
+ */
 public class StratFacile extends StrategieJoueur {
 
+	/**
+	 * Choisir carte.
+	 *
+	 * @param ceJoueur the ce joueur
+	 * @return the joueur
+	 */
 	@Override
 	public Joueur choisirCarte(Joueur ceJoueur) {
 		String message = "";
@@ -22,6 +32,11 @@ public class StratFacile extends StrategieJoueur {
 		return victime;
 	}
 
+	/**
+	 * Faire offre.
+	 *
+	 * @param ceJoueur the ce joueur
+	 */
 	@Override
 	public void faireOffre(Joueur ceJoueur) {
 		LinkedList<Carte> main = ceJoueur.getMain();
@@ -32,18 +47,34 @@ public class StratFacile extends StrategieJoueur {
 
 	}
 
+	/**
+	 * Sets the victime.
+	 *
+	 * @param joueur the new victime
+	 */
 	@Override
 	public void setVictime(Joueur joueur) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Choix.
+	 *
+	 * @param b the b
+	 * @param joueur the joueur
+	 */
 	@Override
 	public void choix(boolean b, Joueur joueur) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Cacher.
+	 *
+	 * @param actuelC the actuel C
+	 */
 	@Override
 	public void cacher(Carte actuelC) {
 		// TODO Auto-generated method stub

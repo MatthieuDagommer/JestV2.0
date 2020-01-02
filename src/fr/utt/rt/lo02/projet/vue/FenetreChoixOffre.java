@@ -14,12 +14,23 @@ import javax.swing.JPanel;
 import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class FenetreChoixOffre.
+ */
 public class FenetreChoixOffre {
 	
+	/** The joueur. */
 	private Joueur joueur;
 	
+	/** The main. */
 	private LinkedList<Carte> main;
 	
+	/**
+	 * Instantiates a new fenetre choix offre.
+	 *
+	 * @param joueur the joueur
+	 */
 	public FenetreChoixOffre(Joueur joueur) {
 		JFrame fenetre = new JFrame("Choisir la carte a cacher");
 		fenetre.setLayout(new BorderLayout());

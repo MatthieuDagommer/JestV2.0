@@ -7,39 +7,81 @@ import java.util.Observable;
 
 import fr.utt.rt.lo02.projet.controleur.PartieControleur;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Partie.
+ */
 public class Partie extends Observable {
 
+	/** The instance. */
 	private static Partie instance = null;
+	
+	/** The joueurs. */
 	private ArrayList<Joueur> joueurs;
+	
+	/** The trophes. */
 	private LinkedList<Carte> trophes;
+	
+	/** The jeu de cartes. */
 	private Deck jeuDeCartes;
+	
+	/** The regle. */
 	private Regle regle;
 	
+	/** The joueur actuel. */
 	private Joueur joueurActuel;
 	
 
+	/**
+	 * Gets the joueur actuel.
+	 *
+	 * @return the joueur actuel
+	 */
 	public Joueur getJoueurActuel() {
 		return joueurActuel;
 	}
 
+	/**
+	 * Sets the joueur actuel.
+	 *
+	 * @param joueurActuel the new joueur actuel
+	 */
 	public void setJoueurActuel(Joueur joueurActuel) {
 		this.joueurActuel = joueurActuel;
 	}
 
+	/**
+	 * Gets the regle.
+	 *
+	 * @return the regle
+	 */
 	public Regle getRegle() {
 		return regle;
 	}
 
+	/**
+	 * Sets the regle.
+	 *
+	 * @param regle the new regle
+	 */
 	public void setRegle(Regle regle) {
 		this.regle = regle;
 	}
 
+	/**
+	 * Instantiates a new partie.
+	 */
 	private Partie() {
 		joueurActuel = null;
 		joueurs = new ArrayList<Joueur>();
 		trophes = new LinkedList<Carte>();
 	}
 
+	/**
+	 * Gets the single instance of Partie.
+	 *
+	 * @return single instance of Partie
+	 */
 	public static Partie getInstance() {
 		if (instance == null) {
 			instance = new Partie();
@@ -47,14 +89,29 @@ public class Partie extends Observable {
 		return instance;
 	}
 
+	/**
+	 * Gets the trophes.
+	 *
+	 * @return the trophes
+	 */
 	public LinkedList<Carte> getTrophes() {
 		return trophes;
 	}
 
+	/**
+	 * Sets the trophes.
+	 *
+	 * @param trophes the new trophes
+	 */
 	public void setTrophes(LinkedList<Carte> trophes) {
 		this.trophes = trophes;
 	}
 
+	/**
+	 * Adds the joueur.
+	 *
+	 * @param j the j
+	 */
 	public void addJoueur(Joueur j) {
 		if (this.joueurs.contains(j) == false) {
 			this.joueurs.add(j);
@@ -62,26 +119,50 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Removes the joueur.
+	 *
+	 * @param j the j
+	 */
 	public void removeJoueur(Joueur j) {
 		if (this.joueurs.contains(j) == true) {
 			this.joueurs.remove(j);
 		}
 	}
 
+	/**
+	 * Gets the joueurs.
+	 *
+	 * @return the joueurs
+	 */
 	public ArrayList<Joueur> getJoueurs() {
 		return joueurs;
 	}
 
+	/**
+	 * Sets the joueurs.
+	 *
+	 * @param joueurs the new joueurs
+	 */
 	public void setJoueurs(ArrayList<Joueur> joueurs) {
 		this.joueurs = joueurs;
 	}
 
+	/**
+	 * Builds the jeu de carte.
+	 *
+	 * @param extension the extension
+	 * @return the deck
+	 */
 	public Deck buildJeuDeCarte(int extension) {
 		Deck jeu = new Deck(extension);
 		this.jeuDeCartes = jeu;
 		return jeu;
 	}
 
+	/**
+	 * Lancer partie.
+	 */
 	public void lancerPartie() {
 		jeuDeCartes.melanger();
 		choixTrophee();
@@ -125,6 +206,9 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Raz A joue.
+	 */
 	public void razAJoue() {
 		Iterator<Joueur> it = joueurs.iterator();
 		while (it.hasNext()) {
@@ -133,6 +217,9 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Offre joueur.
+	 */
 	public void offreJoueur() {
 
 		Iterator<Joueur> it = joueurs.iterator();
@@ -142,6 +229,9 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Fusion jest.
+	 */
 	private void fusionJest() {
 		Iterator<Joueur> it = joueurs.iterator();
 		while (it.hasNext()) {
@@ -152,6 +242,9 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Rammaser cartes restante.
+	 */
 	private void rammaserCartesRestante() {
 		Iterator<Joueur> it = joueurs.iterator();
 		while (it.hasNext()) {
@@ -169,6 +262,9 @@ public class Partie extends Observable {
 		notifyObservers(this);
 	}
 
+	/**
+	 * Rammaser cartes restante jest.
+	 */
 	private void rammaserCartesRestanteJest() {
 		Iterator<Joueur> it = joueurs.iterator();
 		while (it.hasNext()) {
@@ -186,6 +282,11 @@ public class Partie extends Observable {
 		notifyObservers(this);
 	}
 
+	/**
+	 * Meilleure offre.
+	 *
+	 * @return the joueur
+	 */
 	private Joueur meilleureOffre() {
 		Iterator<Joueur> it = joueurs.iterator();
 		Joueur bestOffre = joueurs.get(0), j;
@@ -210,6 +311,9 @@ public class Partie extends Observable {
 		return bestOffre;
 	}
 
+	/**
+	 * Choix trophee.
+	 */
 	public void choixTrophee() {
 		String message = "";
 		if (Joueur.NB_JOUEURS == 3 && jeuDeCartes.getExtension() == 0) {
@@ -229,6 +333,9 @@ public class Partie extends Observable {
 		notifyObservers(message);
 	}
 
+	/**
+	 * Distribuer jeu.
+	 */
 	public void distribuerJeu() {
 		for (int i = 0; i < 2; i++) {
 			Iterator<Joueur> it = joueurs.iterator();
@@ -239,6 +346,9 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Distribuer trophees.
+	 */
 	public void distribuerTrophees() {
 		String message = "";
 		if (trophes.contains(Joker.getInstance())) {
@@ -327,6 +437,11 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Checks for joker.
+	 *
+	 * @return the joueur
+	 */
 	public Joueur hasJoker() {
 		Iterator<Joueur> it = joueurs.iterator();
 		while (it.hasNext()) {
@@ -338,6 +453,12 @@ public class Partie extends Observable {
 		return null;
 	}
 
+	/**
+	 * Plus valeur.
+	 *
+	 * @param valeur the valeur
+	 * @return the joueur
+	 */
 	public Joueur plusValeur(Valeur valeur) {
 		Joueur bestJoueur;
 		Iterator<Joueur> it = joueurs.iterator();
@@ -354,6 +475,12 @@ public class Partie extends Observable {
 		return bestJoueur;
 	}
 
+	/**
+	 * Highest carte in couleur.
+	 *
+	 * @param couleur the couleur
+	 * @return the joueur
+	 */
 	public Joueur highestCarteInCouleur(Couleur couleur) {
 		Joueur bestJoueur;
 		Iterator<Joueur> it = joueurs.iterator();
@@ -367,6 +494,12 @@ public class Partie extends Observable {
 		return bestJoueur;
 	}
 
+	/**
+	 * Lowest carte in couleur.
+	 *
+	 * @param couleur the couleur
+	 * @return the joueur
+	 */
 	public Joueur lowestCarteInCouleur(Couleur couleur) {
 		Joueur bestJoueur;
 		Iterator<Joueur> it = joueurs.iterator();
@@ -380,6 +513,9 @@ public class Partie extends Observable {
 		return bestJoueur;
 	}
 
+	/**
+	 * Update score.
+	 */
 	public void updateScore() {
 		Iterator<Joueur> it = joueurs.iterator();
 		while (it.hasNext()) {
@@ -388,6 +524,12 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Visit jest.
+	 *
+	 * @param jest the jest
+	 * @return the int
+	 */
 	public int visitJest(LinkedList<Carte> jest) {
 		int score = 0;
 		score += regle.visitCarreau(jest);
@@ -397,6 +539,12 @@ public class Partie extends Observable {
 		return score;
 	}
 
+	/**
+	 * Best jest.
+	 *
+	 * @param joueurs the joueurs
+	 * @return the joueur
+	 */
 	public Joueur bestJest(ArrayList<Joueur> joueurs) {
 		updateScore();
 		Iterator<Joueur> it = joueurs.iterator();
@@ -411,6 +559,11 @@ public class Partie extends Observable {
 		return bestJ;
 	}
 
+	/**
+	 * Best jest no joker.
+	 *
+	 * @return the joueur
+	 */
 	private Joueur bestJestNoJoker() {
 		updateScore();
 		Joueur bestJ = bestJest(joueurs);
@@ -423,6 +576,12 @@ public class Partie extends Observable {
 		}
 	}
 
+	/**
+	 * Gets the offre dispo.
+	 *
+	 * @param joueur the joueur
+	 * @return the offre dispo
+	 */
 	public ArrayList<Joueur> getOffreDispo(Joueur joueur) {
 		ArrayList<Joueur> copyJoueurs = new ArrayList<Joueur>();
 		Iterator<Joueur> it = joueurs.iterator();
@@ -438,10 +597,18 @@ public class Partie extends Observable {
 		return copyJoueurs;
 	}
 
+	/**
+	 * Initialisation.
+	 */
 	public void initialisation() {
 		PartieControleur.initialisationJest();
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
 		Joueur ordi2 = new Joueur("ordi2", new StratFacile());

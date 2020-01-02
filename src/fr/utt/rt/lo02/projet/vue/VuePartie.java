@@ -25,32 +25,56 @@ import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class VuePartie.
+ */
 public class VuePartie implements Observer {
 
+	/** The modele. */
 	private Partie modele;
 
+	/** The controleur. */
 	private PartieControleur controleur;
 
+	/** The joueurs. */
 	private ArrayList<Joueur> joueurs;
 	
+	/** The vue joueurs. */
 	private ArrayList<VueJoueur> vueJoueurs;
 
+	/** The panel joueur. */
 	private JPanel panelJoueur;
 	
+	/** The panel jest. */
 	private JPanel panelJest;
 	
+	/** The fenetre. */
 	private JFrame fenetre;
 
+	/** The trophe 1. */
 	private JLabel trophe1;
+	
+	/** The trophe 2. */
 	private JLabel trophe2;
+	
+	/** The trophe 3. */
 	private JLabel trophe3;
 
+	/** The pioche. */
 	private JLabel pioche;
 
+	/** The log. */
 	private JTextArea log;
 
+	/** The scroll pane. */
 	private JScrollPane scrollPane;
 
+	/**
+	 * Instantiates a new vue partie.
+	 *
+	 * @param modele the modele
+	 */
 	public VuePartie(final Partie modele) {
 
 		this.setModele(modele);
@@ -121,16 +145,29 @@ public class VuePartie implements Observer {
 	}
 	
 
+	/**
+	 * Gets the joueurs.
+	 *
+	 * @return the joueurs
+	 */
 	public ArrayList<Joueur> getJoueurs() {
 		return joueurs;
 	}
 
 
+	/**
+	 * Sets the joueurs.
+	 *
+	 * @param joueurs the new joueurs
+	 */
 	public void setJoueurs(ArrayList<Joueur> joueurs) {
 		this.joueurs = joueurs;
 	}
 
 
+	/**
+	 * Effacer pioche.
+	 */
 	public void effacerPioche() {
 		this.pioche.setIcon(new ImageIcon("image/tasVide.png"));
 		try {
@@ -141,6 +178,9 @@ public class VuePartie implements Observer {
 		}
 	}
 
+	/**
+	 * Afficher trophes.
+	 */
 	public void afficherTrophes() {
 		LinkedList<Carte> listetrophes = Partie.getInstance().getTrophes();
 		Iterator<Carte> it = listetrophes.iterator();
@@ -159,36 +199,75 @@ public class VuePartie implements Observer {
 
 	}
 
+	/**
+	 * Effacer trophes.
+	 */
 	public void effacerTrophes() {
 		this.trophe1.setIcon(new ImageIcon("image/tasVide.png"));
 		this.trophe2.setIcon(new ImageIcon("image/tasVide.png"));
 		this.trophe3.setIcon(new ImageIcon("image/tasVide.png"));
 	}
 
+	/**
+	 * Gets the pioche.
+	 *
+	 * @return the pioche
+	 */
 	public JLabel getPioche() {
 		return pioche;
 	}
 
+	/**
+	 * Sets the pioche.
+	 *
+	 * @param pioche the new pioche
+	 */
 	public void setPioche(JLabel pioche) {
 		this.pioche = pioche;
 	}
 
+	/**
+	 * Sets the log.
+	 *
+	 * @param log the new log
+	 */
 	public void setLog(JTextArea log) {
 		this.log = log;
 	}
 
+	/**
+	 * Gets the log.
+	 *
+	 * @return the log
+	 */
 	public JTextArea getLog() {
 		return log;
 	}
 
+	/**
+	 * Gets the modele.
+	 *
+	 * @return the modele
+	 */
 	public Partie getModele() {
 		return modele;
 	}
 
+	/**
+	 * Sets the modele.
+	 *
+	 * @param modele the new modele
+	 */
 	public void setModele(Partie modele) {
 		this.modele = modele;
 	}
 
+	/**
+	 * Update.
+	 *
+	 * @param o the o
+	 * @param arg the arg
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
@@ -207,16 +286,31 @@ public class VuePartie implements Observer {
 		}
 	}
 
+	/**
+	 * Gets the controleur.
+	 *
+	 * @return the controleur
+	 */
 	public PartieControleur getControleur() {
 		return controleur;
 	}
 
 
+	/**
+	 * Gets the vue joueurs.
+	 *
+	 * @return the vue joueurs
+	 */
 	public ArrayList<VueJoueur> getVueJoueurs() {
 		return vueJoueurs;
 	}
 
 
+	/**
+	 * Sets the vue joueurs.
+	 *
+	 * @param vueJoueurs the new vue joueurs
+	 */
 	public void setVueJoueurs(ArrayList<VueJoueur> vueJoueurs) {
 		this.vueJoueurs = vueJoueurs;
 	}

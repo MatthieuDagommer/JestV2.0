@@ -9,27 +9,47 @@ import java.util.Observer;
 import fr.utt.rt.lo02.projet.modele.Partie;
 
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class VueTexte.
+ */
 public class VueTexte implements Observer, Runnable{
 
-	    private Partie partie;
-	    public static String PROMPT = ">";
+	    /** The partie. */
+    	private Partie partie;
+	    
+    	/** The prompt. */
+    	public static String PROMPT = ">";
 
 
-	    public VueTexte(Partie partie) {
+	    /**
+    	 * Instantiates a new vue texte.
+    	 *
+    	 * @param partie the partie
+    	 */
+    	public VueTexte(Partie partie) {
 		this.partie = partie;
 
 		Thread t = new Thread(this);
 		t.start();
 	    }
 
-	    public void run() {
+	    /**
+    	 * Run.
+    	 */
+    	public void run() {
 	    	
 
 	
 	    }
 	    
 	    
-	    private String lireChaine() {
+	    /**
+    	 * Lire chaine.
+    	 *
+    	 * @return the string
+    	 */
+    	private String lireChaine() {
 	    	BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
 	    	String resultat = null;
 	    	try {
@@ -44,7 +64,13 @@ public class VueTexte implements Observer, Runnable{
 	    
 	    
 	    
-	    @Override
+	    /**
+    	 * Update.
+    	 *
+    	 * @param arg0 the arg 0
+    	 * @param arg1 the arg 1
+    	 */
+    	@Override
 	    public void update(Observable arg0, Object arg1) {
 		
 	    }

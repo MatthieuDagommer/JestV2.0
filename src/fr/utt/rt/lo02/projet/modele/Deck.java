@@ -4,12 +4,24 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class Deck.
+ */
 public class Deck {
 
 	
+	/** The tas de carte. */
 	private LinkedList<Carte> tasDeCarte;
+	
+	/** The extension. */
 	private int extension;
 	
+	/**
+	 * Instantiates a new deck.
+	 *
+	 * @param extension the extension
+	 */
 	public Deck(int extension) {
 		this.extension = extension;
 		tasDeCarte = new LinkedList<Carte>();
@@ -43,38 +55,81 @@ public class Deck {
 		tasDeCarte.add(Joker.getInstance());
 	}
 	
+	/**
+	 * Est vide.
+	 *
+	 * @return true, if successful
+	 */
 	public boolean estVide() {
 		return tasDeCarte.isEmpty();
 	}
 
+	/**
+	 * Piocher carte.
+	 *
+	 * @return the carte
+	 */
 	public Carte piocherCarte() {
 		return tasDeCarte.pop();
 	}
 	
+	/**
+	 * Melanger.
+	 */
 	public void melanger() {
 		Collections.shuffle(tasDeCarte);
 	}
 	
+	/**
+	 * Gets the extension.
+	 *
+	 * @return the extension
+	 */
 	public int getExtension() {
 		return extension;
 	}
 
+	/**
+	 * Sets the extension.
+	 *
+	 * @param extension the new extension
+	 */
 	public void setExtension(int extension) {
 		this.extension = extension;
 	}
 
+	/**
+	 * Gets the tas de carte.
+	 *
+	 * @return the tas de carte
+	 */
 	public LinkedList<Carte> getTasDeCarte() {
 		return tasDeCarte;
 	}
 
+	/**
+	 * Sets the tas de carte.
+	 *
+	 * @param tasDeCarte the new tas de carte
+	 */
 	public void setTasDeCarte(LinkedList<Carte> tasDeCarte) {
 		this.tasDeCarte = tasDeCarte;
 	}
 	
+	/**
+	 * To string.
+	 *
+	 * @return the string
+	 */
 	public String toString() {
 		return tasDeCarte.toString();
 	}
 	
+	/**
+	 * Adds the carte.
+	 *
+	 * @param c the c
+	 */
 	public void addCarte(Carte c) {
 		this.tasDeCarte.add(c);
 	}

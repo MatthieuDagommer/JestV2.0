@@ -6,14 +6,26 @@ import javax.swing.JLabel;
 import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Valeur;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class VueCarte.
+ */
 public class VueCarte {
 
+	/** The carte. */
 	private Carte carte;
 
+	/** The image. */
 	private JLabel image;
 
+	/** The chemin. */
 	private String chemin;
 
+	/**
+	 * Instantiates a new vue carte.
+	 *
+	 * @param carte the carte
+	 */
 	public VueCarte(Carte carte) {
 		this.carte = carte;
 		StringBuffer sb = new StringBuffer("image/");
@@ -66,22 +78,47 @@ public class VueCarte {
 		this.image = new JLabel(new ImageIcon(sb.toString()));
 	}
 	
+	/**
+	 * Gets the icon.
+	 *
+	 * @return the icon
+	 */
 	public ImageIcon getIcon() {
 		return new ImageIcon(chemin);
 	}
 
+	/**
+	 * Gets the chemin.
+	 *
+	 * @return the chemin
+	 */
 	public String getChemin() {
 		return chemin;
 	}
 
+	/**
+	 * Sets the chemin.
+	 *
+	 * @param chemin the new chemin
+	 */
 	public void setChemin(String chemin) {
 		this.chemin = chemin;
 	}
 
+	/**
+	 * Gets the carte.
+	 *
+	 * @return the carte
+	 */
 	public Carte getCarte() {
 		return carte;
 	}
 
+	/**
+	 * Gets the image.
+	 *
+	 * @return the image
+	 */
 	public JLabel getImage() {
 		return image;
 	}

@@ -13,22 +13,40 @@ import javax.swing.JTextArea;
 
 import fr.utt.rt.lo02.projet.modele.Joueur;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MenuInitialisation.
+ */
 public class MenuInitialisation extends JDialog {
 
+	/** The joueur. */
 	private Joueur joueur;
 
+	/** The nom. */
 	private JTextArea nom;
 
+	/** The fenetre. */
 	private JPanel fenetre;
 
+	/** The ok. */
 	private JButton ok;
 
+	/** The nb. */
 	private JTextArea nb;
 
+	/** The extension. */
 	private JTextArea extension;
 
+	/** The variante. */
 	private JTextArea variante;
 
+	/**
+	 * Instantiates a new menu initialisation.
+	 *
+	 * @param parent the parent
+	 * @param title the title
+	 * @param modal the modal
+	 */
 	public MenuInitialisation(JFrame parent, String title, boolean modal) {
 		super(parent, title, modal);
 		this.setLocationRelativeTo(null);
@@ -36,6 +54,9 @@ public class MenuInitialisation extends JDialog {
 		this.init();
 	}
 
+	/**
+	 * Inits the.
+	 */
 	private void init() {
 
 		fenetre = new JPanel();
@@ -90,22 +111,47 @@ public class MenuInitialisation extends JDialog {
 
 	}
 	
+	/**
+	 * Gets the extension.
+	 *
+	 * @return the extension
+	 */
 	public int getExtension() {
 		return Integer.parseInt(extension.getText());
 	}
 
+	/**
+	 * Sets the extension.
+	 *
+	 * @param extension the new extension
+	 */
 	public void setExtension(JTextArea extension) {
 		this.extension = extension;
 	}
 
+	/**
+	 * Gets the variante.
+	 *
+	 * @return the variante
+	 */
 	public int getVariante() {
 		return Integer.parseInt(variante.getText());
 	}
 
+	/**
+	 * Sets the variante.
+	 *
+	 * @param variante the new variante
+	 */
 	public void setVariante(JTextArea variante) {
 		this.variante = variante;
 	}
 	
+	/**
+	 * Gets the nom.
+	 *
+	 * @return the nom
+	 */
 	public String getNom() {
 		return nom.getText();
 	}

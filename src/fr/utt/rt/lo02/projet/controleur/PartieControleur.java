@@ -23,16 +23,30 @@ import fr.utt.rt.lo02.projet.vue.MenuInitialisation;
 import fr.utt.rt.lo02.projet.vue.VueJoueur;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class PartieControleur.
+ */
 public class PartieControleur {
 
+	/** The partie. */
 	private static Partie partie;
 
+	/** The vue partie. */
 	private static VuePartie vuePartie;
 
+	/** The pioche. */
 	private JLabel pioche;
 
+	/** The offres. */
 	private LinkedList<JLabel> offres;
 
+	/**
+	 * Instantiates a new partie controleur.
+	 *
+	 * @param partie the partie
+	 * @param vuePartie the vue partie
+	 */
 	public PartieControleur(Partie partie, VuePartie vuePartie) {
 		setPartie(partie);
 		setVuePartie(vuePartie);
@@ -77,6 +91,9 @@ public class PartieControleur {
 		}
 	}
 
+	/**
+	 * Initialisation jest.
+	 */
 	public static void initialisationJest() {
 		MenuInitialisation dialog = new MenuInitialisation(null, "JEST menu", true);
 		dialog.setVisible(true);
@@ -111,29 +128,59 @@ public class PartieControleur {
 
 	}
 
+	/**
+	 * Update J text area.
+	 *
+	 * @param message the message
+	 */
 	public static void updateJTextArea(String message) {
 		getVuePartie().getLog().append(message + "\n");
 		// Pour placer le curseur à la fin, afin d'émuler un scroll automatique
 		getVuePartie().getLog().setCaretPosition(getVuePartie().getLog().getDocument().getLength());
 	}
 	
+	/**
+	 * Fenetre choix offre.
+	 *
+	 * @param joueur the joueur
+	 */
 	public static void fenetreChoixOffre(Joueur joueur) {
 		FenetreChoixOffre fenetreChoix = new FenetreChoixOffre(joueur);
 		
 	}
 
+	/**
+	 * Gets the partie.
+	 *
+	 * @return the partie
+	 */
 	public static Partie getPartie() {
 		return partie;
 	}
 
+	/**
+	 * Sets the partie.
+	 *
+	 * @param partie the new partie
+	 */
 	public static void setPartie(Partie partie) {
 		PartieControleur.partie = partie;
 	}
 
+	/**
+	 * Gets the vue partie.
+	 *
+	 * @return the vue partie
+	 */
 	public static VuePartie getVuePartie() {
 		return vuePartie;
 	}
 
+	/**
+	 * Sets the vue partie.
+	 *
+	 * @param vuePartie the new vue partie
+	 */
 	public static void setVuePartie(VuePartie vuePartie) {
 		PartieControleur.vuePartie = vuePartie;
 	}

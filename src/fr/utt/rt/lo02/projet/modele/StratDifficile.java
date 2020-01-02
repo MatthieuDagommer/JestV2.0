@@ -4,8 +4,18 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class StratDifficile.
+ */
 public class StratDifficile extends StrategieJoueur{
 
+	/**
+	 * Choisir carte.
+	 *
+	 * @param ceJoueur the ce joueur
+	 * @return the joueur
+	 */
 	public Joueur choisirCarte(Joueur ceJoueur) {
 		String message = "";
 		ArrayList<Joueur> joueurs = Partie.getInstance().getOffreDispo(ceJoueur);
@@ -21,6 +31,11 @@ public class StratDifficile extends StrategieJoueur{
 		return victime;
 	}
 
+	/**
+	 * Faire offre.
+	 *
+	 * @param ceJoueur the ce joueur
+	 */
 	@Override
 	public void faireOffre(Joueur ceJoueur) {
 		LinkedList<Carte> main = ceJoueur.getMain();
@@ -66,18 +81,34 @@ public class StratDifficile extends StrategieJoueur{
 
 	}
 
+	/**
+	 * Sets the victime.
+	 *
+	 * @param joueur the new victime
+	 */
 	@Override
 	public void setVictime(Joueur joueur) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Choix.
+	 *
+	 * @param b the b
+	 * @param joueur the joueur
+	 */
 	@Override
 	public void choix(boolean b, Joueur joueur) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Cacher.
+	 *
+	 * @param actuelC the actuel C
+	 */
 	@Override
 	public void cacher(Carte actuelC) {
 		// TODO Auto-generated method stub
