@@ -12,6 +12,8 @@ import fr.utt.rt.lo02.projet.modele.Partie;
 public class VueTexte implements Observer, Runnable{
 
 	    private Partie partie;
+	    public static String PROMPT = ">";
+
 
 	    public VueTexte(Partie partie) {
 		this.partie = partie;
@@ -21,10 +23,27 @@ public class VueTexte implements Observer, Runnable{
 	    }
 
 	    public void run() {
-
+	    	
 
 	
 	    }
+	    
+	    
+	    private String lireChaine() {
+	    	BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
+	    	String resultat = null;
+	    	try {
+	    	    System.out.print(VueTexte.PROMPT);
+	    	    resultat = br.readLine();
+	    	} catch (IOException e) {
+	    	    System.err.println(e.getMessage());
+	    	}
+	    	return resultat;	
+	        }
+	    
+	    
+	    
+	    
 	    @Override
 	    public void update(Observable arg0, Object arg1) {
 		
