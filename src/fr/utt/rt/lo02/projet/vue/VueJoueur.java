@@ -157,7 +157,6 @@ public class VueJoueur implements Observer {
 					majOffre();
 				} else {
 					majOffre();
-					System.out.println("TEST");
 					cacherOffre();
 				}
 			}
