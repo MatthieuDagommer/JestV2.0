@@ -318,7 +318,7 @@ public class Partie extends Observable {
 			System.out.println(message);
 			setChanged();
 			notifyObservers();
-			
+
 			message = "Les trophés sont distribués";
 			setChanged();
 			notifyObservers(message);

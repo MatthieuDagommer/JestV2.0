@@ -99,13 +99,15 @@ public class PartieControleur {
 		Joueur ordi2 = new Joueur("ordi2", new StratDifficile());
 		 Joueur ordi3 = new Joueur("ordi3", new StratDifficile());
 		// Joueur ordi4 = new Joueur("ordi4", new StratFacile());
-		Joueur moi = new Joueur(dialog.getNom());
+		//Joueur moi = new Joueur(dialog.getNom());
+		//Joueur louis = new Joueur("Louis");
 
 		Partie.getInstance().addJoueur(ordi1);
 		Partie.getInstance().addJoueur(ordi2);
-		 Partie.getInstance().addJoueur(ordi3);
+		Partie.getInstance().addJoueur(ordi3);
 		// Partie.getInstance().addJoueur(ordi4);
-		Partie.getInstance().addJoueur(moi);
+		//Partie.getInstance().addJoueur(moi);
+		//Partie.getInstance().addJoueur(louis);
 
 	}
 
