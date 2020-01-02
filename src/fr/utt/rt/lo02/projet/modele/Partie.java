@@ -102,14 +102,14 @@ public class Partie extends Observable {
 				}
 				joueurActuel = joueurActuel.jouer();
 				if (joueurActuel.isaJouer() && i< Joueur.NB_JOUEURS-1) {
-					System.out.println("Dans le tour");
+					//System.out.println("Dans le tour");
 					joueurActuel = meilleureOffre();
 				}
 			}
 			if (!jeuDeCartes.estVide()) {
 				rammaserCartesRestante();
 			}
-			System.out.println("Fin du tour");
+			//System.out.println("Fin du tour");
 		} while (!jeuDeCartes.estVide());
 		setChanged();
 		notifyObservers("La pioche est vide");
@@ -121,7 +121,7 @@ public class Partie extends Observable {
 		Iterator<Joueur> it = joueurs.iterator();
 		while (it.hasNext()) {
 			Joueur j = it.next();
-			System.out.println(j.toString());
+			//System.out.println(j.toString());
 		}
 	}
 
@@ -223,7 +223,7 @@ public class Partie extends Observable {
 			trophes.add(jeuDeCartes.piocherCarte());
 		}
 		message = "Les troph�s sont " + trophes.toString();
-		System.out.println(message);
+		//System.out.println(message);
 		
 		setChanged();
 		notifyObservers(message);
@@ -245,7 +245,7 @@ public class Partie extends Observable {
 			Carte joker = trophes.remove(trophes.indexOf(Joker.getInstance()));
 			bestJest(joueurs).addJestAvecTrophes(joker);
 			message = "Le Trophe Joker est distribu� � " + bestJest(joueurs);
-			System.out.println(message);
+			//System.out.println(message);
 			setChanged();
 			notifyObservers(message);
 			setChanged();
@@ -317,7 +317,7 @@ public class Partie extends Observable {
 				break;
 
 			}
-			System.out.println(message);
+			//System.out.println(message);
 			setChanged();
 			notifyObservers(message);
 
@@ -460,6 +460,6 @@ public class Partie extends Observable {
 
 		partie.lancerPartie();
 
-		System.out.println(partie.bestJest(partie.getJoueurs()));
+		//System.out.println(partie.bestJest(partie.getJoueurs()));
 	}
 }
