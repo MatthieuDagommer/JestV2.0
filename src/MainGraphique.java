@@ -3,6 +3,7 @@ import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 import fr.utt.rt.lo02.projet.modele.StratFacile;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
+import fr.utt.rt.lo02.projet.vue.VueTexte;
 
 public class MainGraphique implements Runnable {
 
@@ -32,6 +33,7 @@ public class MainGraphique implements Runnable {
 				new Thread();
 			}
 		});
+		VueTexte maConsoleText = new VueTexte(Partie.getInstance()); 
 	}
 
 	@Override
