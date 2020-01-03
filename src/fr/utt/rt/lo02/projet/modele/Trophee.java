@@ -2,40 +2,38 @@ package fr.utt.rt.lo02.projet.modele;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum Trophee.
+ * Enumération qui correpsond aux différentes valeurs de trophée.
  */
 public enum Trophee {
 	
-	/** The joker. */
+	/** trophée JOKER */
 	joker, 
- /** The plus 4. */
+ /** trophée du plus haut nombre de carte de 4 */
  plus4, 
- /** The hautcarreau. */
+ /** Trophée de la plus haute valeur de carreau */
  hautcarreau, 
- /** The bascarreau. */
+ /** Trophée de la plus basse valeur de carreau  */
  bascarreau, 
  /** The nojoker. */
  nojoker, 
- /** The hautpic. */
+ /** Trophée de la plus haute valeur de pic */
  hautpic, 
- /** The bascoeur. */
+ /** Trophée de la plus basse valeur de coeur  */
  bascoeur, 
- /** The hautcoeur. */
+ /** Trophée de la plus haute valeur de coeur. */
  hautcoeur,
-	
-	/** The baspic. */
-	baspic, 
- /** The hauttrefle. */
+/** Trophée de la plus basse valeur de pic */
+baspic, 
+ /** Trophée de la plus haute valeur de trèfle */
  hauttrefle, 
- /** The plus 3. */
+ /** trophée du plus haut nombre de carte de 3 */
  plus3, 
- /** The plus 2. */
+ /** trophée du plus haut nombre de carte de 2 */
  plus2,
-	
-	/** The bastrefle. */
-	bastrefle, 
- /** The best jest. */
+/** Trophée de la plus basse valeur de trèfle  */
+bastrefle, 
+ /** Trophée du meilleur JEST */
  bestJest, 
- /** The aucun. */
+ /** Aucun trophée  */
  aucun;
 }
