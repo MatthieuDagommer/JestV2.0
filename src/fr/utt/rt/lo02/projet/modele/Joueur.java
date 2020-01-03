@@ -120,11 +120,11 @@ public class Joueur extends Observable{
 	}
 	
 	/**
-	 * Méthode qui renvoi un entier correspondant à l'indice de la plus haute 
-	 * couleur pour une valeur donnée. En cas d'égaliter //
-	 *
-	 * @param valeur the valeur
-	 * @return the int
+	 * Méthode qui renvoi un entier correspondant à la "force" d'une couleur pour une valeur donnée.
+	 * 
+	 * @param valeur dont l'on souhiate avoir la carte ayant la plus grande "force" de couleur du Jest du joueur
+	 * @return Entier qui correspond à la force de la carte la plus élevée pour une valeur donnée
+	 * La force de couleur pour une valeur donnée est de 0 pour le coeur,1 pour le carreau, 2 pour le trèfle, et 3 pour le Pic.
 	 */
 	public int bestCouleur(Valeur valeur) {
 		int valeurCouleur = 0;
@@ -220,8 +220,8 @@ public class Joueur extends Observable{
 	}
 
 	/**
-	 * Méthode qui permet à un joueur de choisir le joueur chez qui il souhaite prendre la carte.
-	 * 
+	 * Méthode qui permet à un joueur de choisir la carte qu'il souhaite ajouter à son Jest
+	 * via la méthode choisir Carte de sa stratégie.
 	 * @return le joueur chez qui le joueur courant à pris la carte.
 	 */
 	public Joueur jouer() {
@@ -246,72 +246,73 @@ public class Joueur extends Observable{
 	}
 
 	/**
-	 * Adds the main.
+	 * Méthode qui permer d'ajouter une carte passée en paramètre à la liste chainée de carte qui correspond à la main du joueur.
 	 *
-	 * @param c the c
+	 * @param c Carte que l'on souhaite ajouter à la main du joueur.
 	 */
 	public void addMain(Carte c) {
 		this.main.add(c);
 	}
 
 	/**
-	 * Adds the jest avec trophes.
+	 * Méthode qui permet d'ajouter une carte au jest complet du joueur (Jest et éventuellement les trophées)
 	 *
-	 * @param c the c
+	 * @param c Carte que l'on souhaite ajouter au Jest complet du joueur.
 	 */
 	public void addJestAvecTrophes(Carte c) {
 		this.jestAvecTrophes.add(c);
 	}
 
 	/**
-	 * Gets the score.
+	 * Getter qui permet d'obtenir le score d'un joueur à tout moment
 	 *
-	 * @return the score
+	 * @return un entier qui correspond au score du joueur
 	 */
 	public int getScore() {
 		return score;
 	}
 
 	/**
-	 * Sets the score.
+	 * Setter qui permet de définir le score du joueur
 	 *
-	 * @param score the new score
+	 * @param un entier qui permet de définir le score du joueur
 	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
 
 	/**
-	 * Gets the nom.
+	 * Getter qui permet d'obtenir le nom du joueur
 	 *
-	 * @return the nom
+	 * @return le nom du joueur
 	 */
 	public String getNom() {
 		return nom;
 	}
 
 	/**
-	 * Sets the nom.
+	 * Setter qui définie le nom du joueur
 	 *
-	 * @param nom the new nom
+	 * @param nom du joueur
 	 */
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
 
 	/**
-	 * Gets the main.
+	 * Getter de la main du joueur qui permet d'obtenir les cartes dans le main du joueur
+	 * Cette liste chainée peut être éventuellement null ou contenir jusqu'à 2 cartes
 	 *
-	 * @return the main
+	 * @return Liste chainée des cartes contenues dans la main du joueur
 	 */
 	public LinkedList<Carte> getMain() {
 		return main;
 	}
 
 	/**
-	 * Sets the main.
+	 * Setter de la main du joueur
 	 *
-	 * @param main the new main
+	 * @param liste chainée de cartes qui définie ce que le joueur a dans sa main
 	 */
 	public void setMain(LinkedList<Carte> main) {
 		this.main = main;
