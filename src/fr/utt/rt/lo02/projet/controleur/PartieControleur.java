@@ -112,6 +112,7 @@ public class PartieControleur {
 			Partie.getInstance().setRegle(new RegleStandard());
 			break;
 		}
+		
 		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
 		Joueur ordi2 = new Joueur("ordi2", new StratDifficile());
 		 Joueur ordi3 = new Joueur("ordi3", new StratDifficile());
