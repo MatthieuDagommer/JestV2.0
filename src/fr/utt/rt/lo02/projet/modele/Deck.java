@@ -6,21 +6,31 @@ import java.util.LinkedList;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Deck.
+ * Classe permettant la création d'une pioche pour le jeu de JEST
+ * Cette classe est composée d'une liste chainée qui correspond aux cartes de la pioche 
+ * et d'un entier (extension) qui correspond au choix de l'extension fait par l'utilisateur
  */
 public class Deck {
 
 	
-	/** The tas de carte. */
+	/** Attribut qui définie un tas de carte comme collection chainée. Cet attribut correspond à la pioche dans le jeu de JEST
+	 * Cet attribut peut contenir de 0 à 21 cartes dans le cas de l'extension de cartes.
+	 * En cas de valeur null, soit la pioche n'a pas encore été crée, soit la partie est terminée */
 	private LinkedList<Carte> tasDeCarte;
 	
-	/** The extension. */
+	/** Attribut correspondant au choix de l'extension de carte.
+	 * Bornes Valides : 0 pour aucune extension de carte ou 1 pour une extension de carte
+	 * Toute autre valeur ne créera pas la pioche voulue composée de 17 cartes sans extension (extension = 0) et de 21 cartes avec extension (extension à 1)
+	 *  */
 	private int extension;
 	
 	/**
-	 * Instantiates a new deck.
-	 *
-	 * @param extension the extension
+	 * Constructeur d'un deck qui correspond à la pioche du JEST
+	 * Cette méthode permet de crée un deck à 17 cartes (pas d'extension)
+	 * ou un deck à 21 cartes avec extension
+	 * @param extension à 0 pour aucune extension ou à 1 pour une extension de carte.
+	 * Pour construire une pioche, on parcours toutes les couleurs de l'énumération, puis toutes les valeurs de l'énumération
+	 * et on ajoute le trophée correspondant. 
 	 */
 	public Deck(int extension) {
 		this.extension = extension;
@@ -56,79 +66,82 @@ public class Deck {
 	}
 	
 	/**
-	 * Est vide.
-	 *
-	 * @return true, if successful
+	 * Methode permettant de savoir si la pioche est vide	 *
+	 * @return vraie si la pioche est vide et faux sinon
 	 */
 	public boolean estVide() {
 		return tasDeCarte.isEmpty();
 	}
 
 	/**
-	 * Piocher carte.
+	 * Méthode permettant de piocher une carte en haut du paquet 
+	 * grâce à la méthode pop de la collection liste chainée
 	 *
-	 * @return the carte
+	 * @return la carte du haut du paquet
 	 */
 	public Carte piocherCarte() {
 		return tasDeCarte.pop();
 	}
 	
 	/**
-	 * Melanger.
+	 * Méthode qui permet de mélanger la pioche.
+	 * Cette méthode ne renvoi rien et ne prends rien en paramètre.
 	 */
 	public void melanger() {
 		Collections.shuffle(tasDeCarte);
 	}
 	
 	/**
-	 * Gets the extension.
+	 * Getter qui permet d'obtenir l'extension d'une pioche
 	 *
-	 * @return the extension
+	 * @return un entier à 0 pour aucune extension et un entier à 1 pour une extension de carte
+	 * Pour toute autre valeur, le deck n'est pas bien défini pour notre jeu de JEST
 	 */
 	public int getExtension() {
 		return extension;
 	}
 
 	/**
-	 * Sets the extension.
-	 *
-	 * @param extension the new extension
+	 * Setter qui permet de définir la valeur de l'extension de jeu
+	 * Cette valeur est un entier à 0 si il n'y a pas d'extension et un entier à 1 si il y a une extension
+	 * Toute autre valeur n'est pas admise dans notre jeu de JEST
+	 * @param Entrer 0 pour aucune extension et 1 pour une extension
 	 */
 	public void setExtension(int extension) {
 		this.extension = extension;
 	}
 
 	/**
-	 * Gets the tas de carte.
+	 * Getter qui permet d'obtenir la pioche sous forme de liste chainée
 	 *
-	 * @return the tas de carte
+	 * @return Cette méthode retourne la picohe sous forme de liste chainée qu'elle soient vide ou non
 	 */
 	public LinkedList<Carte> getTasDeCarte() {
 		return tasDeCarte;
 	}
 
 	/**
-	 * Sets the tas de carte.
+	 * Setter qui permet de définir un tas de carte sous forme de liste chainée
 	 *
-	 * @param tasDeCarte the new tas de carte
+	 * @param Une liste chainée de carte qui correspond à la liste des cartes.
 	 */
 	public void setTasDeCarte(LinkedList<Carte> tasDeCarte) {
 		this.tasDeCarte = tasDeCarte;
 	}
 	
 	/**
-	 * To string.
+	 * méthode d'affichage de la pioche sous forme de liste chainée de carte
 	 *
-	 * @return the string
+	 * @return Les cartes contenues dans la pioche
 	 */
 	public String toString() {
 		return tasDeCarte.toString();
 	}
 	
 	/**
-	 * Adds the carte.
+	 * Méthode permettant d'ajouter une carte à l'attribut tas de carte qui correspond à la pioche
 	 *
-	 * @param c the c
+	 * @param c, Carte (objet de la classe carte) que l'on souhaite ajouter à la liste chainée.
 	 */
 	public void addCarte(Carte c) {
 		this.tasDeCarte.add(c);
