@@ -9,6 +9,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.JTextArea;
 
 import fr.utt.rt.lo02.projet.modele.Joueur;
@@ -64,11 +65,16 @@ public class MenuInitialisation extends JDialog {
 
 		JPanel pane = new JPanel();
 
-		// Nom du joueur
-		JLabel n = new JLabel("Votre nom :");
+		// Nom du joueur si il y a un joueur
+		JLabel n = new JLabel("Combien de joueurs physiques ?");
 		nom = new JTextArea();
 		nom.setText("Nom");
 		nom.setEditable(true);
+		
+		
+		
+		
+		
 
 		// extension
 		JLabel ext = new JLabel("Quelle extension ?");
@@ -95,13 +101,33 @@ public class MenuInitialisation extends JDialog {
 
 			}
 		});
-
+		
+		JSlider slider = new JSlider();
+		slider.setPaintTicks(true);
+		slider.setPaintLabels(true);
+		slider.setRequestFocusEnabled(false);
+		slider.setMaximum(4);
+		slider.setMajorTickSpacing(1);
+		      
+		JSlider slider2 = new JSlider();
+		slider2.setPaintTicks(true);
+		slider2.setPaintLabels(true);
+		slider2.setRequestFocusEnabled(false);
+		slider2.setMaximum(4);
+		slider2.setMajorTickSpacing(1);
+		      
+		JLabel physique = new JLabel("Combien de joueurs virtuels ?");
+		
+		
+		fenetre.add(slider);
 		fenetre.add(n);
-		fenetre.add(nom);
+		fenetre.add(slider2);
+		fenetre.add(physique);
 		fenetre.add(var);
 		fenetre.add(variante);
 		fenetre.add(ext);
 		fenetre.add(extension);
+		fenetre.add(nom);
 		fenetre.add(ok);
 
 		pane.add(fenetre);
