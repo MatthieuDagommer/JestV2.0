@@ -2,16 +2,19 @@ package fr.utt.rt.lo02.projet.modele;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum Couleur.
+ * Cette énumération spécifie les différentes couleurs que peuvent prendre les cartes
+ * Le Coeur, le carreau, le trèfle et le pic sont les seules valeurs possibles pour les cartes
  */
+
+
 public enum Couleur {
 	
-	/** The coeur. */
+/** Carte de coeur. */
 	COEUR, 
- /** The carreau. */
+/** Carte de carreau. */
  CARREAU, 
- /** The trefle. */
+/** Carte de trefle. */
  TREFLE, 
- /** The pic. */
+/** Carte de pic. */
  PIC;
 }
