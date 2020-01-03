@@ -2,20 +2,20 @@ package fr.utt.rt.lo02.projet.modele;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Enum Valeur.
+ * enumération qui correspond aux différentes valeures d'une carte.
  */
 public enum Valeur {
 	
-	/** The joker. */
+	/** Valeur JOKER. */
 	JOKER, 
- /** The as. */
+ /** VALEUR AS. */
  AS, 
- /** The deux. */
+ /** Valeur deux. */
  DEUX, 
- /** The trois. */
+ /** Valeur  trois. */
  TROIS, 
- /** The quatre. */
+ /** Valeur quatre. */
  QUATRE, 
- /** The six. */
+ /** Valeur six (le cinq est déjà utilisé avec l'AS). */
  SIX;
 }
