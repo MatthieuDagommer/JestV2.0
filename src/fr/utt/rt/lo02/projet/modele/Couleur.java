@@ -3,7 +3,7 @@ package fr.utt.rt.lo02.projet.modele;
 // TODO: Auto-generated Javadoc
 /**
  * Cette énumération spécifie les différentes couleurs que peuvent prendre les cartes
- * Le Coeur, le carreau, le trèfle et le pic sont les seules valeurs possibles pour les cartes
+ * Le Coeur, le carreau, le trèfle et le Pic sont les seules valeurs possibles pour les cartes
  */
 
 
