@@ -4,7 +4,9 @@ import java.util.Observable;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class StrategieJoueur.
+ * Classe abstraite qui détermine les différentes méthodes permettant à une joueur de jouer
+ * Cela inclus les méthodes de choix de cartes en début de tour, le choix d'une carte chez un adversaire pendant le tour
+ * 
  */
 public abstract class StrategieJoueur extends Observable {
 	

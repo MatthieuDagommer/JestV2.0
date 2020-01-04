@@ -21,7 +21,8 @@ public class StratPhysique extends StrategieJoueur {
 	private Carte cache;
 
 	/**
-	 * Faire offre.
+	 * Methode qui permet de définir l'offre cachée d'un joueur physique
+	 * 
 	 *
 	 * @param ceJoueur the ce joueur
 	 */
