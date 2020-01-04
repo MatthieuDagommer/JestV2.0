@@ -4,7 +4,6 @@ import fr.utt.rt.lo02.projet.modele.Partie;
 import fr.utt.rt.lo02.projet.modele.StratFacile;
 import fr.utt.rt.lo02.projet.vue.VueConsole;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
-import fr.utt.rt.lo02.projet.vue.VueTexte;
 
 public class MainGraphique implements Runnable {
 
