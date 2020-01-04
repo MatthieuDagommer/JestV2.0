@@ -102,6 +102,7 @@ public class VueConsole implements Observer, Runnable {
 	public void update(Observable o, Object arg) {
 		if(arg instanceof String) {
 			String message = arg.toString();
+			
 			System.out.println(message);
 		}
 
