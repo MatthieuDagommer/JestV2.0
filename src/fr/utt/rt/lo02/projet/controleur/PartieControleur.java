@@ -133,8 +133,17 @@ public class PartieControleur {
 			Joueur moi6 = new Joueur("Maxime");
 			Partie.getInstance().addJoueur(moi6);
 			break;
+		case 4:
+			Joueur moi7 = new Joueur(dialog.getNom());
+			Partie.getInstance().addJoueur(moi7);
+			Joueur moi8 = new Joueur("Louis");
+			Partie.getInstance().addJoueur(moi8);
+			Joueur moi9 = new Joueur("Maxime");
+			Partie.getInstance().addJoueur(moi9);
+			Joueur moi10 = new Joueur("Lauris");
+			Partie.getInstance().addJoueur(moi10);
+			break;
 		default:
-			Partie.getInstance().setRegle(new RegleStandard());
 			break;
 		}
 		switch (dialog.getJoueurV()){
@@ -155,11 +164,20 @@ public class PartieControleur {
 			Partie.getInstance().addJoueur(ordi4);
 			Joueur ordi5 = new Joueur("ordi2", new StratDifficile());
 			Partie.getInstance().addJoueur(ordi5);
-			Joueur ordi6 = new Joueur("ordi2", new StratDifficile());
+			Joueur ordi6 = new Joueur("ordi3", new StratDifficile());
 			Partie.getInstance().addJoueur(ordi6);
 			break;
+		case 4:
+			Joueur ordi7 = new Joueur("ordi1", new StratFacile());
+			Partie.getInstance().addJoueur(ordi7);
+			Joueur ordi8 = new Joueur("ordi2", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi8);
+			Joueur ordi9 = new Joueur("ordi3", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi9);
+			Joueur ordi10 = new Joueur("ordi4", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi10);
+			break;
 		default:
-			Partie.getInstance().setRegle(new RegleStandard());
 			break;
 		}
 			
@@ -169,14 +187,14 @@ public class PartieControleur {
 		//Joueur ordi2 = new Joueur("ordi2", new StratDifficile());
 		// Joueur ordi3 = new Joueur("ordi3", new StratDifficile());
 		// Joueur ordi4 = new Joueur("ordi4", new StratFacile());
-		Joueur moi = new Joueur(dialog.getNom());
+		//Joueur moi = new Joueur(dialog.getNom());
 		//Joueur louis = new Joueur("Louis");
 
 		//Partie.getInstance().addJoueur(ordi1);
 		//Partie.getInstance().addJoueur(ordi2);
 		//Partie.getInstance().addJoueur(ordi3);
 		// Partie.getInstance().addJoueur(ordi4);
-		Partie.getInstance().addJoueur(moi);
+		//Partie.getInstance().addJoueur(moi);
 		//Partie.getInstance().addJoueur(louis);
 
 	}

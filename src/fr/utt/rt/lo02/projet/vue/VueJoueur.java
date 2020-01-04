@@ -256,7 +256,7 @@ public class VueJoueur implements Observer {
 		} else {
 			majOffre();
 		}
-		if (arg instanceof String) {
+		if (arg instanceof String && !(o instanceof Partie)) {
 			String message = arg.toString();
 			PartieControleur.updateJTextArea(message);
 		}
