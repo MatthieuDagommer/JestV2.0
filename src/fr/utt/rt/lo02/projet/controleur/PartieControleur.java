@@ -112,17 +112,69 @@ public class PartieControleur {
 			Partie.getInstance().setRegle(new RegleStandard());
 			break;
 		}
+		switch (dialog.getJoueurP()){
+		case 0:
+			break;
+		case 1:
+			Joueur moi = new Joueur(dialog.getNom());
+			Partie.getInstance().addJoueur(moi);
+			break;
+		case 2:
+			Joueur moi2 = new Joueur(dialog.getNom());
+			Partie.getInstance().addJoueur(moi2);
+			Joueur moi3 = new Joueur("Louis");
+			Partie.getInstance().addJoueur(moi3);
+			break;
+		case 3:
+			Joueur moi4 = new Joueur(dialog.getNom());
+			Partie.getInstance().addJoueur(moi4);
+			Joueur moi5 = new Joueur("Louis");
+			Partie.getInstance().addJoueur(moi5);
+			Joueur moi6 = new Joueur("Maxime");
+			Partie.getInstance().addJoueur(moi6);
+			break;
+		default:
+			Partie.getInstance().setRegle(new RegleStandard());
+			break;
+		}
+		switch (dialog.getJoueurV()){
+		case 0:
+			break;
+		case 1:
+			Joueur ordi1 = new Joueur("ordi1", new StratFacile());
+			Partie.getInstance().addJoueur(ordi1);
+			break;
+		case 2:
+			Joueur ordi2 = new Joueur("ordi1", new StratFacile());
+			Partie.getInstance().addJoueur(ordi2);
+			Joueur ordi3 = new Joueur("ordi2", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi3);
+			break;
+		case 3:
+			Joueur ordi4 = new Joueur("ordi1", new StratFacile());
+			Partie.getInstance().addJoueur(ordi4);
+			Joueur ordi5 = new Joueur("ordi2", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi5);
+			Joueur ordi6 = new Joueur("ordi2", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi6);
+			break;
+		default:
+			Partie.getInstance().setRegle(new RegleStandard());
+			break;
+		}
+			
+			
 		
-		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
-		Joueur ordi2 = new Joueur("ordi2", new StratDifficile());
-		 Joueur ordi3 = new Joueur("ordi3", new StratDifficile());
+		//Joueur ordi1 = new Joueur("ordi1", new StratFacile());
+		//Joueur ordi2 = new Joueur("ordi2", new StratDifficile());
+		// Joueur ordi3 = new Joueur("ordi3", new StratDifficile());
 		// Joueur ordi4 = new Joueur("ordi4", new StratFacile());
 		//Joueur moi = new Joueur(dialog.getNom());
 		//Joueur louis = new Joueur("Louis");
 
-		Partie.getInstance().addJoueur(ordi1);
-		Partie.getInstance().addJoueur(ordi2);
-		Partie.getInstance().addJoueur(ordi3);
+		//Partie.getInstance().addJoueur(ordi1);
+		//Partie.getInstance().addJoueur(ordi2);
+		//Partie.getInstance().addJoueur(ordi3);
 		// Partie.getInstance().addJoueur(ordi4);
 		//Partie.getInstance().addJoueur(moi);
 		//Partie.getInstance().addJoueur(louis);

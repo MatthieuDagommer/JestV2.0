@@ -40,6 +40,10 @@ public class MenuInitialisation extends JDialog {
 
 	/** The variante. */
 	private JTextArea variante;
+	
+	private JSlider joueurP;
+	
+	private JSlider joueurV;
 
 	/**
 	 * Instantiates a new menu initialisation.
@@ -102,26 +106,26 @@ public class MenuInitialisation extends JDialog {
 			}
 		});
 		
-		JSlider slider = new JSlider();
-		slider.setPaintTicks(true);
-		slider.setPaintLabels(true);
-		slider.setRequestFocusEnabled(false);
-		slider.setMaximum(4);
-		slider.setMajorTickSpacing(1);
+		joueurP = new JSlider();
+		joueurP.setPaintTicks(true);
+		joueurP.setPaintLabels(true);
+		joueurP.setRequestFocusEnabled(false);
+		joueurP.setMaximum(4);
+		joueurP.setMajorTickSpacing(1);
 		      
-		JSlider slider2 = new JSlider();
-		slider2.setPaintTicks(true);
-		slider2.setPaintLabels(true);
-		slider2.setRequestFocusEnabled(false);
-		slider2.setMaximum(4);
-		slider2.setMajorTickSpacing(1);
+		joueurV = new JSlider();
+		joueurV.setPaintTicks(true);
+		joueurV.setPaintLabels(true);
+		joueurV.setRequestFocusEnabled(false);
+		joueurV.setMaximum(4);
+		joueurV.setMajorTickSpacing(1);
 		      
 		JLabel physique = new JLabel("Combien de joueurs virtuels ?");
 		
 		
-		fenetre.add(slider);
+		fenetre.add(joueurP);
 		fenetre.add(n);
-		fenetre.add(slider2);
+		fenetre.add(joueurV);
 		fenetre.add(physique);
 		fenetre.add(var);
 		fenetre.add(variante);
@@ -146,6 +150,15 @@ public class MenuInitialisation extends JDialog {
 		return Integer.parseInt(extension.getText());
 	}
 
+	public int getJoueurP() {
+		return joueurP.getValue();
+	}
+	
+	public int getJoueurV() {
+		return joueurV.getValue();
+	}
+	
+	
 	/**
 	 * Sets the extension.
 	 *
