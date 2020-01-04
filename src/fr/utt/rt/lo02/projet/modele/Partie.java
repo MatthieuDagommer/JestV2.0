@@ -15,22 +15,21 @@ public class Partie extends Observable {
 
 	/** The instance. */
 	private static Partie instance = null;
-	
+
 	/** The joueurs. */
 	private ArrayList<Joueur> joueurs;
-	
+
 	/** The trophes. */
 	private LinkedList<Carte> trophes;
-	
+
 	/** The jeu de cartes. */
 	private Deck jeuDeCartes;
-	
+
 	/** The regle. */
 	private Regle regle;
-	
+
 	/** The joueur actuel. */
 	private Joueur joueurActuel;
-	
 
 	/**
 	 * Gets the joueur actuel.
@@ -182,15 +181,15 @@ public class Partie extends Observable {
 					e.printStackTrace();
 				}
 				joueurActuel = joueurActuel.jouer();
-				if (joueurActuel.isaJouer() && i< Joueur.NB_JOUEURS-1) {
-					//System.out.println("Dans le tour");
+				if (joueurActuel.isaJouer() && i < Joueur.NB_JOUEURS - 1) {
+					// System.out.println("Dans le tour");
 					joueurActuel = meilleureOffre();
 				}
 			}
 			if (!jeuDeCartes.estVide()) {
 				rammaserCartesRestante();
 			}
-			//System.out.println("Fin du tour");
+			// System.out.println("Fin du tour");
 		} while (!jeuDeCartes.estVide());
 		setChanged();
 		notifyObservers("La pioche est vide");
@@ -199,11 +198,6 @@ public class Partie extends Observable {
 		distribuerTrophees();
 		fusionJest();
 		updateScore();
-		Iterator<Joueur> it = joueurs.iterator();
-		while (it.hasNext()) {
-			Joueur j = it.next();
-			//System.out.println(j.toString());
-		}
 	}
 
 	/**
@@ -327,8 +321,8 @@ public class Partie extends Observable {
 			trophes.add(jeuDeCartes.piocherCarte());
 		}
 		message = "Les troph�s sont " + trophes.toString();
-		//System.out.println(message);
-		
+		// System.out.println(message);
+
 		setChanged();
 		notifyObservers(message);
 	}
@@ -355,7 +349,7 @@ public class Partie extends Observable {
 			Carte joker = trophes.remove(trophes.indexOf(Joker.getInstance()));
 			bestJest(joueurs).addJestAvecTrophes(joker);
 			message = "Le Trophe Joker est distribu� � " + bestJest(joueurs);
-			//System.out.println(message);
+			// System.out.println(message);
 			setChanged();
 			notifyObservers(message);
 			setChanged();
@@ -369,65 +363,65 @@ public class Partie extends Observable {
 				break;
 			case bascarreau:
 				lowestCarteInCouleur(Couleur.CARREAU).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+lowestCarteInCouleur(Couleur.CARREAU).getNom();
+				message = "Le trophe " + c + " est distribu� � " + lowestCarteInCouleur(Couleur.CARREAU).getNom();
 				break;
 			case bascoeur:
 				lowestCarteInCouleur(Couleur.COEUR).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+lowestCarteInCouleur(Couleur.COEUR).getNom();
+				message = "Le trophe " + c + " est distribu� � " + lowestCarteInCouleur(Couleur.COEUR).getNom();
 				break;
 			case baspic:
 				lowestCarteInCouleur(Couleur.PIC).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+lowestCarteInCouleur(Couleur.PIC).getNom();
+				message = "Le trophe " + c + " est distribu� � " + lowestCarteInCouleur(Couleur.PIC).getNom();
 				break;
 			case bastrefle:
 				lowestCarteInCouleur(Couleur.TREFLE).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+lowestCarteInCouleur(Couleur.TREFLE).getNom();
+				message = "Le trophe " + c + " est distribu� � " + lowestCarteInCouleur(Couleur.TREFLE).getNom();
 				break;
 			case bestJest:
 				bestJest(joueurs).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+bestJest(joueurs).getNom();
+				message = "Le trophe " + c + " est distribu� � " + bestJest(joueurs).getNom();
 				break;
 			case hautcarreau:
 				highestCarteInCouleur(Couleur.CARREAU).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+highestCarteInCouleur(Couleur.CARREAU).getNom();
+				message = "Le trophe " + c + " est distribu� � " + highestCarteInCouleur(Couleur.CARREAU).getNom();
 				break;
 			case hautcoeur:
 				highestCarteInCouleur(Couleur.COEUR).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+highestCarteInCouleur(Couleur.COEUR).getNom();
+				message = "Le trophe " + c + " est distribu� � " + highestCarteInCouleur(Couleur.COEUR).getNom();
 				break;
 			case hautpic:
 				highestCarteInCouleur(Couleur.PIC).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+highestCarteInCouleur(Couleur.PIC).getNom();
+				message = "Le trophe " + c + " est distribu� � " + highestCarteInCouleur(Couleur.PIC).getNom();
 				break;
 			case hauttrefle:
 				highestCarteInCouleur(Couleur.TREFLE).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+highestCarteInCouleur(Couleur.TREFLE).getNom();
+				message = "Le trophe " + c + " est distribu� � " + highestCarteInCouleur(Couleur.TREFLE).getNom();
 				break;
 			case joker:
 				hasJoker().addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+hasJoker().getNom();
+				message = "Le trophe " + c + " est distribu� � " + hasJoker().getNom();
 				break;
 			case nojoker:
 				bestJestNoJoker().addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+bestJestNoJoker().getNom();
+				message = "Le trophe " + c + " est distribu� � " + bestJestNoJoker().getNom();
 				break;
 			case plus2:
 				plusValeur(Valeur.DEUX).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+plusValeur(Valeur.DEUX).getNom();
+				message = "Le trophe " + c + " est distribu� � " + plusValeur(Valeur.DEUX).getNom();
 				break;
 			case plus3:
 				plusValeur(Valeur.TROIS).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+plusValeur(Valeur.TROIS).getNom();
+				message = "Le trophe " + c + " est distribu� � " + plusValeur(Valeur.TROIS).getNom();
 				break;
 			case plus4:
 				plusValeur(Valeur.QUATRE).addJestAvecTrophes(c);
-				message = "Le trophe "+c+" est distribu� � "+plusValeur(Valeur.QUATRE).getNom();
+				message = "Le trophe " + c + " est distribu� � " + plusValeur(Valeur.QUATRE).getNom();
 				break;
 			default:
 				break;
 
 			}
-			//System.out.println(message);
+			// System.out.println(message);
 			setChanged();
 			notifyObservers(message);
 
@@ -627,6 +621,6 @@ public class Partie extends Observable {
 
 		partie.lancerPartie();
 
-		//System.out.println(partie.bestJest(partie.getJoueurs()));
+		// System.out.println(partie.bestJest(partie.getJoueurs()));
 	}
 }
