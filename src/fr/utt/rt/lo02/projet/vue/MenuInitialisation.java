@@ -98,11 +98,13 @@ public class MenuInitialisation extends JDialog {
 		// avant de cacher la fenêtre
 		ok.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
-				if (!nom.getText().equals("Nom"))
+				if (!nom.getText().equals("Nom") && joueurP.getValue()+joueurV.getValue()<5 && joueurP.getValue()+joueurV.getValue()>2) {
 					setVisible(false);
+				}
+					
 				else
 					ok.setText("!ok");
-
+				
 			}
 		});
 		
