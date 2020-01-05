@@ -9,17 +9,28 @@ import fr.utt.rt.lo02.projet.controleur.PartieControleur;
 
 // TODO: Auto-generated Javadoc
 /**
- * La classe partie est une classe public qui est observable. Cette classe est observable afin de mettre à jour les instances qui la compose en cas de changement. C'est le cerveau du jeu, 
- * C'est à l'interieur de cette classe que l'on va : crée la partie avec les différents joueurs et leur stratégie, définir la variante et eventuellement l'extension de carte. Dérouler les tour et compter les scores à la fin du jeu.
- * Cette classe utilise le singleton car on ne peut avoir seulement une instance unique de partie lorsque l'on joue.
+ * La classe partie est une classe public qui est observable. Cette classe est
+ * observable afin de mettre à jour les instances qui la compose en cas de
+ * changement. C'est le cerveau du jeu, C'est à l'interieur de cette classe que
+ * l'on va : crée la partie avec les différents joueurs et leur stratégie,
+ * définir la variante et eventuellement l'extension de carte. Dérouler les tour
+ * et compter les scores à la fin du jeu. Cette classe utilise le singleton car
+ * on ne peut avoir seulement une instance unique de partie lorsque l'on joue.
  */
 public class Partie extends Observable {
 
-	/** instance est l'unique instance de partie. Elle est définie à null avant de lancer la partie, dès que l'utilisateur à chosisit le nombre de joueur, la variante et l'extension, l'instance de partie est créee.
-	 *  */
+	/**
+	 * instance est l'unique instance de partie. Elle est définie à null avant de
+	 * lancer la partie, dès que l'utilisateur à chosisit le nombre de joueur, la
+	 * variante et l'extension, l'instance de partie est créee.
+	 */
 	private static Partie instance = null;
 
-	/** Cette liste définie les différents joueur lors de la partie. Elle est composée dans notre jeu de JEST de 3 ou 4 joueurs virtuels/physique et dans un fonctionnement */
+	/**
+	 * Cette liste définie les différents joueur lors de la partie. Elle est
+	 * composée dans notre jeu de JEST de 3 ou 4 joueurs virtuels/physique et dans
+	 * un fonctionnement
+	 */
 	private ArrayList<Joueur> joueurs;
 
 	/** The trophes. */
@@ -80,8 +91,8 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Méthode public qui permet de crée la partie si elle n'est pas déjà créee ou d'obtenir les attributs de la 
-	 * partie en cours.
+	 * Méthode public qui permet de crée la partie si elle n'est pas déjà créee ou
+	 * d'obtenir les attributs de la partie en cours.
 	 *
 	 * @return instance l'unique instance en partie
 	 */
@@ -95,7 +106,8 @@ public class Partie extends Observable {
 	/**
 	 * Getter qui permet d'obtenir les différents trophées de la partie.
 	 *
-	 * @return Liste chainée de carte représentant les trophées de la partie mis au milieu du jeu.
+	 * @return Liste chainée de carte représentant les trophées de la partie mis au
+	 *         milieu du jeu.
 	 */
 	public LinkedList<Carte> getTrophes() {
 		return trophes;
@@ -111,8 +123,9 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Méthode public qui permet d'ajouter un joueur à la partie.
-	 *Remarque : Le joueur ne doit pas avoir déjà été ajouté.
+	 * Méthode public qui permet d'ajouter un joueur à la partie. Remarque : Le
+	 * joueur ne doit pas avoir déjà été ajouté.
+	 * 
 	 * @param j le joueur que l'on souhaite ajouter.
 	 */
 	public void addJoueur(Joueur j) {
@@ -125,7 +138,8 @@ public class Partie extends Observable {
 	/**
 	 * Méthode permettant d'enlever un joueur déjà présent dans la partie.
 	 *
-	 * @param j le joueur que l'on souhiate enlever de la partie si il est déjà présent.
+	 * @param j le joueur que l'on souhiate enlever de la partie si il est déjà
+	 *          présent.
 	 */
 	public void removeJoueur(Joueur j) {
 		if (this.joueurs.contains(j) == true) {
@@ -152,10 +166,12 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Méthode public qui permet de construire la pioche de jeu en fonction de l'extension choisie.
-	 * En effet, selon l'extension choisie, le jeu comportera 17 ou 21 cartes.
+	 * Méthode public qui permet de construire la pioche de jeu en fonction de
+	 * l'extension choisie. En effet, selon l'extension choisie, le jeu comportera
+	 * 17 ou 21 cartes.
 	 *
-	 * @param extension correspondant à l'extension (0 sans extension, 1 avec une extension)
+	 * @param extension correspondant à l'extension (0 sans extension, 1 avec une
+	 *                  extension)
 	 * @return le jeu de carte de type Deck (Liste chainée et extension)
 	 */
 	public Deck buildJeuDeCarte(int extension) {
@@ -165,22 +181,22 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Méthode qui détermine le déroullement d'une partie une fois les joueurs l'extension et la variante définis.
-	 * 1. On commence par mélanger les cartes de la pioche (méthode mélanger).
-	 * 2. On choisit le/les trophées pour le/les mettres au milieu du plateau.
-	 * 3. Tant que la pioche n'est pas vide pour chaque tour :
-	 * 	a. On mélange les cartes
-	 * 	b. On définie que les joueurs n'ont pas encore jouer
-	 * 	c. On distribue deux cartes à chaque joueurs.
-	 * 	d. Chaque joueur choisit sa carte à cacher (selon sa stratégie)
-	 * 	e. On définit le joueur qui à la meilleure offre pour sa carte visible.
-	 * 	f. On parcours tous les joueurs, en notifiant tous les observers de partie, le joueur qui est en train de jouer
-	 * 	g.	On met à jour la partie
-	 *  h. Le joueur choisit la carte qu'il souhaite ajouter à son JEST (méthode jouer)
-	 *  i. Une fois que le joueur à jouer on définie le joueur suivant à l'aide de la méthode meilleure offre si il reste des joueurs
-	 *  j. sinon on ramasser les cartes restantes dans les offres des joueurs pour les distribuer au tour d'après.
-	 * 4. On notifie les observers de la partie que la pioche et vide
-	 * 5. On compte les scores et on distribue les trophées.
+	 * Méthode qui détermine le déroullement d'une partie une fois les joueurs
+	 * l'extension et la variante définis. 1. On commence par mélanger les cartes de
+	 * la pioche (méthode mélanger). 2. On choisit le/les trophées pour le/les
+	 * mettres au milieu du plateau. 3. Tant que la pioche n'est pas vide pour
+	 * chaque tour : a. On mélange les cartes b. On définie que les joueurs n'ont
+	 * pas encore jouer c. On distribue deux cartes à chaque joueurs. d. Chaque
+	 * joueur choisit sa carte à cacher (selon sa stratégie) e. On définit le joueur
+	 * qui à la meilleure offre pour sa carte visible. f. On parcours tous les
+	 * joueurs, en notifiant tous les observers de partie, le joueur qui est en
+	 * train de jouer g. On met à jour la partie h. Le joueur choisit la carte qu'il
+	 * souhaite ajouter à son JEST (méthode jouer) i. Une fois que le joueur à jouer
+	 * on définie le joueur suivant à l'aide de la méthode meilleure offre si il
+	 * reste des joueurs j. sinon on ramasser les cartes restantes dans les offres
+	 * des joueurs pour les distribuer au tour d'après. 4. On notifie les observers
+	 * de la partie que la pioche et vide 5. On compte les scores et on distribue
+	 * les trophées.
 	 * 
 	 */
 	public void lancerPartie() {
@@ -222,7 +238,8 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Méthode public qui permet de remettre à 0 le fait qu'un joueur est jouer à chaque début de tour
+	 * Méthode public qui permet de remettre à 0 le fait qu'un joueur est jouer à
+	 * chaque début de tour
 	 * 
 	 */
 	public void razAJoue() {
@@ -234,7 +251,8 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Méthode qui parcours les joueurs et pour chacun leur demande de choisir parmis les 2 cartes qui leur sont proposées.
+	 * Méthode qui parcours les joueurs et pour chacun leur demande de choisir
+	 * parmis les 2 cartes qui leur sont proposées.
 	 */
 	public void offreJoueur() {
 		Iterator<Joueur> it = joueurs.iterator();
@@ -245,7 +263,8 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Dans cette méthode, on ajoute dans le JEST courant, les éventuels trophées que le joueur à perçu.
+	 * Dans cette méthode, on ajoute dans le JEST courant, les éventuels trophées
+	 * que le joueur à perçu.
 	 */
 	private void fusionJest() {
 		Iterator<Joueur> it = joueurs.iterator();
@@ -258,8 +277,8 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Cette méthode permet de ramasser les cartes restantes dans les offres des joueurs à chaque fin de tour
-	 * et de les ajouter en haut de la pioche.
+	 * Cette méthode permet de ramasser les cartes restantes dans les offres des
+	 * joueurs à chaque fin de tour et de les ajouter en haut de la pioche.
 	 */
 	private void rammaserCartesRestante() {
 		Iterator<Joueur> it = joueurs.iterator();
@@ -279,9 +298,10 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Lors du dernier tour, les cartes des offres des joueurs doivent être transférer dans leur JEST.
-	 * On ajouter les cartes restantes dans le JEST du joueurs. 
-	 * On notifie les différentes vues de la partie que les cartes restantes sont maintenant dans le JEST.
+	 * Lors du dernier tour, les cartes des offres des joueurs doivent être
+	 * transférer dans leur JEST. On ajouter les cartes restantes dans le JEST du
+	 * joueurs. On notifie les différentes vues de la partie que les cartes
+	 * restantes sont maintenant dans le JEST.
 	 */
 	private void rammaserCartesRestanteJest() {
 		Iterator<Joueur> it = joueurs.iterator();
@@ -301,12 +321,12 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Méthode qui permet de déterminer le joueur qui doit jouer dans un tour.
-	 * On définit le prochain joueur comme un joueur n'ayant pas déjà jouer.
+	 * Méthode qui permet de déterminer le joueur qui doit jouer dans un tour. On
+	 * définit le prochain joueur comme un joueur n'ayant pas déjà jouer.
 	 * 
-	 * On itère ensuite sur les différents joueurs, pour chacun on vérifie si il à jouer
-	 * et si il a une carte visible plus forte que celle du meilleur joueur courant.
-	 * Si c'est le cas, il devient le joueur courant.
+	 * On itère ensuite sur les différents joueurs, pour chacun on vérifie si il à
+	 * jouer et si il a une carte visible plus forte que celle du meilleur joueur
+	 * courant. Si c'est le cas, il devient le joueur courant.
 	 *
 	 * @return le joueur qui doit jouer
 	 */
@@ -335,13 +355,13 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Cette méthode public permet d'ajouter des cartes à la liste chainée trophée. 
-	 * Si le jeu possède 3 joueurs sans extension, il y a 2 cartes de trophée posées sur le plateau
-	 * Si le jeu possède 4 joueurs il n'y a q'une sueule carte de trophée.
-	 * Si le jeu possède 3 joueurs et 1 extension, on aura alors 3 cartes de torphées
-	 * sur le plateau.
-	 * Une fois les cartes de trophées ajouter a la liste chainée, on notifie les différentes vues qui observent la
-	 * partie les trophées qui ont été ajouté.
+	 * Cette méthode public permet d'ajouter des cartes à la liste chainée trophée.
+	 * Si le jeu possède 3 joueurs sans extension, il y a 2 cartes de trophée posées
+	 * sur le plateau Si le jeu possède 4 joueurs il n'y a q'une sueule carte de
+	 * trophée. Si le jeu possède 3 joueurs et 1 extension, on aura alors 3 cartes
+	 * de torphées sur le plateau. Une fois les cartes de trophées ajouter a la
+	 * liste chainée, on notifie les différentes vues qui observent la partie les
+	 * trophées qui ont été ajouté.
 	 */
 	public void choixTrophee() {
 		String message = "";
@@ -363,8 +383,8 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Cette méthode public permet la distribution de deux cartes de la pioche
-	 * à la main de chaque joueurs.
+	 * Cette méthode public permet la distribution de deux cartes de la pioche à la
+	 * main de chaque joueurs.
 	 */
 	public void distribuerJeu() {
 		for (int i = 0; i < 2; i++) {
@@ -587,6 +607,25 @@ public class Partie extends Observable {
 			Joueur j1 = (Joueur) it.next();
 			if (j1.getScore() > bestJ.getScore()) {
 				bestJ = j1;
+			} else if (bestJ.getScore() == j1.getScore()) {
+				Carte carteBestJoueur = bestJ.ComparaisonJest();
+				Carte carteJoueur1 = j1.ComparaisonJest();
+				int valeurBestJoueur = carteBestJoueur.getValeur().ordinal();
+				int valeurJoueur1 = carteJoueur1.getValeur().ordinal();
+				if (bestJ.highestValeurInCouleur(carteBestJoueur.getCouleur()) == 5) {
+					valeurBestJoueur = 5;
+				}
+				if (j1.highestValeurInCouleur(carteJoueur1.getCouleur()) == 5) {
+					valeurBestJoueur = 5;
+				}
+				if (valeurJoueur1 > valeurBestJoueur) {
+					j1 = bestJ;
+				} else if (valeurJoueur1 == valeurBestJoueur) {
+					if (carteJoueur1.getCouleur().ordinal() > carteBestJoueur.getCouleur().ordinal()) {
+						bestJ = j1;
+					}
+				}
+
 			}
 		}
 		return bestJ;

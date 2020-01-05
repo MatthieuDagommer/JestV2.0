@@ -17,8 +17,8 @@ public class Joueur extends Observable {
 
 	/**
 	 * cet attribut constitue les cartes contenues dans la main d'un joueur La liste
-	 * peut être nulle si il n'a plus de carte, contenir une ou deux cartes de
-	 * types Carte
+	 * peut être nulle si il n'a plus de carte, contenir une ou deux cartes de types
+	 * Carte
 	 */
 	private LinkedList<Carte> main;
 
@@ -38,9 +38,8 @@ public class Joueur extends Observable {
 
 	/**
 	 * Cette liste chainée correspond à un tas de carte représentant le JEST d'un
-	 * joueur Elle est consitutée de 0 carte avant le premier tour de jeu et
-	 * ensuite elle est remplie d'une carte à chaque tour et de deux cartes au
-	 * dernier tour.
+	 * joueur Elle est consitutée de 0 carte avant le premier tour de jeu et ensuite
+	 * elle est remplie d'une carte à chaque tour et de deux cartes au dernier tour.
 	 */
 	private LinkedList<Carte> jest;
 
@@ -48,29 +47,29 @@ public class Joueur extends Observable {
 	 * Cette liste chainée représenter le JEST du joueur à la fin du jeu avec
 	 * éventuellement les trophées que le joueur à récupérer après le premier
 	 * comptage de point et en fonction de ces cartes Il contient au minimum le JEST
-	 * du joueur à la fin du jeu et éventuellement les trophées récupérés, il
-	 * est NULL jusqu'au premier comptage des points du JEST.
+	 * du joueur à la fin du jeu et éventuellement les trophées récupérés, il est
+	 * NULL jusqu'au premier comptage des points du JEST.
 	 */
 	private LinkedList<Carte> jestAvecTrophes;
 
 	/**
 	 * Attribut de type Stratégie qui définie la stratégie d'un joueur. Les
 	 * startégies possibles sont la stratégie facile ou difficile pour un joueur
-	 * virtuel ou la stratégie Physique pour un joueur physique. Pour un
-	 * déroulement normal du jeu, chaque joueur doit avoir une startégie
-	 * différente de null dès la création de celui-ci.
+	 * virtuel ou la stratégie Physique pour un joueur physique. Pour un déroulement
+	 * normal du jeu, chaque joueur doit avoir une startégie différente de null dès
+	 * la création de celui-ci.
 	 */
 	private StrategieJoueur strategie;
 
 	/**
-	 * Cette entier correspond au score d'un joueur. Il est null jusqu'à la phase
-	 * de distribution des trophées.
+	 * Cette entier correspond au score d'un joueur. Il est null jusqu'à la phase de
+	 * distribution des trophées.
 	 */
 	private int score;
 
 	/**
-	 * Booléen qui détermine si dans un tour, un joueur à déjà jouer, si c'est
-	 * le cas. Il est null avant le premier tour de jeu puis il est remis à faux au
+	 * Booléen qui détermine si dans un tour, un joueur à déjà jouer, si c'est le
+	 * cas. Il est null avant le premier tour de jeu puis il est remis à faux au
 	 * début de chaque tour et à vrai pour chaque tour quand un joueur à joueur.
 	 */
 	private boolean aJouer;
@@ -96,10 +95,10 @@ public class Joueur extends Observable {
 
 	/**
 	 * Constructeur d'un joueur physique avec une stratégie physique définie de
-	 * base. On crée des listes chainées vides pour le jest, la main et le jest
-	 * avec les trophées lors de la création d'un joueurs qui vont se remplir au
-	 * fur et a mesure des tours. On incrémente la variable du nombre de joueur
-	 * lors de la création d'un nouveau joueur
+	 * base. On crée des listes chainées vides pour le jest, la main et le jest avec
+	 * les trophées lors de la création d'un joueurs qui vont se remplir au fur et a
+	 * mesure des tours. On incrémente la variable du nombre de joueur lors de la
+	 * création d'un nouveau joueur
 	 *
 	 * @param nom the nom
 	 */
@@ -114,15 +113,15 @@ public class Joueur extends Observable {
 
 	/**
 	 * Constructeur d'un joueur virtuel avec son nom et sa stratégie (soit facile,
-	 * soit difficile) On crée des listes chainées vides pour le jest, la main et
-	 * le jest avec les trophées lors de la création d'un joueurs qui vont se
-	 * remplir au fur et a mesure des tours. On incrémente la variable du nombre de
-	 * joueur lors de la création d'un nouveau joueur.
+	 * soit difficile) On crée des listes chainées vides pour le jest, la main et le
+	 * jest avec les trophées lors de la création d'un joueurs qui vont se remplir
+	 * au fur et a mesure des tours. On incrémente la variable du nombre de joueur
+	 * lors de la création d'un nouveau joueur.
 	 *
-	 * @param nom       généralement une suite de caractère qui correspond au nom
-	 *                  du joueur
-	 * @param strategie stratégie de type StratégieJoueur qui définie la
-	 *                  stratégie du joueur virtuel (soit facile/ soit difficile)
+	 * @param nom       généralement une suite de caractère qui correspond au nom du
+	 *                  joueur
+	 * @param strategie stratégie de type StratégieJoueur qui définie la stratégie
+	 *                  du joueur virtuel (soit facile/ soit difficile)
 	 */
 	public Joueur(String nom, StrategieJoueur strategie) {
 		this.nom = nom;
@@ -134,10 +133,10 @@ public class Joueur extends Observable {
 	}
 
 	/**
-	 * Cette méthode utilisée pour la distribution des trophées prends en
-	 * paramètre une Valeur de carte (énumération valeur) Elle renvoi un entier
-	 * qui correspond au nombres de cartes de cette valeur dans la jest du joueur
-	 * sur lequel on applique la méthode. *
+	 * Cette méthode utilisée pour la distribution des trophées prends en paramètre
+	 * une Valeur de carte (énumération valeur) Elle renvoi un entier qui correspond
+	 * au nombres de cartes de cette valeur dans la jest du joueur sur lequel on
+	 * applique la méthode. *
 	 * 
 	 * @param valeur Valeur dont on souhaite connaître le nombre de carte dans le
 	 *               Jest du Joueur
@@ -162,10 +161,9 @@ public class Joueur extends Observable {
 	 * 
 	 * @param valeur dont l'on souhiate avoir la carte ayant la plus grande "force"
 	 *               de couleur du Jest du joueur
-	 * @return Entier qui correspond à la force de la carte la plus élevée pour
-	 *         une valeur donnée La force de couleur pour une valeur donnée est de
-	 *         0 pour le coeur,1 pour le carreau, 2 pour le trèfle, et 3 pour le
-	 *         Pic.
+	 * @return Entier qui correspond à la force de la carte la plus élevée pour une
+	 *         valeur donnée La force de couleur pour une valeur donnée est de 0
+	 *         pour le coeur,1 pour le carreau, 2 pour le trèfle, et 3 pour le Pic.
 	 */
 	public int bestCouleur(Valeur valeur) {
 		int valeurCouleur = 0;
@@ -213,14 +211,41 @@ public class Joueur extends Observable {
 		return valeur;
 	}
 
+	public Carte ComparaisonJest() {
+		Iterator<Carte> it = jest.iterator();
+		Carte bestCard = it.next();
+		int valeurBest = bestCard.getValeur().ordinal();
+		if (this.highestValeurInCouleur(bestCard.getCouleur()) == 5) {
+			valeurBest = 5;
+		}
+		while (it.hasNext()) {
+			System.out.println(valeurBest);
+			
+			Carte carte = it.next();
+			int valeurCarte = carte.getValeur().ordinal();
+			if (this.highestValeurInCouleur(carte.getCouleur()) == 5) {
+				valeurCarte = 5;
+			} 
+			if (valeurCarte > valeurBest) {
+				bestCard = carte;
+				valeurBest = valeurCarte;
+			} if (valeurCarte == valeurBest) {
+				if (carte.getCouleur().ordinal() > bestCard.getCouleur().ordinal()) {
+					bestCard = carte;
+				}
+			}
+		}
+		return bestCard;
+	}
+
 	/**
 	 * Méthode qui renvoi la plus basse valeur de carte d'un Jest pour une couleur
 	 * donnée en paramètre couleur de type Couleur indique pour quelle couleur on
-	 * souhaite connaître la carte qui à la plus basse valeur dans le JEST du
-	 * joueur Si le joueur n'a qu'un as pour une couleur donnée, son as vaudra 5.
-	 * Sinon la plus grande valeur pour une couleur donnée en paramètre sera celle
-	 * de la carte ayant la plus haute valeur dans le JEST ou 0 si il n'a pas de
-	 * carte de cette couleur.
+	 * souhaite connaître la carte qui à la plus basse valeur dans le JEST du joueur
+	 * Si le joueur n'a qu'un as pour une couleur donnée, son as vaudra 5. Sinon la
+	 * plus grande valeur pour une couleur donnée en paramètre sera celle de la
+	 * carte ayant la plus haute valeur dans le JEST ou 0 si il n'a pas de carte de
+	 * cette couleur.
 	 * 
 	 * 
 	 * @return entier de 0 à 6 qui correspond à la plus haute valeur dans le JEST
@@ -250,8 +275,8 @@ public class Joueur extends Observable {
 	}
 
 	/**
-	 * Getter de la liste chainée de carte du Jest avec les éventuels trophées
-	 * d'un joueur
+	 * Getter de la liste chainée de carte du Jest avec les éventuels trophées d'un
+	 * joueur
 	 *
 	 * @return le Jest avec éventuellement les trophées d'un joueur
 	 */
@@ -260,20 +285,18 @@ public class Joueur extends Observable {
 	}
 
 	/**
-	 * Setter qui permet de définir le Jest avec les éventuels trophées d'un
-	 * joueur
+	 * Setter qui permet de définir le Jest avec les éventuels trophées d'un joueur
 	 *
 	 * @param jestAvecTrophes, liste chainée contenant les cartes du Jest du joueur
-	 *                         avec éventuellement les trophées qu'il a
-	 *                         récupérer
+	 *                         avec éventuellement les trophées qu'il a récupérer
 	 */
 	public void setJestAvecTrophes(LinkedList<Carte> jestAvecTrophes) {
 		this.jestAvecTrophes = jestAvecTrophes;
 	}
 
 	/**
-	 * Méthode qui permet à un joueur de choisir la carte qu'il souhaite ajouter
-	 * à son Jest via la méthode choisir Carte de sa stratégie.
+	 * Méthode qui permet à un joueur de choisir la carte qu'il souhaite ajouter à
+	 * son Jest via la méthode choisir Carte de sa stratégie.
 	 * 
 	 * @return le joueur chez qui le joueur courant à pris la carte.
 	 */
@@ -300,8 +323,8 @@ public class Joueur extends Observable {
 	}
 
 	/**
-	 * Méthode qui permer d'ajouter une carte passée en paramètre à la liste
-	 * chainée de carte qui correspond à la main du joueur.
+	 * Méthode qui permer d'ajouter une carte passée en paramètre à la liste chainée
+	 * de carte qui correspond à la main du joueur.
 	 *
 	 * @param c Carte que l'on souhaite ajouter à la main du joueur.
 	 */
@@ -357,8 +380,8 @@ public class Joueur extends Observable {
 
 	/**
 	 * Getter de la main du joueur qui permet d'obtenir les cartes dans le main du
-	 * joueur Cette liste chainée peut être éventuellement null ou contenir
-	 * jusqu'à 2 cartes
+	 * joueur Cette liste chainée peut être éventuellement null ou contenir jusqu'à
+	 * 2 cartes
 	 *
 	 * @return Liste chainée des cartes contenues dans la main du joueur
 	 */
@@ -408,8 +431,7 @@ public class Joueur extends Observable {
 	 * Setter de la carte qui correspond à l'offre cachée du joueur. Null si pas
 	 * d'offre cachée, diff de null si une offre cachée
 	 * 
-	 * @param offreCache la carte que le joueur souhiate cachée dans un tour
-	 *                   donnée
+	 * @param offreCache la carte que le joueur souhiate cachée dans un tour donnée
 	 */
 	public void setOffreCache(Carte offreCache) {
 		this.offreCache = offreCache;
@@ -453,8 +475,8 @@ public class Joueur extends Observable {
 	}
 
 	/**
-	 * Méthode qui permet de connaître dans chaque tour à tout moment si un
-	 * joueur à jouer.
+	 * Méthode qui permet de connaître dans chaque tour à tout moment si un joueur à
+	 * jouer.
 	 *
 	 * @return le booleen est à "true" si dans un tour, le joueur à jouer et à
 	 *         "false" si dans un tour le joueur n'a pas encore jouer.
@@ -464,8 +486,7 @@ public class Joueur extends Observable {
 	}
 
 	/**
-	 * Setter qui permet de définir dans un tour si le joueur à jouer ou pas
-	 * encore.
+	 * Setter qui permet de définir dans un tour si le joueur à jouer ou pas encore.
 	 *
 	 * @param aJouer est un booléen qui est placé "true" si le joueur à jouer et
 	 *               "false" si le joueur n'a pas encore jouer dans chaque tour.
@@ -475,12 +496,12 @@ public class Joueur extends Observable {
 	}
 
 	/**
-	 * Méthode qui renvoi une chaine de caractère contenant les différents
-	 * attributs d'un joueur Cela coprends, son nom, sa main (une liste chainée de
-	 * carte), son offre visible (une carte ou rien), son offre cachée (une carte
-	 * ou rien), son JEST avec ou sans trophée (liste chainée null ou contenant
-	 * des cartes de type Carte), sa stratégie (de type Stratégie), son score (un
-	 * entier), si le joueur à jouer (booleen).
+	 * Méthode qui renvoi une chaine de caractère contenant les différents attributs
+	 * d'un joueur Cela coprends, son nom, sa main (une liste chainée de carte), son
+	 * offre visible (une carte ou rien), son offre cachée (une carte ou rien), son
+	 * JEST avec ou sans trophée (liste chainée null ou contenant des cartes de type
+	 * Carte), sa stratégie (de type Stratégie), son score (un entier), si le joueur
+	 * à jouer (booleen).
 	 * 
 	 * @return the string
 	 */
@@ -490,5 +511,7 @@ public class Joueur extends Observable {
 				+ ", jest=" + jest + ", jestAvecTrophes=" + jestAvecTrophes + ", strategie=" + strategie + ", score="
 				+ score + ", aJouer=" + aJouer + "]\n";
 	}
+
+
 
 }
