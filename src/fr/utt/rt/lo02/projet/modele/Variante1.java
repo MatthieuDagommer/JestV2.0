@@ -63,11 +63,14 @@ public class Variante1 implements Regle{
 						asCoeur = true;
 				}
 			}
-			if(nbCoeur == 4) {
-				score = 5;
-			}
-			if(nbCoeur == 1 && asCoeur) {
-				score = 5;
+			if (nbCoeur == 0) {
+				score += 4;
+			} else if (nbCoeur == 4 && Partie.getInstance().getExtension() == 0) {
+				score = 10;
+			} else if (Partie.getInstance().getExtension() == 1 && nbCoeur == 5) {
+				score = 16;
+			}else if (nbCoeur == 1 && asCoeur) {
+				score = -5;
 			}
 		}
 		return score;

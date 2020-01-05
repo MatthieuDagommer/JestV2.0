@@ -34,6 +34,16 @@ public class Partie extends Observable {
 	/** The joueur actuel. */
 	private Joueur joueurActuel;
 
+	private int extension;
+
+	public int getExtension() {
+		return extension;
+	}
+
+	public void setExtension(int extension) {
+		this.extension = extension;
+	}
+
 	/**
 	 * Gets the joueur actuel.
 	 *
@@ -159,6 +169,7 @@ public class Partie extends Observable {
 	 * @return le jeu de carte de type Deck (Liste chainée et extension)
 	 */
 	public Deck buildJeuDeCarte(int extension) {
+		this.extension = extension;
 		Deck jeu = new Deck(extension);
 		this.jeuDeCartes = jeu;
 		return jeu;
