@@ -39,25 +39,25 @@ public class VuePartie implements Observer {
 
 	/** The joueurs. */
 	private ArrayList<Joueur> joueurs;
-	
+
 	/** The vue joueurs. */
 	private ArrayList<VueJoueur> vueJoueurs;
 
 	/** The panel joueur. */
 	private JPanel panelJoueur;
-	
+
 	/** The panel jest. */
 	private JPanel panelJest;
-	
+
 	/** The fenetre. */
 	private JFrame fenetre;
 
 	/** The trophe 1. */
 	private JLabel trophe1;
-	
+
 	/** The trophe 2. */
 	private JLabel trophe2;
-	
+
 	/** The trophe 3. */
 	private JLabel trophe3;
 
@@ -85,25 +85,25 @@ public class VuePartie implements Observer {
 		fenetre = new JFrame("JEST");
 		fenetre.setLayout(new BorderLayout());
 		fenetre.setResizable(true);
-		
+
 		panelJoueur = new JPanel();
 		panelJoueur.setLayout(new BoxLayout(panelJoueur, BoxLayout.X_AXIS));
-		
+
 		panelJest = new JPanel();
 		panelJest.setLayout(new BoxLayout(panelJest, BoxLayout.Y_AXIS));
 
 		Iterator<Joueur> it = joueurs.iterator();
 		vueJoueurs = new ArrayList<VueJoueur>();
-		while(it.hasNext()) {
+		while (it.hasNext()) {
 			VueJoueur vueJoueur = new VueJoueur(it.next(), this);
 			vueJoueurs.add(vueJoueur);
 			panelJoueur.add(vueJoueur.getOffre());
 
 		}
-		
+
 		VueJest vueJest = new VueJest();
 		panelJest.add(vueJest.getJest());
-		
+
 		JPanel panelTapis = new JPanel();
 		JLabel imgTapis = new JLabel(new ImageIcon("image/tapis.jpg"));
 
@@ -118,7 +118,7 @@ public class VuePartie implements Observer {
 		imgTapis.add(trophe1);
 		imgTapis.add(trophe2);
 		imgTapis.add(trophe3);
-		
+
 		panelTapis.add(imgTapis);
 
 		setLog(new JTextArea());
@@ -127,7 +127,7 @@ public class VuePartie implements Observer {
 		scrollPane = new JScrollPane(getLog());
 
 		fenetre.add(scrollPane, BorderLayout.NORTH);
-		//fenetre.add(scroll, BorderLayout.WEST);
+		// fenetre.add(scroll, BorderLayout.WEST);
 		// fenetre.add(continuer, BorderLayout.SOUTH);
 		fenetre.add(panelJoueur, BorderLayout.SOUTH);
 		fenetre.add(panelJest, BorderLayout.WEST);
@@ -138,12 +138,8 @@ public class VuePartie implements Observer {
 		fenetre.pack();
 		fenetre.setVisible(true);
 		fenetre.setLocationRelativeTo(null);
-		
-
-		
 
 	}
-	
 
 	/**
 	 * Gets the joueurs.
@@ -154,7 +150,6 @@ public class VuePartie implements Observer {
 		return joueurs;
 	}
 
-
 	/**
 	 * Sets the joueurs.
 	 *
@@ -163,7 +158,6 @@ public class VuePartie implements Observer {
 	public void setJoueurs(ArrayList<Joueur> joueurs) {
 		this.joueurs = joueurs;
 	}
-
 
 	/**
 	 * Effacer pioche.
@@ -191,7 +185,7 @@ public class VuePartie implements Observer {
 				this.trophe1.setIcon(new ImageIcon(trophe.getChemin()));
 			} else if (i == 1) {
 				this.trophe2.setIcon(new ImageIcon(trophe.getChemin()));
-			} else if(i==2) {
+			} else if (i == 2) {
 				this.trophe3.setIcon(new ImageIcon(trophe.getChemin()));
 			}
 			i++;
@@ -265,22 +259,20 @@ public class VuePartie implements Observer {
 	/**
 	 * Update.
 	 *
-	 * @param o the o
+	 * @param o   the o
 	 * @param arg the arg
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
-		if(arg instanceof String) {
+		if (arg instanceof String) {
 			String message = arg.toString();
-			if(message.equals("Les troph�s sont distribu�s")) {
+			if (message.equals("Les troph�s sont distribu�s")) {
 				effacerTrophes();
-			}
-			else if(message.equals("La pioche est vide")) {
+			} else if (message.equals("La pioche est vide")) {
 				effacerPioche();
-			} else if(message.contains("Les troph�s sont ")) {
+			} else if (message.contains("Les troph�s sont ")) {
 				afficherTrophes();
-			}
-			else {
+			} else {
 				controleur.updateJTextArea(message);
 			}
 		}
@@ -295,7 +287,6 @@ public class VuePartie implements Observer {
 		return controleur;
 	}
 
-
 	/**
 	 * Gets the vue joueurs.
 	 *
@@ -305,7 +296,6 @@ public class VuePartie implements Observer {
 		return vueJoueurs;
 	}
 
-
 	/**
 	 * Sets the vue joueurs.
 	 *
@@ -314,6 +304,5 @@ public class VuePartie implements Observer {
 	public void setVueJoueurs(ArrayList<VueJoueur> vueJoueurs) {
 		this.vueJoueurs = vueJoueurs;
 	}
-
 
 }

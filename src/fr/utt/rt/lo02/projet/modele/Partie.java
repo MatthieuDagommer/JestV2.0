@@ -184,6 +184,7 @@ public class Partie extends Observable {
 	 * 
 	 */
 	public void lancerPartie() {
+		String message = "";
 		jeuDeCartes.melanger();
 		choixTrophee();
 		do {
@@ -219,6 +220,9 @@ public class Partie extends Observable {
 		distribuerTrophees();
 		fusionJest();
 		updateScore();
+		message = "Fin de partie, le gagant est : " + bestJest(joueurs);
+		setChanged();
+		notifyObservers(message);
 	}
 
 	/**
