@@ -67,7 +67,7 @@ public class Carte {
 	/**
 	 * Setter permettant de donnée à une carte sa valeur.
 	 *Cette méthode ne renvoie rien
-	 * @param Prends en paramètre d'entrée une Valeur (valeur de l'énumération Valeur)
+	 * @param valeur Prends en paramètre d'entrée une Valeur (valeur de l'énumération Valeur)
 	 */
 	public void setValeur(Valeur valeur) {
 		this.valeur = valeur;
@@ -84,7 +84,7 @@ public class Carte {
 	/**
 	 * Setter permettant de donnée à une carte sa Couleur.
 	 *Cette méthode ne renvoie rien
-	 * @param Prends en paramètre d'entrée une Couleur(valeur de l'énumération Couleur).
+	 * @param couleur Prends en paramètre d'entrée une Couleur(valeur de l'énumération Couleur).
 	 */
 	public void setCouleur(Couleur couleur) {
 		this.couleur = couleur;
@@ -102,7 +102,7 @@ public class Carte {
 	/**
 	 * Setter permettant de donnée à une carte son Trophée.
 	 * Cette méthode ne renvoie rien
-	 * @param Prends en paramètre d'entrée un Trophée(valeur de l'énumération Trophée).
+	 * @param trophee Prends en paramètre d'entrée un Trophée(valeur de l'énumération Trophée).
 	 */
 	public void setTrophee(Trophee trophee) {
 		this.trophee = trophee;

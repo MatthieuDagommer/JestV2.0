@@ -83,7 +83,7 @@ public class Partie extends Observable {
 	 * Méthode public qui permet de crée la partie si elle n'est pas déjà créee ou d'obtenir les attributs de la 
 	 * partie en cours.
 	 *
-	 * @return instance --> l'unique instance en partie
+	 * @return instance l'unique instance en partie
 	 */
 	public static Partie getInstance() {
 		if (instance == null) {
@@ -155,7 +155,7 @@ public class Partie extends Observable {
 	 * Méthode public qui permet de construire la pioche de jeu en fonction de l'extension choisie.
 	 * En effet, selon l'extension choisie, le jeu comportera 17 ou 21 cartes.
 	 *
-	 * @param entier correspondant à l'extension (0 sans extension, 1 avec une extension)
+	 * @param extension correspondant à l'extension (0 sans extension, 1 avec une extension)
 	 * @return le jeu de carte de type Deck (Liste chainée et extension)
 	 */
 	public Deck buildJeuDeCarte(int extension) {

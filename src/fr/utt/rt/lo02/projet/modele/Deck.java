@@ -105,7 +105,7 @@ public class Deck {
 	 * Setter qui permet de définir la valeur de l'extension de jeu
 	 * Cette valeur est un entier à 0 si il n'y a pas d'extension et un entier à 1 si il y a une extension
 	 * Toute autre valeur n'est pas admise dans notre jeu de JEST
-	 * @param Entrer 0 pour aucune extension et 1 pour une extension
+	 * @param extension Entrer 0 pour aucune extension et 1 pour une extension
 	 */
 	public void setExtension(int extension) {
 		this.extension = extension;
@@ -123,7 +123,7 @@ public class Deck {
 	/**
 	 * Setter qui permet de définir un tas de carte sous forme de liste chainée
 	 *
-	 * @param Une liste chainée de carte qui correspond à la liste des cartes.
+	 * @param tasDeCarte Une liste chainée de carte qui correspond à la liste des cartes.
 	 */
 	public void setTasDeCarte(LinkedList<Carte> tasDeCarte) {
 		this.tasDeCarte = tasDeCarte;
