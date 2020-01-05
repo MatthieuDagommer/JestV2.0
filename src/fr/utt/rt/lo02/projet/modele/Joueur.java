@@ -6,7 +6,7 @@ import java.util.Observable;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Joueur.
+ * Classe publique qui définie un joueur (virtuel ou réel).  
  */
 public class Joueur extends Observable {
 
@@ -56,14 +56,14 @@ public class Joueur extends Observable {
 	 * Attribut de type Stratégie qui définie la stratégie d'un joueur. Les
 	 * startégies possibles sont la stratégie facile ou difficile pour un joueur
 	 * virtuel ou la stratégie Physique pour un joueur physique. Pour un déroulement
-	 * normal du jeu, chaque joueur doit avoir une startégie différente de nulle dès
+	 * normal du jeu, chaque joueur doit avoir une startégie différente de null dès
 	 * la création de celui-ci.
 	 */
 	private StrategieJoueur strategie;
 
 	/**
 	 * Cette entier correspond au score d'un joueur. Il est null jusqu'à la phase de
-	 * distribution des trophées, une fois les scores comptés une première fois.
+	 * distribution des trophées.
 	 */
 	private int score;
 
