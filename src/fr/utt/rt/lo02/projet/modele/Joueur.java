@@ -100,7 +100,7 @@ public class Joueur extends Observable {
 	 * mesure des tours. On incrémente la variable du nombre de joueur lors de la
 	 * création d'un nouveau joueur
 	 *
-	 * @param nom the nom
+	 * @param nom Nom du joueur
 	 */
 	public Joueur(String nom) {
 		this.nom = nom;
