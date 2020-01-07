@@ -219,7 +219,7 @@ public class Joueur extends Observable {
 			valeurBest = 5;
 		}
 		while (it.hasNext()) {
-			System.out.println(valeurBest);
+			//System.out.println(valeurBest);
 			
 			Carte carte = it.next();
 			int valeurCarte = carte.getValeur().ordinal();
