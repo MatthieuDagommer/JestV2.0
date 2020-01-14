@@ -5,12 +5,24 @@ import fr.utt.rt.lo02.projet.modele.StratFacile;
 import fr.utt.rt.lo02.projet.vue.VueConsole;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainGraphique.
+ */
 public class MainGraphique implements Runnable {
 
+	/** The partie. */
 	private Partie partie;
+	
+	/** The controleur. */
 	private PartieControleur controleur;
+	
+	/** The vue partie. */
 	private VuePartie vuePartie;
 	
+	/**
+	 * Instantiates a new main graphique.
+	 */
 	public MainGraphique() {
 		partie = Partie.getInstance();
 		partie.initialisation();
@@ -26,6 +38,11 @@ public class MainGraphique implements Runnable {
 		//System.out.println(partie.bestJest(partie.getJoueurs()));
 	}
 
+	/**
+	 * The main method.
+	 *
+	 * @param args the arguments
+	 */
 	public static void main(String[] args) {
 		Thread partie = new Thread(new MainGraphique());
 		partie.start();
@@ -37,6 +54,9 @@ public class MainGraphique implements Runnable {
 		//VueTexte maConsoleText = new VueTexte(Partie.getInstance()); 
 	}
 
+	/**
+	 * Run.
+	 */
 	@Override
 	public void run() {
 			//new MainGraphique();

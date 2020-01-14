@@ -34,6 +34,4 @@ baspic,
 bastrefle, 
  /** Trophée du meilleur JEST */
  bestJest, 
- /** Aucun trophée  */
- aucun;
 }
