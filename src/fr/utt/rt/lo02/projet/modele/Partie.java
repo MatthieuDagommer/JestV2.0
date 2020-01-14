@@ -9,90 +9,109 @@ import fr.utt.rt.lo02.projet.controleur.PartieControleur;
 
 /**
  * La classe partie est une classe public qui est observable. Cette classe est
- * observable afin de mettre a jour les vues en cas de
- * changement. C'est le moteur du jeu, C'est a l'interieur de cette classe que
- * l'on va : cree la partie avec les differents joueurs et leur strategie,
- * definir la variante et eventuellement l'extension de carte. Derouler les tour
- * et compter les scores a la fin du jeu. Cette classe utilise le singleton car
- * on ne peut avoir seulement une instance unique de partie lorsque l'on joue.
+ * observable afin de mettre a jour les vues en cas de changement. C'est le
+ * moteur du jeu, C'est a l'interieur de cette classe que l'on va : cree la
+ * partie avec les differents joueurs et leur strategie, definir la variante et
+ * eventuellement l'extension de carte. Derouler les tours et compter les scores
+ * a la fin du jeu. Cette classe utilise le singleton car on ne peut avoir
+ * seulement une instance unique de partie lorsque l'on joue.
  */
 @SuppressWarnings("deprecation")
 public class Partie extends Observable {
 
 	/**
 	 * instance est l'unique instance de partie. Elle est definie a null avant de
-	 * lancer la partie, dès que l'utilisateur a chosisit le nombre de joueur, la
+	 * lancer la partie, des que l'utilisateur a chosisit le nombre de joueur, la
 	 * variante et l'extension, l'instance de partie est creee.
 	 */
 	private static Partie instance = null;
 
 	/**
 	 * Cette liste definie les differents joueur lors de la partie. Elle est
-	 * composee dans notre jeu de JEST de 3 ou 4 joueurs virtuels/physique et dans
-	 * un fonctionnement
+	 * composee dans notre jeu de JEST de 3 ou 4 joueurs virtuels/physique
 	 */
 	private ArrayList<Joueur> joueurs;
 
-	/** The trophes. */
+	/**
+	 * Cette collection comporte les trophes mis face visible au debut de la partie
+	 */
 	private LinkedList<Carte> trophes;
 
-	/** The jeu de cartes. */
+	/** C'est la pioche de type Deck */
 	private Deck jeuDeCartes;
 
-	/** The regle. */
+	/**
+	 * Regle choisit par l'utilisateur. Patron Strategy, elle est soit de de type
+	 * RegleStandard, Variante1 ou Variante 2
+	 * 
+	 */
 	private Regle regle;
 
-	/** The joueur actuel. */
+	/** C'est le joueur qui joue pendant le tour. */
 	private Joueur joueurActuel;
 
+	/**
+	 * Entier qui represente l'extension. Il est egale a 0 ou 1
+	 */
 	private int extension;
 
+	/**
+	 * Getter de l'extension
+	 *
+	 * @return l extension
+	 */
 	public int getExtension() {
 		return extension;
 	}
 
+	/**
+	 * Setter qui permet de definir l'extension.
+	 *
+	 * @param extension C'est un entier sui represente l'extension
+	 */
 	public void setExtension(int extension) {
 		this.extension = extension;
 	}
 
 	/**
-	 * Gets the joueur actuel.
+	 * Getter du joueur actuel.
 	 *
-	 * @return the joueur actuel
+	 * @return le joueur actuel
 	 */
 	public Joueur getJoueurActuel() {
 		return joueurActuel;
 	}
 
 	/**
-	 * Sets the joueur actuel.
+	 * Setter du joueur actuel.
 	 *
-	 * @param joueurActuel the new joueur actuel
+	 * @param joueurActuel le nouveau joueur actuel
 	 */
 	public void setJoueurActuel(Joueur joueurActuel) {
 		this.joueurActuel = joueurActuel;
 	}
 
 	/**
-	 * Gets the regle.
+	 * Getter de la regle.
 	 *
-	 * @return the regle
+	 * @return la regle actuel
 	 */
 	public Regle getRegle() {
 		return regle;
 	}
 
 	/**
-	 * Sets the regle.
+	 * setter de la regle.
 	 *
-	 * @param regle the new regle
+	 * @param regle la nouvelle regle
 	 */
 	public void setRegle(Regle regle) {
 		this.regle = regle;
 	}
 
 	/**
-	 * Instantiates a new partie.
+	 * Constructeur prive dans le cadre du patron singleton Instancie une nouvelle
+	 * partie.
 	 */
 	private Partie() {
 		joueurActuel = null;
@@ -205,7 +224,7 @@ public class Partie extends Observable {
 	 * souhaite ajouter a son JEST (methode jouer) i. Une fois que le joueur a jouer
 	 * on definie le joueur suivant a l'aide de la methode meilleure offre si il
 	 * reste des joueurs j. sinon on ramasser les cartes restantes dans les offres
-	 * des joueurs pour les distribuer au tour d'après. 4. On notifie les observers
+	 * des joueurs pour les distribuer au tour d'apres. 4. On notifie les observers
 	 * de la partie que la pioche et vide 5. On compte les scores et on distribue
 	 * les trophees.
 	 * 
@@ -230,14 +249,12 @@ public class Partie extends Observable {
 				}
 				joueurActuel = joueurActuel.jouer();
 				if (joueurActuel.isaJouer() && i < Joueur.NB_JOUEURS - 1) {
-					// System.out.println("Dans le tour");
 					joueurActuel = meilleureOffre();
 				}
 			}
 			if (!jeuDeCartes.estVide()) {
 				rammaserCartesRestante();
 			}
-			// System.out.println("Fin du tour");
 		} while (!jeuDeCartes.estVide());
 		setChanged();
 		notifyObservers("La pioche est vide");
@@ -312,7 +329,7 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Lors du dernier tour, les cartes des offres des joueurs doivent être
+	 * Lors du dernier tour, les cartes des offres des joueurs doivent etre
 	 * transferer dans leur JEST. On ajouter les cartes restantes dans le JEST du
 	 * joueurs. On notifie les differentes vues de la partie que les cartes
 	 * restantes sont maintenant dans le JEST.
@@ -338,7 +355,7 @@ public class Partie extends Observable {
 	 * Methode qui permet de determiner le joueur qui doit jouer dans un tour. On
 	 * definit le prochain joueur comme un joueur n'ayant pas deja jouer.
 	 * 
-	 * On itère ensuite sur les differents joueurs, pour chacun on verifie si il a
+	 * On itere ensuite sur les differents joueurs, pour chacun on verifie si il a
 	 * jouer et si il a une carte visible plus forte que celle du meilleur joueur
 	 * courant. Si c'est le cas, il devient le joueur courant.
 	 *
@@ -370,9 +387,9 @@ public class Partie extends Observable {
 
 	/**
 	 * Cette methode public permet d'ajouter des cartes a la liste chainee trophee.
-	 * Si le jeu possède 3 joueurs sans extension, il y a 2 cartes de trophee posees
-	 * sur le plateau Si le jeu possède 4 joueurs il n'y a q'une sueule carte de
-	 * trophee. Si le jeu possède 3 joueurs et 1 extension, on aura alors 3 cartes
+	 * Si le jeu possede 3 joueurs sans extension, il y a 2 cartes de trophee posees
+	 * sur le plateau Si le jeu possede 4 joueurs il n'y a q'une sueule carte de
+	 * trophee. Si le jeu possede 3 joueurs et 1 extension, on aura alors 3 cartes
 	 * de torphees sur le plateau. Une fois les cartes de trophees ajouter a la
 	 * liste chainee, on notifie les differentes vues qui observent la partie les
 	 * trophees qui ont ete ajoute.
@@ -390,7 +407,6 @@ public class Partie extends Observable {
 			trophes.add(jeuDeCartes.piocherCarte());
 		}
 		message = "Les troph�s sont " + trophes.toString();
-		// System.out.println(message);
 
 		setChanged();
 		notifyObservers(message);
@@ -411,9 +427,9 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Cette methode gère la distribution des trophees dans le jeu.
-	 * 
-	 * 
+	 * Cette methode gere la distribution des trophees dans le jeu. Elle effectue
+	 * different action en fonction du trophee de la carte a distribuee elle notifie
+	 * la vue quand le trophe est distribue
 	 * 
 	 */
 	public void distribuerTrophees() {
@@ -503,9 +519,9 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Checks for joker.
+	 * Permet de trouver le joueur qui possede le joker
 	 *
-	 * @return the joueur
+	 * @return le joueur qui possede le joker
 	 */
 	public Joueur hasJoker() {
 		Iterator<Joueur> it = joueurs.iterator();
@@ -519,10 +535,10 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Plus valeur.
+	 * Chercher le joueur avec le plus de carte d'une valeur.
 	 *
-	 * @param valeur the valeur
-	 * @return the joueur
+	 * @param valeur La valeur a compter
+	 * @return le joueur avec le plus de carte de la valeur
 	 */
 	public Joueur plusValeur(Valeur valeur) {
 		Joueur bestJoueur;
@@ -541,10 +557,10 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Highest carte in couleur.
+	 * Cherche le joueur avec la valeur la plus haute dans une couleur donnee
 	 *
-	 * @param couleur the couleur
-	 * @return the joueur
+	 * @param couleur la couleur ou l'on veut la plus haute valeur
+	 * @return le joueur avec la plus haute carte
 	 */
 	public Joueur highestCarteInCouleur(Couleur couleur) {
 		Joueur bestJoueur;
@@ -560,10 +576,10 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Lowest carte in couleur.
+	 * Cherche le joueur avec la valeur la plus basse dans une couleur donnee
 	 *
-	 * @param couleur the couleur
-	 * @return the joueur
+	 * @param couleur la couleur ou l'on veut la plus basse valeur
+	 * @return le joueur avec la plus basse carte
 	 */
 	public Joueur lowestCarteInCouleur(Couleur couleur) {
 		Joueur bestJoueur;
@@ -579,7 +595,7 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Update score.
+	 * met a jour les scores des joueurs graces aux visites du patron visitor
 	 */
 	public void updateScore() {
 		Iterator<Joueur> it = joueurs.iterator();
@@ -590,10 +606,11 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Visit jest.
+	 * Visit le jest d'un joueur pour compter les points avec la regle de la partie
+	 * en cours.
 	 *
-	 * @param jest the jest
-	 * @return the int
+	 * @param jest le JEST du joueur a compter
+	 * @return le score du JEST
 	 */
 	public int visitJest(LinkedList<Carte> jest) {
 		int score = 0;
@@ -605,10 +622,10 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Best jest.
+	 * Cherche le joueur avec le meilleur jest
 	 *
-	 * @param joueurs the joueurs
-	 * @return the joueur
+	 * @param joueurs la liste des joueurs a comparer
+	 * @return le joueur avec le meilleur jest
 	 */
 	public Joueur bestJest(ArrayList<Joueur> joueurs) {
 		updateScore();
@@ -644,9 +661,10 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Best jest no joker.
+	 * On cherche le meilleur jest sans le joker. Si le meilleur jest continent le
+	 * joker alors on cree une liste de joueur sans celui qui possede le joker
 	 *
-	 * @return the joueur
+	 * @return le joueur avec le meilleur jest sans le joker
 	 */
 	private Joueur bestJestNoJoker() {
 		updateScore();
@@ -661,10 +679,10 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Gets the offre dispo.
+	 * Permet d'obtenir les offre dans lesquelles le joueur peut choisir
 	 *
-	 * @param joueur the joueur
-	 * @return the offre dispo
+	 * @param joueur le joueur dont on cherche les offre disponible pour jouer
+	 * @return une liste de joueurs chez qui il peut piocher
 	 */
 	public ArrayList<Joueur> getOffreDispo(Joueur joueur) {
 		ArrayList<Joueur> copyJoueurs = new ArrayList<Joueur>();
@@ -682,36 +700,11 @@ public class Partie extends Observable {
 	}
 
 	/**
-	 * Cette methode va permettre d'appeler la fenêtre d'initialisation du JEST.
+	 * Cette methode va permettre d'appeler la fenetre d'initialisation du JEST.
 	 * Depuis le controlleur de la Partie.
 	 */
 	public void initialisation() {
 		PartieControleur.initialisationJest();
 	}
 
-	/**
-	 * The main method.
-	 *
-	 * @param args the arguments
-	 */
-	public static void main(String[] args) {
-		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
-		Joueur ordi2 = new Joueur("ordi2", new StratFacile());
-		Joueur ordi3 = new Joueur("ordi3", new StratFacile());
-		Joueur ordi4 = new Joueur("ordi4", new StratFacile());
-
-		Partie partie = Partie.getInstance();
-
-		partie.addJoueur(ordi1);
-		partie.addJoueur(ordi2);
-		partie.addJoueur(ordi3);
-		partie.addJoueur(ordi4);
-
-		partie.buildJeuDeCarte(0);
-		partie.setRegle(new RegleStandard());
-
-		partie.lancerPartie();
-
-		// System.out.println(partie.bestJest(partie.getJoueurs()));
-	}
 }
