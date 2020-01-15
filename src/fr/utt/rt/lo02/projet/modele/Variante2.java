@@ -5,15 +5,18 @@ import java.util.LinkedList;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class Variante2.
+ * Classe de variante qui change le comptage des points dans le jest des joueurs. Cette classe implemente la classe de regle dans 
+ * laquelle les differentes methodes permettant d'obtenir le JEST de chaque joueur y sont present.
  */
 public class Variante2 implements Regle{
 
 	/**
-	 * Visit carreau.
-	 *
-	 * @param jest the jest
-	 * @return the int
+	 * Methode qui pour un JEST de joueur donnee permet de compter les cartes de carreau du JEST. Dans cette variante, 
+	 * Les cartes de carreau sont comptes en positif.
+	 *Un bonus est accorde si le JEST contient uniquement l'AS, celui-ci vaut 5.
+	 * @param jest Le Jest du joueur (liste chainee de cartes).
+	 * @return int : le score du joueur pour les cartes de carreau dans son JEST.
+	 * Remarque : Le JOKER etant arbitrairement fixe comme une carte de carreau, on ne le compte pas dans le nombre de carte de carreau du JEST. 
 	 */
 	public int visitCarreau(LinkedList<Carte> jest) {
 		int score = 0;
@@ -36,10 +39,13 @@ public class Variante2 implements Regle{
 	}
 
 	/**
-	 * Visit coeur.
+	 * Methode qui pour un JEST de joueur donnee permet de compter les cartes de coeur du JEST. Dans cette variante, 
+	 * Les cartes de coeur sont comptes en positif si le joueur à le JOKER et entre 1 et 3 cartes de coeur sans extension ou entre 1 et 4 cartes de coeur avec extension.
+	 * En négatif si il a toutes les cartes de coeur avec un bonus de 4 pour le JOKER. 
+	 * Aucun point n'est accorde pour les cartes de coeur dans le cas ou le JEST ne contient pas le JOKER.
 	 *
-	 * @param jest the jest
-	 * @return the int
+	 * @param jest Le Jest du joueur (liste chainee de cartes).
+	 * @return int : le score du joueur pour les cartes de carreau dans son JEST.
 	 */
 	@Override
 	public int visitCoeur(LinkedList<Carte> jest) {
@@ -71,10 +77,12 @@ public class Variante2 implements Regle{
 	}
 
 	/**
-	 * Visit trefle pic.
-	 *
-	 * @param jest the jest
-	 * @return the int
+	 * Methode qui pour un JEST de joueur donnee permet de compter les cartes de trefle et de Pic du JEST. Dans cette variante, 
+	 * Les cartes de Pic et de Trefle sont comptees en positif. Un bonus est accorde si le JEST contient uniquement l'AS de PIC et/ou l'as de Trefle, celui-ci
+	 * vaut alors 5.
+	 * 
+	 * @param jest Le Jest du joueur (liste chainee de cartes).
+	 * @return int : le score du joueur pour les cartes de carreau dans son JEST.
 	 */
 	@Override
 	public int visitTreflePic(LinkedList<Carte> jest) {
@@ -107,10 +115,11 @@ public class Variante2 implements Regle{
 	}
 
 	/**
-	 * Visit noir.
+	 * Methode qui pour un JEST de joueur donnee permet de compter les bonus pour les cartes noires. Si un joueur
+	 * possede deux cartes de la même valeur en PIC et en Trefle, un bonus de +2 lui est accorde pour chaque paire.
 	 *
-	 * @param jest the jest
-	 * @return the int
+	 * @param jest Le Jest du joueur (liste chainee de cartes).
+	 * @return int : le score du joueur pour les cartes de carreau dans son JEST.
 	 */
 	@Override
 	public int visitNoir(LinkedList<Carte> jest) {
