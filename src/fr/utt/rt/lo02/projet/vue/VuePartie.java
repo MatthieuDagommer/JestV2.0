@@ -95,7 +95,7 @@ public class VuePartie implements Observer {
 		Iterator<Joueur> it = joueurs.iterator();
 		vueJoueurs = new ArrayList<VueJoueur>();
 		while (it.hasNext()) {
-			VueJoueur vueJoueur = new VueJoueur(it.next(), this);
+			VueJoueur vueJoueur = new VueJoueur(it.next());
 			vueJoueurs.add(vueJoueur);
 			panelJoueur.add(vueJoueur.getOffre());
 
