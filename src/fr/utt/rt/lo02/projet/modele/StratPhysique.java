@@ -51,6 +51,7 @@ public class StratPhysique extends StrategieJoueur {
 	 *
 	 * @param carte the carte
 	 */
+	@Override
 	public void cacher(Carte carte) {
 		this.cache = carte;
 	}
@@ -61,6 +62,7 @@ public class StratPhysique extends StrategieJoueur {
 	 * @param ceJoueur the ce joueur
 	 * @return the joueur
 	 */
+	@Override
 	public Joueur choisirCarte(Joueur ceJoueur) {
 		String message = "";
 		// ArrayList<Joueur> joueurs = Partie.getInstance().getOffreDispo(ceJoueur);
