@@ -15,22 +15,23 @@ import javax.swing.JPanel;
 import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class FenetreChoixOffre.
+ * Classe de la fenetre qui demande la carte a cacher pour un joueur physique
  */
 public class FenetreChoixOffre {
 
-	/** The joueur. */
+	/** le joueur. */
 	private Joueur joueur;
 
-	/** The main. */
+	/** la main du joueur */
 	private LinkedList<Carte> main;
 
 	/**
-	 * Instantiates a new fenetre choix offre.
+	 * Constructeur de la classe.
+	 * Construit la fenetre avec les 2 carte de la main du joueur.
+	 * Des qu'une carte est clique, on la cache dans l'offre du joueur.
 	 *
-	 * @param joueur the joueur
+	 * @param joueur le joueur qui joue
 	 */
 	public FenetreChoixOffre(Joueur joueur) {
 		JFrame fenetre = new JFrame("Choisir la carte a cacher " + joueur.getNom());

@@ -28,7 +28,7 @@ public class StratPhysique extends StrategieJoueur {
 	public void faireOffre(Joueur ceJoueur) {
 		LinkedList<Carte> main = ceJoueur.getMain();
 		PartieControleur.fenetreChoixOffre(ceJoueur);
-		while(cache == null) {
+		while(cache == null) {//modifier avec de l'attente passive
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {

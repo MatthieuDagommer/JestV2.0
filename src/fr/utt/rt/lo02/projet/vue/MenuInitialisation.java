@@ -16,40 +16,38 @@ import fr.utt.rt.lo02.projet.modele.Joueur;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class MenuInitialisation.
+ * Classe de la fenetre qui permet l'initialisation du jeu.
+ * On peut y choisir le nombre de joueur, la variante, l'xtension et notre nom
  */
 public class MenuInitialisation extends JDialog {
 
-	/** The joueur. */
-	private Joueur joueur;
-
-	/** The nom. */
+	/** le nom du joueur physique */
 	private JTextArea nom;
 
-	/** The fenetre. */
+	/** la fenetre */
 	private JPanel fenetre;
 
-	/** The ok. */
+	/** le bouton ok */
 	private JButton ok;
 
-	/** The nb. */
-	private JTextArea nb;
-
-	/** The extension. */
+	/** zone de texte pour l'extension */
 	private JTextArea extension;
 
-	/** The variante. */
+	/** zone de texte pour la variante */
 	private JTextArea variante;
 	
+	/** Slider pour les joueurs physique */
 	private JSlider joueurP;
 	
+	/** Slider pour les joueurs virtuels. */
 	private JSlider joueurV;
 
 	/**
-	 * Instantiates a new menu initialisation.
+	 * Constructeur de la classe.
+	 * Il cree la fenetre avec tout les element permetant l'interaction avec l'utilisateur
 	 *
 	 * @param parent the parent
-	 * @param title the title
+	 * @param title le titre de la fenetre
 	 * @param modal the modal
 	 */
 	public MenuInitialisation(JFrame parent, String title, boolean modal) {
@@ -60,7 +58,7 @@ public class MenuInitialisation extends JDialog {
 	}
 
 	/**
-	 * Inits the.
+	 * Initialise la fenetre avec tous les elements
 	 */
 	private void init() {
 
@@ -93,9 +91,8 @@ public class MenuInitialisation extends JDialog {
 		variante.setEditable(true);
 
 		ok = new JButton("Ok");
-
-		// MouseListener qui vérifie que les champs sont remplis
-		// avant de cacher la fenêtre
+		
+		// Permet de verifier que les champs ne sont pas vide et que le nombre de joueur est compatible
 		ok.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent me) {
 				if (!nom.getText().equals("Nom") && joueurP.getValue()+joueurV.getValue()<5 && joueurP.getValue()+joueurV.getValue()>2) {
@@ -103,7 +100,7 @@ public class MenuInitialisation extends JDialog {
 				}
 					
 				else
-					ok.setText("!ok");
+					ok.setText("Erreur de saisie, recommencez");
 				
 			}
 		});
@@ -152,10 +149,20 @@ public class MenuInitialisation extends JDialog {
 		return Integer.parseInt(extension.getText());
 	}
 
+	/**
+	 * Gets the joueur P.
+	 *
+	 * @return the joueur P
+	 */
 	public int getJoueurP() {
 		return joueurP.getValue();
 	}
 	
+	/**
+	 * Gets the joueur V.
+	 *
+	 * @return the joueur V
+	 */
 	public int getJoueurV() {
 		return joueurV.getValue();
 	}

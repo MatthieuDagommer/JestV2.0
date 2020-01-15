@@ -44,7 +44,7 @@ public class PartieControleur {
 	/**
 	 * Instantiates a new partie controleur.
 	 *
-	 * @param partie the partie
+	 * @param partie    the partie
 	 * @param vuePartie the vue partie
 	 */
 	public PartieControleur(Partie partie, VuePartie vuePartie) {
@@ -112,7 +112,7 @@ public class PartieControleur {
 			Partie.getInstance().setRegle(new RegleStandard());
 			break;
 		}
-		switch (dialog.getJoueurP()){
+		switch (dialog.getJoueurP()) {
 		case 0:
 			break;
 		case 1:
@@ -146,7 +146,7 @@ public class PartieControleur {
 		default:
 			break;
 		}
-		switch (dialog.getJoueurV()){
+		switch (dialog.getJoueurV()) {
 		case 0:
 			break;
 		case 1:
@@ -180,22 +180,6 @@ public class PartieControleur {
 		default:
 			break;
 		}
-			
-			
-		
-		//Joueur ordi1 = new Joueur("ordi1", new StratFacile());
-		//Joueur ordi2 = new Joueur("ordi2", new StratDifficile());
-		// Joueur ordi3 = new Joueur("ordi3", new StratDifficile());
-		// Joueur ordi4 = new Joueur("ordi4", new StratFacile());
-		//Joueur moi = new Joueur(dialog.getNom());
-		//Joueur louis = new Joueur("Louis");
-
-		//Partie.getInstance().addJoueur(ordi1);
-		//Partie.getInstance().addJoueur(ordi2);
-		//Partie.getInstance().addJoueur(ordi3);
-		// Partie.getInstance().addJoueur(ordi4);
-		//Partie.getInstance().addJoueur(moi);
-		//Partie.getInstance().addJoueur(louis);
 
 	}
 
@@ -206,10 +190,9 @@ public class PartieControleur {
 	 */
 	public static void updateJTextArea(String message) {
 		getVuePartie().getLog().append(message + "\n");
-		// Pour placer le curseur à la fin, afin d'émuler un scroll automatique
 		getVuePartie().getLog().setCaretPosition(getVuePartie().getLog().getDocument().getLength());
 	}
-	
+
 	/**
 	 * Fenetre choix offre.
 	 *
@@ -217,7 +200,7 @@ public class PartieControleur {
 	 */
 	public static void fenetreChoixOffre(Joueur joueur) {
 		FenetreChoixOffre fenetreChoix = new FenetreChoixOffre(joueur);
-		
+
 	}
 
 	/**
