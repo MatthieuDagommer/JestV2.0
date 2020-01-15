@@ -12,9 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 
-import fr.utt.rt.lo02.projet.modele.Joueur;
 
-// TODO: Auto-generated Javadoc
 /**
  * Classe de la fenetre qui permet l'initialisation du jeu.
  * On peut y choisir le nombre de joueur, la variante, l'xtension et notre nom
@@ -141,7 +139,7 @@ public class MenuInitialisation extends JDialog {
 	}
 	
 	/**
-	 * Gets the extension.
+	 * Getter de extension.
 	 *
 	 * @return the extension
 	 */
@@ -150,16 +148,16 @@ public class MenuInitialisation extends JDialog {
 	}
 
 	/**
-	 * Gets the joueur P.
+	 * Getter de joueurP.
 	 *
-	 * @return the joueur P
+	 * @return the joueurP
 	 */
 	public int getJoueurP() {
 		return joueurP.getValue();
 	}
 	
 	/**
-	 * Gets the joueur V.
+	 * Getter de joueur V.
 	 *
 	 * @return the joueur V
 	 */
@@ -169,7 +167,7 @@ public class MenuInitialisation extends JDialog {
 	
 	
 	/**
-	 * Sets the extension.
+	 * Setter de extension.
 	 *
 	 * @param extension the new extension
 	 */
@@ -178,7 +176,7 @@ public class MenuInitialisation extends JDialog {
 	}
 
 	/**
-	 * Gets the variante.
+	 * Getter de variante.
 	 *
 	 * @return the variante
 	 */
@@ -187,7 +185,7 @@ public class MenuInitialisation extends JDialog {
 	}
 
 	/**
-	 * Sets the variante.
+	 * Setter de variante.
 	 *
 	 * @param variante the new variante
 	 */
@@ -196,7 +194,7 @@ public class MenuInitialisation extends JDialog {
 	}
 	
 	/**
-	 * Gets the nom.
+	 * Getter de nom.
 	 *
 	 * @return the nom
 	 */

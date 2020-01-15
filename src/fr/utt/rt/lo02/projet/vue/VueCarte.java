@@ -6,25 +6,25 @@ import javax.swing.JLabel;
 import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Valeur;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class VueCarte.
+ * Classe qui represente une carte en vue graohique
  */
 public class VueCarte {
 
-	/** The carte. */
+	/** la carte. */
 	private Carte carte;
 
-	/** The image. */
+	/** son image. */
 	private JLabel image;
 
-	/** The chemin. */
+	/** le chemin vers l'image. */
 	private String chemin;
 
 	/**
-	 * Instantiates a new vue carte.
+	 * Constructeur de la classe, il permet de definir le chemin en fonction des
+	 * atributs de la carte a cree
 	 *
-	 * @param carte the carte
+	 * @param carte la carte dont on veut une vue
 	 */
 	public VueCarte(Carte carte) {
 		this.carte = carte;
@@ -77,9 +77,9 @@ public class VueCarte {
 		chemin = sb.toString();
 		this.image = new JLabel(new ImageIcon(sb.toString()));
 	}
-	
+
 	/**
-	 * Gets the icon.
+	 * Getter de icon.
 	 *
 	 * @return the icon
 	 */
@@ -88,7 +88,7 @@ public class VueCarte {
 	}
 
 	/**
-	 * Gets the chemin.
+	 * Getter de chemin.
 	 *
 	 * @return the chemin
 	 */
@@ -97,16 +97,16 @@ public class VueCarte {
 	}
 
 	/**
-	 * Sets the chemin.
+	 * Setter de chemin.
 	 *
-	 * @param chemin the new chemin
+	 * @param chemin le nouveau chemin
 	 */
 	public void setChemin(String chemin) {
 		this.chemin = chemin;
 	}
 
 	/**
-	 * Gets the carte.
+	 * Getter de carte.
 	 *
 	 * @return the carte
 	 */
@@ -115,7 +115,7 @@ public class VueCarte {
 	}
 
 	/**
-	 * Gets the image.
+	 * Getter de image.
 	 *
 	 * @return the image
 	 */
