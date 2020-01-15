@@ -55,7 +55,7 @@ public class FenetreChoixOffre {
 			c.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent me) {
 					joueur.getStrategie().cacher(actuelC);
-					fenetre.dispose();
+					fenetre.dispose(); 
 				}
 			});
 		}

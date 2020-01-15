@@ -1,11 +1,9 @@
 package fr.utt.rt.lo02.projet.modele;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import fr.utt.rt.lo02.projet.controleur.PartieControleur;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class StratPhysique.
  */
@@ -21,7 +19,7 @@ public class StratPhysique extends StrategieJoueur {
 	private Carte cache;
 
 	/**
-	 * Methode qui permet de définir l'offre cachée d'un joueur physique
+	 * Methode qui permet de definir l'offre cachee d'un joueur physique
 	 * 
 	 *
 	 * @param ceJoueur the ce joueur
@@ -65,12 +63,10 @@ public class StratPhysique extends StrategieJoueur {
 	@Override
 	public Joueur choisirCarte(Joueur ceJoueur) {
 		String message = "";
-		// ArrayList<Joueur> joueurs = Partie.getInstance().getOffreDispo(ceJoueur);
-		while (victime == null) {
+		while (victime == null) {//modifier avec de l'attente passive
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
