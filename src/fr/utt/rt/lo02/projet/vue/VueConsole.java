@@ -10,30 +10,33 @@ import java.util.Observer;
 
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
-import fr.utt.rt.lo02.projet.modele.StrategieJoueur;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class VueConsole.
+ * Cette classe permet de jouer en console en meme temps que de jouer avec
+ * l'interface graphique
+ * 
+ * Elle implemente observer car elle observe le modele dans le cadre de MVC, et
+ * Runnable car c'est un thread concurent à l'interface graphique
  */
+@SuppressWarnings("deprecation")
 public class VueConsole implements Observer, Runnable {
 
-	/** The quitter. */
+	/** Definit QUITTER */
 	public static String QUITTER = "Quit";
 
-	/** The prompt. */
+	/** Definit PROMT */
 	public static String PROMPT = ">";
 
-	/** The partie. */
+	/** la partie a observer */
 	private Partie partie;
 
-	/** The joueurs. */
+	/** les joueurs de la partie */
 	private ArrayList<Joueur> joueurs;
 
 	/**
-	 * Instantiates a new vue console.
+	 * Constructeur de la classe, il execute un thread.
 	 *
-	 * @param partie the partie
+	 * @param partie la partie en cours
 	 */
 	public VueConsole(Partie partie) {
 		this.partie = partie;
@@ -51,7 +54,7 @@ public class VueConsole implements Observer, Runnable {
 	}
 
 	/**
-	 * Run.
+	 * Methode run qui s'execute tant que quitter est faux.
 	 */
 	@Override
 	public void run() {
@@ -101,7 +104,7 @@ public class VueConsole implements Observer, Runnable {
 	/**
 	 * Lire chaine.
 	 *
-	 * @return the string
+	 * @return la chaine de caractere lu
 	 */
 	private String lireChaine() {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -116,7 +119,9 @@ public class VueConsole implements Observer, Runnable {
 	}
 
 	/**
-	 * Update.
+	 * Methode update dans le cadre de MVC.
+	 * 
+	 * elle met a jour la console avec les logs et affiche le joueurs qui doit jouer
 	 *
 	 * @param o   the o
 	 * @param arg the arg
@@ -126,9 +131,9 @@ public class VueConsole implements Observer, Runnable {
 		if (arg instanceof String) {
 			String message = arg.toString();
 			System.out.println(message + "\n" + PROMPT);
-		} else if(o instanceof Partie && arg instanceof Joueur ) {
+		} else if (o instanceof Partie && arg instanceof Joueur) {
 			Joueur j = (Joueur) arg;
-			System.out.println("Le joueur "+ j.getNom() +" doit jouer");
+			System.out.println("Le joueur " + j.getNom() + " doit jouer");
 		}
 
 	}

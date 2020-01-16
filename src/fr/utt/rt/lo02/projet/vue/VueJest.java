@@ -16,20 +16,21 @@ import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class VueJest.
+ * Classe permettant d'afficher les JEST
+ * 
  */
+@SuppressWarnings("deprecation")
 public class VueJest implements Observer {
 
-	/** The jest. */
+	/** Panel des jest. */
 	private JPanel jest;
 
-	/** The nom. */
+	/** le nom du joueur a qui appartient le jest. */
 	private JLabel nom;
 
 	/**
-	 * Instantiates a new vue jest.
+	 * Constructeur de jest. Il s'ajoute dans la liste des observer de partie.
 	 */
 	public VueJest() {
 		Partie.getInstance().addObserver(this);
@@ -38,16 +39,17 @@ public class VueJest implements Observer {
 	}
 
 	/**
-	 * Gets the jest.
+	 * Getter de jest.
 	 *
-	 * @return the jest
+	 * @return le jest
 	 */
 	public JPanel getJest() {
 		return jest;
 	}
 
 	/**
-	 * Update.
+	 * Methode update qui met a jour le jest a afficher en fonction de l'état de la
+	 * partie.
 	 *
 	 * @param o   the o
 	 * @param arg the arg
@@ -65,6 +67,11 @@ public class VueJest implements Observer {
 		}
 	}
 
+	/**
+	 * Methode qui affiche tout les JEST en fin de partie et affiche le gagnant.
+	 *
+	 * @param joueurs les joueurs dont on affiche le jest
+	 */
 	private void afficheAllJest(ArrayList<Joueur> joueurs) {
 		jest.removeAll();
 		Iterator<Joueur> it = joueurs.iterator();
@@ -93,9 +100,9 @@ public class VueJest implements Observer {
 	}
 
 	/**
-	 * Maj jest.
+	 * Methode pour mettre a jour le jest a l'ecran.
 	 *
-	 * @param joueur the joueur
+	 * @param joueur le joueur dont on veut le jest
 	 */
 	private void majJest(Joueur joueur) {
 		jest.removeAll();
