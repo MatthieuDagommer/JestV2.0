@@ -5,23 +5,24 @@ import fr.utt.rt.lo02.projet.modele.StratFacile;
 import fr.utt.rt.lo02.projet.vue.VueConsole;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
 
-// TODO: Auto-generated Javadoc
 /**
- * The Class MainGraphique.
+ * Classe permettant de lancer tout les element d'une partie en graphique
  */
 public class MainGraphique implements Runnable {
 
-	/** The partie. */
+	/** la partie. */
 	private Partie partie;
-	
-	/** The controleur. */
+
+	/** le controleur de la partie. */
 	private PartieControleur controleur;
-	
-	/** The vue partie. */
+
+	/** la vue de la partie. */
 	private VuePartie vuePartie;
-	
+
 	/**
-	 * Instantiates a new main graphique.
+	 * Constructeur de la classe MainGraphique. il construit la partie et
+	 * l'initialise, lie la vue a la partie, et le controleur aux 2 elements
+	 * precedent
 	 */
 	public MainGraphique() {
 		partie = Partie.getInstance();
@@ -32,14 +33,10 @@ public class MainGraphique implements Runnable {
 		PartieControleur partieControleur = new PartieControleur(partie, vuePartie);
 
 		partie.addObserver(vuePartie);
-		
-		
-		//partie.lancerPartie();
-		//System.out.println(partie.bestJest(partie.getJoueurs()));
 	}
 
 	/**
-	 * The main method.
+	 * Methode Main qui lance et créer les thread du MainGraphique et de swing
 	 *
 	 * @param args the arguments
 	 */
@@ -51,15 +48,13 @@ public class MainGraphique implements Runnable {
 				new Thread();
 			}
 		});
-		//VueTexte maConsoleText = new VueTexte(Partie.getInstance()); 
 	}
 
 	/**
-	 * Run.
+	 * Methode qui lance la partie
 	 */
 	@Override
 	public void run() {
-			//new MainGraphique();
 		partie.lancerPartie();
 	}
 
