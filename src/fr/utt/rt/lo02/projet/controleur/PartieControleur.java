@@ -2,14 +2,12 @@ package fr.utt.rt.lo02.projet.controleur;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.JLabel;
 
-import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 import fr.utt.rt.lo02.projet.modele.RegleStandard;
@@ -25,7 +23,7 @@ import fr.utt.rt.lo02.projet.vue.VuePartie;
 
 // TODO: Auto-generated Javadoc
 /**
- * The Class PartieControleur.
+ * Constructeur du controleur de la partie. 
  */
 public class PartieControleur {
 
@@ -42,10 +40,11 @@ public class PartieControleur {
 	private LinkedList<JLabel> offres;
 
 	/**
-	 * Instantiates a new partie controleur.
+	 * Constructeur du controleur de la partie. On définit tout d'abbord la partie et sa vue.
+	 * 
 	 *
-	 * @param partie    the partie
-	 * @param vuePartie the vue partie
+	 * @param partie    partie que l'on souhaite controler
+	 * @param vuePartie Vue de la partie que l'on souhaite controler
 	 */
 	public PartieControleur(Partie partie, VuePartie vuePartie) {
 		setPartie(partie);
@@ -92,7 +91,8 @@ public class PartieControleur {
 	}
 
 	/**
-	 * Initialisation jest.
+	 * Cette méthode permet de lancer la fenêtre d'initilisation. On va alors recupérer les informations
+	 * rentrées par l'utilisateur afin de définir les règles, l'extension ainsi que le nombre de joueurs de la partie.
 	 */
 	public static void initialisationJest() {
 		MenuInitialisation dialog = new MenuInitialisation(null, "JEST menu", true);
@@ -194,9 +194,10 @@ public class PartieControleur {
 	}
 
 	/**
-	 * Fenetre choix offre.
+	 * Cette méthode permet de définir la fenetre des offres pour un joueur physique rentré en paramètre.
 	 *
-	 * @param joueur the joueur
+	 * @param joueur Joueur physique pour lequel on souhaite obtenir la fenetre de choix. Celle-ci affichera les deux cartes 
+	 * que le joueur a dans sa main.
 	 */
 	public static void fenetreChoixOffre(Joueur joueur) {
 		FenetreChoixOffre fenetreChoix = new FenetreChoixOffre(joueur);
@@ -204,36 +205,36 @@ public class PartieControleur {
 	}
 
 	/**
-	 * Gets the partie.
+	 * Getter de la partie.
 	 *
-	 * @return the partie
+	 * @return the partie partie courante du controleur.
 	 */
 	public static Partie getPartie() {
 		return partie;
 	}
 
 	/**
-	 * Sets the partie.
+	 * Setter de la partie
 	 *
-	 * @param partie the new partie
+	 * @param partie partie que l'on souhiate définir.
 	 */
 	public static void setPartie(Partie partie) {
 		PartieControleur.partie = partie;
 	}
 
 	/**
-	 * Gets the vue partie.
+	 * Getter de la vue de la Partie de type VuePartie.
 	 *
-	 * @return the vue partie
+	 * @return the vue partie La vue de la partie courante.
 	 */
 	public static VuePartie getVuePartie() {
 		return vuePartie;
 	}
 
 	/**
-	 * Sets the vue partie.
+	 * Setter de la vue de la partie.
 	 *
-	 * @param vuePartie the new vue partie
+	 * @param vuePartie la vue de la partie que l'on souhaite définir
 	 */
 	public static void setVuePartie(VuePartie vuePartie) {
 		PartieControleur.vuePartie = vuePartie;
