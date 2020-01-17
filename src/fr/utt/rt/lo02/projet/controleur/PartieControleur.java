@@ -21,30 +21,30 @@ import fr.utt.rt.lo02.projet.vue.MenuInitialisation;
 import fr.utt.rt.lo02.projet.vue.VueJoueur;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
 
-// TODO: Auto-generated Javadoc
 /**
- * Constructeur du controleur de la partie. 
+ * Constructeur du controleur de la partie.
  */
 public class PartieControleur {
 
-	/** The partie. */
+	/** la partie. */
 	private static Partie partie;
 
-	/** The vue partie. */
+	/** la vue de la partie. */
 	private static VuePartie vuePartie;
 
-	/** The pioche. */
+	/** le label pour pioche. */
 	private JLabel pioche;
 
-	/** The offres. */
+	/** la liste des label des offres. */
 	private LinkedList<JLabel> offres;
 
 	/**
-	 * Constructeur du controleur de la partie. On définit tout d'abbord la partie et sa vue.
+	 * Constructeur du controleur de la partie. On definit tout d'abbord la partie
+	 * et sa vue.
 	 * 
 	 *
 	 * @param partie    partie que l'on souhaite controler
-	 * @param vuePartie Vue de la partie que l'on souhaite controler
+	 * @param vuePartie Vue de la partie que l'on souhaite ecouter
 	 */
 	public PartieControleur(Partie partie, VuePartie vuePartie) {
 		setPartie(partie);
@@ -68,6 +68,8 @@ public class PartieControleur {
 		Iterator<JLabel> itOffres = offres.iterator();
 		while (itOffres.hasNext()) {
 			JLabel c = itOffres.next();
+			// pour chaque carte des offres, on ajoute un mouse listner et on verifie si le
+			// joueur a le droit de cliquer
 			c.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent me) {
 					if (partie.getJoueurActuel() != null
@@ -91,8 +93,9 @@ public class PartieControleur {
 	}
 
 	/**
-	 * Cette méthode permet de lancer la fenêtre d'initilisation. On va alors recupérer les informations
-	 * rentrées par l'utilisateur afin de définir les règles, l'extension ainsi que le nombre de joueurs de la partie.
+	 * Cette methode permet de lancer la fenetre d'initilisation. On va alors
+	 * recuperer les informations rentrees par l'utilisateur afin de definir les
+	 * regles, l'extension ainsi que le nombre de joueurs de la partie.
 	 */
 	public static void initialisationJest() {
 		MenuInitialisation dialog = new MenuInitialisation(null, "JEST menu", true);
@@ -184,9 +187,9 @@ public class PartieControleur {
 	}
 
 	/**
-	 * Update J text area.
+	 * Methode de mise a jour de la fenetre des logs
 	 *
-	 * @param message the message
+	 * @param message le message que l'on souhaite afficher
 	 */
 	public static void updateJTextArea(String message) {
 		getVuePartie().getLog().append(message + "\n");
@@ -194,10 +197,12 @@ public class PartieControleur {
 	}
 
 	/**
-	 * Cette méthode permet de définir la fenetre des offres pour un joueur physique rentré en paramètre.
+	 * Cette methode permet de definir la fenetre des offres pour un joueur physique
+	 * rentre en parametre.
 	 *
-	 * @param joueur Joueur physique pour lequel on souhaite obtenir la fenetre de choix. Celle-ci affichera les deux cartes 
-	 * que le joueur a dans sa main.
+	 * @param joueur Joueur physique pour lequel on souhaite obtenir la fenetre de
+	 *               choix. Celle-ci affichera les deux cartes que le joueur a dans
+	 *               sa main.
 	 */
 	public static void fenetreChoixOffre(Joueur joueur) {
 		FenetreChoixOffre fenetreChoix = new FenetreChoixOffre(joueur);
@@ -216,7 +221,7 @@ public class PartieControleur {
 	/**
 	 * Setter de la partie
 	 *
-	 * @param partie partie que l'on souhiate définir.
+	 * @param partie partie que l'on souhiate definir.
 	 */
 	public static void setPartie(Partie partie) {
 		PartieControleur.partie = partie;
@@ -234,7 +239,7 @@ public class PartieControleur {
 	/**
 	 * Setter de la vue de la partie.
 	 *
-	 * @param vuePartie la vue de la partie que l'on souhaite définir
+	 * @param vuePartie la vue de la partie que l'on souhaite definir
 	 */
 	public static void setVuePartie(VuePartie vuePartie) {
 		PartieControleur.vuePartie = vuePartie;

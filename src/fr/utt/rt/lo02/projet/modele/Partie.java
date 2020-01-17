@@ -406,7 +406,7 @@ public class Partie extends Observable {
 			trophes.add(jeuDeCartes.piocherCarte());
 			trophes.add(jeuDeCartes.piocherCarte());
 		}
-		message = "Les troph�s sont " + trophes.toString();
+		message = "Les trophees sont " + trophes.toString();
 
 		setChanged();
 		notifyObservers(message);
@@ -512,7 +512,7 @@ public class Partie extends Observable {
 			setChanged();
 			notifyObservers(message);
 
-			message = "Les troph�s sont distribu�s";
+			message = "Les trophees sont distribues";
 			setChanged();
 			notifyObservers(message);
 		}

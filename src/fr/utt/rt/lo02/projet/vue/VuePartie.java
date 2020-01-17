@@ -22,12 +22,12 @@ import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 
 /**
- * The Class VuePartie.
+ * Classe de la Vue partie qui gere toute les etats de la partie en graphique
  */
 @SuppressWarnings("deprecation")
 public class VuePartie implements Observer {
 
-	/** La partie qui est le modele dans l'interface MVC  */
+	/** La partie qui est le modele dans l'interface MVC */
 	private Partie modele;
 
 	/** Controleur de la partie */
@@ -51,27 +51,27 @@ public class VuePartie implements Observer {
 	/** JLabel du trophee n°1 */
 	private JLabel trophe1;
 
-	/** JLabel du trophée n°2 */
+	/** JLabel du trophee n°2 */
 	private JLabel trophe2;
 
-	/** JLabel du trophée n°3*/
+	/** JLabel du trophee n°3 */
 	private JLabel trophe3;
 
 	/** JLabel de la pioche */
 	private JLabel pioche;
 
-	/** JTexteArea qui définit la console de log */
+	/** JTexteArea qui definit la console de log */
 	private JTextArea log;
 
 	/** Le JscorllPane pour la console de log. */
 	private JScrollPane scrollPane;
 
 	/**
-	 * Constructeur qui permet de définir les différentes vues sur le jeu avec le
-	 * tapis, les trophés ainsi que les vues des joueurs. Après avoir récuprérer les
-	 * différents élements de notre partie, on les places sur la fenêtre.
+	 * Constructeur qui permet de definir les differentes vues sur le jeu avec le
+	 * tapis, les trophes ainsi que les vues des joueurs. Apres avoir recuprerer les
+	 * differents elements de notre partie, on les places sur la fenetre.
 	 *
-	 * @param modele La partie unique qui représente le modèle.
+	 * @param modele La partie unique qui represente le modele.
 	 */
 	public VuePartie(final Partie modele) {
 
@@ -138,7 +138,7 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Getter des joueurs qui permet de récupérer la liste chainée des joueurs de la
+	 * Getter des joueurs qui permet de recuperer la liste chainee des joueurs de la
 	 * partie
 	 *
 	 * @return the joueurs les joueurs de la partie
@@ -148,7 +148,7 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Setter des joueurs qui permet de définir les joueurs de la partie.
+	 * Setter des joueurs qui permet de definir les joueurs de la partie.
 	 *
 	 * @param joueurs les joueurs de la partie
 	 */
@@ -157,7 +157,7 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Méthode qui permet d'effacer l'image de la pioche lorsqu'elle est vide
+	 * Methode qui permet d'effacer l'image de la pioche lorsqu'elle est vide
 	 */
 	public void effacerPioche() {
 		this.pioche.setIcon(new ImageIcon("image/tasVide.png"));
@@ -170,8 +170,8 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Méthode qui permet d'afficher les cartes de trophées au milieu du plateau de
-	 * jeu en récup
+	 * Methode qui permet d'afficher les cartes de trophees au milieu du plateau de
+	 * jeu
 	 */
 	public void afficherTrophes() {
 		LinkedList<Carte> listetrophes = Partie.getInstance().getTrophes();
@@ -192,7 +192,7 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Méthode qui permet d'évacer les trophées sur le plateau de jeu.
+	 * Methode qui permet d'effacer les trophees sur le plateau de jeu.
 	 */
 	public void effacerTrophes() {
 		this.trophe1.setIcon(new ImageIcon("image/tasVide.png"));
@@ -210,7 +210,7 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Setter de la pioche 
+	 * Setter de la pioche
 	 *
 	 * @param pioche La pioche sous forme d'un JLabel
 	 */
@@ -219,61 +219,63 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Setter du panneau qui indique le déroulement de la partie.
+	 * Setter du panneau qui indique le deroulement de la partie.
 	 *
-	 * @param log JTexteArea qui permet de définir le panneau de déroulement du jeu.
+	 * @param log JTexteArea qui permet de definir le panneau de deroulement du jeu.
 	 */
 	public void setLog(JTextArea log) {
 		this.log = log;
 	}
 
 	/**
-	 * Getter du panneau de Log, qui indique le déroulement de la partie.
+	 * Getter du panneau de Log, qui indique le deroulement de la partie.
 	 *
-	 * @return the log JTextArea qui permet d'afficher le déroulement de la partie.
+	 * @return the log JTextArea qui permet d'afficher le deroulement de la partie.
 	 */
 	public JTextArea getLog() {
 		return log;
 	}
 
 	/**
-	 * Getter du modèle (de type Partie).
+	 * Getter du modele (de type Partie).
 	 *
-	 * @return the modele Le modèle qui est la partie
+	 * @return the modele Le modele qui est la partie
 	 */
 	public Partie getModele() {
 		return modele;
 	}
 
 	/**
-	 * Setter du modèle, la Partie.
+	 * Setter du modele, la Partie.
 	 *
-	 * @param modele Permet de définir la partie dans la vue.
+	 * @param modele Permet de definir la partie dans la vue.
 	 */
 	public void setModele(Partie modele) {
 		this.modele = modele;
 	}
 
 	/**
-	 * Méthode update du design pattern Observer/Observable qui permet de :
-	 * - Soit effacer les trophées sur l'interface graphique si le message envoyer par la partie est " "Les trophhées sont distribués"
-	 * - Soit effacer la pioche sur l'interface graphique si le message envoyer par la partie est "La pioche est vide"
-	 *  - Soit afficher les trophées sur l'interface graphique si le message envoyer par la partie est "Les trophés sont"
-	 *  -Soit afficher le message reçu dans la console d'affichage.
-	 * Pour cela il appel les méthodes définient plus haut.
+	 * Methode update du design pattern Observer/Observable qui permet de : 1/ Soit
+	 * effacer les trophees sur l'interface graphique si le message envoyer par la
+	 * partie est " "Les trophees sont distribues" 2/ Soit effacer la pioche sur
+	 * l'interface graphique si le message envoyer par la partie est "La pioche est
+	 * vide" 3/ Soit afficher les trophees sur l'interface graphique si le message
+	 * envoyer par la partie est "Les trophes sont" 4/ Soit afficher le message recu
+	 * dans la console d'affichage. Pour cela il appel les methodes definient plus
+	 * haut.
 	 * 
 	 * @param o   Objet observable qui est un partie
-	 * @param arg arguement de l'objet, ici généralement un message de type String.
+	 * @param arg arguement de l'objet, ici generalement un message de type String.
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		if (arg instanceof String) {
 			String message = arg.toString();
-			if (message.equals("Les troph�s sont distribu�s")) {
+			if (message.equals("Les trophees sont distribues")) {
 				effacerTrophes();
 			} else if (message.equals("La pioche est vide")) {
 				effacerPioche();
-			} else if (message.contains("Les troph�s sont ")) {
+			} else if (message.contains("Les trophees sont ")) {
 				afficherTrophes();
 			} else {
 				controleur.updateJTextArea(message);
@@ -300,9 +302,9 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Setter qui permet de définir la liste de vue des joueurs.
+	 * Setter qui permet de definir la liste de vue des joueurs.
 	 *
-	 * @param vueJoueurs la vue des différents joueurs sous forme de liste
+	 * @param vueJoueurs la vue des differents joueurs sous forme de liste
 	 */
 	public void setVueJoueurs(ArrayList<VueJoueur> vueJoueurs) {
 		this.vueJoueurs = vueJoueurs;
