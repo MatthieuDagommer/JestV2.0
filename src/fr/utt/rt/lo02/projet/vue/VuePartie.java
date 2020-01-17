@@ -1,9 +1,6 @@
 package fr.utt.rt.lo02.projet.vue;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,7 +9,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 import javax.swing.BoxLayout;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,13 +21,13 @@ import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 
-// TODO: Auto-generated Javadoc
 /**
  * The Class VuePartie.
  */
+@SuppressWarnings("deprecation")
 public class VuePartie implements Observer {
 
-	/** The modele. */
+	/** Partie unique  */
 	private Partie modele;
 
 	/** The controleur. */
@@ -71,9 +67,11 @@ public class VuePartie implements Observer {
 	private JScrollPane scrollPane;
 
 	/**
-	 * Instantiates a new vue partie.
+	 * Constructeur qui permet de définir les différentes vues sur le jeu avec le
+	 * tapis, les trophés ainsi que les vues des joueurs. Après avoir récuprérer les
+	 * différents élements de notre partie, on les places sur la fenêtre.
 	 *
-	 * @param modele the modele
+	 * @param modele La partie unique qui représente le modèle.
 	 */
 	public VuePartie(final Partie modele) {
 
@@ -127,8 +125,6 @@ public class VuePartie implements Observer {
 		scrollPane = new JScrollPane(getLog());
 
 		fenetre.add(scrollPane, BorderLayout.NORTH);
-		// fenetre.add(scroll, BorderLayout.WEST);
-		// fenetre.add(continuer, BorderLayout.SOUTH);
 		fenetre.add(panelJoueur, BorderLayout.SOUTH);
 		fenetre.add(panelJest, BorderLayout.WEST);
 		fenetre.add(panelTapis, BorderLayout.EAST);
@@ -142,25 +138,26 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Gets the joueurs.
+	 * Getter des joueurs qui permet de récupérer la liste chainée des joueurs de la
+	 * partie
 	 *
-	 * @return the joueurs
+	 * @return the joueurs les joueurs de la partie
 	 */
 	public ArrayList<Joueur> getJoueurs() {
 		return joueurs;
 	}
 
 	/**
-	 * Sets the joueurs.
+	 * Setter des joueurs qui permet de définir les joueurs du jeu
 	 *
-	 * @param joueurs the new joueurs
+	 * @param joueurs les joueurs de la partie
 	 */
 	public void setJoueurs(ArrayList<Joueur> joueurs) {
 		this.joueurs = joueurs;
 	}
 
 	/**
-	 * Effacer pioche.
+	 * Méthode qui permet d'effacer l'image de la pioche lorsqu'elle est vide
 	 */
 	public void effacerPioche() {
 		this.pioche.setIcon(new ImageIcon("image/tasVide.png"));
@@ -173,7 +170,8 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Afficher trophes.
+	 * Méthode qui permet d'afficher les cartes de trophées au milieu du plateau de
+	 * jeu en récup
 	 */
 	public void afficherTrophes() {
 		LinkedList<Carte> listetrophes = Partie.getInstance().getTrophes();
@@ -194,7 +192,7 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Effacer trophes.
+	 * Méthode qui permet d'évacer les trophées sur le plateau de jeu.
 	 */
 	public void effacerTrophes() {
 		this.trophe1.setIcon(new ImageIcon("image/tasVide.png"));
@@ -203,9 +201,9 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Gets the pioche.
+	 * Getter qui renvoi le JLabel de la pioche
 	 *
-	 * @return the pioche
+	 * @return the pioche. Le JLabel de la pioche
 	 */
 	public JLabel getPioche() {
 		return pioche;
@@ -288,18 +286,18 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Gets the vue joueurs.
+	 * Getter qui permet d'obtenir la vue de chaque joueur sous forme de liste
 	 *
-	 * @return the vue joueurs
+	 * @return the vue joueurs La vue des joueurs.
 	 */
 	public ArrayList<VueJoueur> getVueJoueurs() {
 		return vueJoueurs;
 	}
 
 	/**
-	 * Sets the vue joueurs.
+	 * Setter qui permet de définir la liste de vue des joueurs.
 	 *
-	 * @param vueJoueurs the new vue joueurs
+	 * @param vueJoueurs la vue des différents joueurs sous forme de liste
 	 */
 	public void setVueJoueurs(ArrayList<VueJoueur> vueJoueurs) {
 		this.vueJoueurs = vueJoueurs;
