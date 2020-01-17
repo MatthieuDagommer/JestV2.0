@@ -148,7 +148,7 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Setter des joueurs qui permet de définir les joueurs du jeu
+	 * Setter des joueurs qui permet de définir les joueurs de la partie.
 	 *
 	 * @param joueurs les joueurs de la partie
 	 */
@@ -210,55 +210,60 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Sets the pioche.
+	 * Setter de la pioche 
 	 *
-	 * @param pioche the new pioche
+	 * @param pioche La pioche sous forme d'un JLabel
 	 */
 	public void setPioche(JLabel pioche) {
 		this.pioche = pioche;
 	}
 
 	/**
-	 * Sets the log.
+	 * Setter du panneau qui indique le déroulement de la partie.
 	 *
-	 * @param log the new log
+	 * @param log JTexteArea qui permet de définir le panneau de déroulement du jeu.
 	 */
 	public void setLog(JTextArea log) {
 		this.log = log;
 	}
 
 	/**
-	 * Gets the log.
+	 * Getter du panneau de Log, qui indique le déroulement de la partie.
 	 *
-	 * @return the log
+	 * @return the log JTextArea qui permet d'afficher le déroulement de la partie.
 	 */
 	public JTextArea getLog() {
 		return log;
 	}
 
 	/**
-	 * Gets the modele.
+	 * Getter du modèle (de type Partie).
 	 *
-	 * @return the modele
+	 * @return the modele Le modèle qui est la partie
 	 */
 	public Partie getModele() {
 		return modele;
 	}
 
 	/**
-	 * Sets the modele.
+	 * Setter du modèle, la Partie.
 	 *
-	 * @param modele the new modele
+	 * @param modele Permet de définir la partie dans la vue.
 	 */
 	public void setModele(Partie modele) {
 		this.modele = modele;
 	}
 
 	/**
-	 * Update.
-	 *
-	 * @param o   the o
-	 * @param arg the arg
+	 * Méthode update du design pattern Observer/Observable qui permet de :
+	 * - Soit effacer les trophées sur l'interface graphique si le message envoyer par la partie est " "Les trophhées sont distribués"
+	 * - Soit effacer la pioche sur l'interface graphique si le message envoyer par la partie est "La pioche est vide"
+	 *  - Soit afficher les trophées sur l'interface graphique si le message envoyer par la partie est "Les trophés sont"
+	 *  -Soit afficher le message reçu dans la console d'affichage.
+	 * Pour cela il appel les méthodes définient plus haut.
+	 * 
+	 * @param o   Objet observable qui est un partie
+	 * @param arg arguement de l'objet, ici généralement un message de type String.
 	 */
 	@Override
 	public void update(Observable o, Object arg) {
@@ -277,9 +282,9 @@ public class VuePartie implements Observer {
 	}
 
 	/**
-	 * Gets the controleur.
+	 * Getter du controleur de la partie.
 	 *
-	 * @return the controleur
+	 * @return the controleur Le controleur de la partie.
 	 */
 	public PartieControleur getControleur() {
 		return controleur;
