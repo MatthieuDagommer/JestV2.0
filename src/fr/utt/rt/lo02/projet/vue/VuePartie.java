@@ -27,43 +27,43 @@ import fr.utt.rt.lo02.projet.modele.Partie;
 @SuppressWarnings("deprecation")
 public class VuePartie implements Observer {
 
-	/** Partie unique  */
+	/** La partie qui est le modele dans l'interface MVC  */
 	private Partie modele;
 
-	/** The controleur. */
+	/** Controleur de la partie */
 	private PartieControleur controleur;
 
-	/** The joueurs. */
+	/** Liste des joueurs du jeu */
 	private ArrayList<Joueur> joueurs;
 
-	/** The vue joueurs. */
+	/** Liste de la vue des joueurs */
 	private ArrayList<VueJoueur> vueJoueurs;
 
-	/** The panel joueur. */
+	/** Le Jpanel des joueurs */
 	private JPanel panelJoueur;
 
-	/** The panel jest. */
+	/** Le JPanel du Jest */
 	private JPanel panelJest;
 
-	/** The fenetre. */
+	/** La fenetre */
 	private JFrame fenetre;
 
-	/** The trophe 1. */
+	/** JLabel du trophee n°1 */
 	private JLabel trophe1;
 
-	/** The trophe 2. */
+	/** JLabel du trophée n°2 */
 	private JLabel trophe2;
 
-	/** The trophe 3. */
+	/** JLabel du trophée n°3*/
 	private JLabel trophe3;
 
-	/** The pioche. */
+	/** JLabel de la pioche */
 	private JLabel pioche;
 
-	/** The log. */
+	/** JTexteArea qui définit la console de log */
 	private JTextArea log;
 
-	/** The scroll pane. */
+	/** Le JscorllPane pour la console de log. */
 	private JScrollPane scrollPane;
 
 	/**
