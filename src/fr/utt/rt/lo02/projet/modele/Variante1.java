@@ -3,8 +3,21 @@ package fr.utt.rt.lo02.projet.modele;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+// TODO: Auto-generated Javadoc
+/**
+ * Classe de variante qui change le comptage des points dans le jest des joueurs. Cette classe implemente la classe de regle dans 
+ * laquelle les differentes methodes permettant d'obtenir le JEST de chaque joueur y sont present.
+ */
 public class Variante1 implements Regle{
 
+	/**
+	 * Methode qui pour un JEST de joueur donnee permet de compter les cartes de carreau du JEST. Dans cette variante, 
+	 * Les cartes de carreau sont comptes en positif.
+	 *Un bonus est accorde si le JEST contient uniquement l'AS, celui-ci vaut 5.
+	 * @param jest Le Jest du joueur (liste chainee de cartes).
+	 * @return int : le score du joueur pour les cartes de carreau dans son JEST.
+	 * Remarque : Le JOKER etant arbitrairement fixe comme une carte de carreau, on ne le compte pas dans le nombre de carte de carreau du JEST. 
+	 */
 	public int visitCarreau(LinkedList<Carte> jest) {
 		int score = 0;
 		int nbCarte = 0;
@@ -25,6 +38,15 @@ public class Variante1 implements Regle{
 		return score;
 	}
 
+	/**
+	 * Methode qui pour un JEST de joueur donnee permet de compter les cartes de coeur du JEST. Dans cette variante, 
+	 * Les cartes de coeur sont comptes en negatif si le joueur à le JOKER et entre 1,3 ou 5 cartes de coeur. En positif si il a toutes les cartes de coeur avec un bonus de 4 pour le JOKER. 
+	 * Aucun point n'est accorde pour les cartes de coeur dans le cas ou le JEST ne contient pas le JOKER.
+	 *
+	 * @param jest Le Jest du joueur (liste chainee de cartes).
+	 * @return int : le score du joueur pour les cartes de carreau dans son JEST.
+	 * Remarque : Le JOKER etant arbitrairement fixe comme une carte de carreau, on ne le compte pas dans le nombre de carte de carreau du JEST. 
+	 */
 	@Override
 	public int visitCoeur(LinkedList<Carte> jest) {
 		int score = 0;
@@ -41,16 +63,28 @@ public class Variante1 implements Regle{
 						asCoeur = true;
 				}
 			}
-			if(nbCoeur == 4) {
-				score = 5;
-			}
-			if(nbCoeur == 1 && asCoeur) {
-				score = 5;
+			if (nbCoeur == 0) {
+				score += 4;
+			} else if (nbCoeur == 4 && Partie.getInstance().getExtension() == 0) {
+				score = 10;
+			} else if (Partie.getInstance().getExtension() == 1 && nbCoeur == 5) {
+				score = 16;
+			}else if (nbCoeur == 1 && asCoeur) {
+				score = -5;
 			}
 		}
 		return score;
 	}
 
+	/**
+	 * Methode qui pour un JEST de joueur donnee permet de compter les cartes de trefle et de Pic du JEST. Dans cette variante, 
+	 * Les cartes de Pic et de Trefle sont comptees en positif. Un bonus est accorde si le JEST contient uniquement l'AS de PIC et/ou l'as de Trefle, celui-ci
+	 * vaut alors 5.
+	 * 
+	 * @param jest Le Jest du joueur (liste chainee de cartes).
+	 * @return int : le score du joueur pour les cartes de carreau dans son JEST.
+	 * Remarque : Le JOKER etant arbitrairement fixe comme une carte de carreau, on ne le compte pas dans le nombre de carte de carreau du JEST. 
+	 */
 	@Override
 	public int visitTreflePic(LinkedList<Carte> jest) {
 		int score = 0;
@@ -81,6 +115,14 @@ public class Variante1 implements Regle{
 		return score;
 	}
 
+	/**
+	 * Methode qui pour un JEST de joueur donnee permet de compter les bonus pour les cartes noires. Si un joueur
+	 * possede deux cartes de la même valeur en PIC et en Trefle, un bonus de +2 lui est accorde pour chaque paire.
+	 *
+	 * @param jest Le Jest du joueur (liste chainee de cartes).
+	 * @return int : le score du joueur pour les cartes de carreau dans son JEST.
+	 * Remarque : Le JOKER etant arbitrairement fixe comme une carte de carreau, on ne le compte pas dans le nombre de carte de carreau du JEST. 
+	 */
 	@Override
 	public int visitNoir(LinkedList<Carte> jest) {
 		int score = 0;

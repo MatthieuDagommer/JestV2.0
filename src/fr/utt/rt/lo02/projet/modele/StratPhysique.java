@@ -1,23 +1,34 @@
 package fr.utt.rt.lo02.projet.modele;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import fr.utt.rt.lo02.projet.controleur.PartieControleur;
 
+/**
+ * The Class StratPhysique.
+ */
 public class StratPhysique extends StrategieJoueur {
 
+	/** The victime. */
 	private Joueur victime;
 
+	/** The carte visible victime. */
 	private boolean carteVisibleVictime;
 	
+	/** The cache. */
 	private Carte cache;
 
+	/**
+	 * Methode qui permet de definir l'offre cachee d'un joueur physique
+	 * 
+	 *
+	 * @param ceJoueur the ce joueur
+	 */
 	@Override
 	public void faireOffre(Joueur ceJoueur) {
 		LinkedList<Carte> main = ceJoueur.getMain();
 		PartieControleur.fenetreChoixOffre(ceJoueur);
-		while(cache == null) {
+		while(cache == null) {//modifier avec de l'attente passive
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
@@ -33,20 +44,29 @@ public class StratPhysique extends StrategieJoueur {
 		notifyObservers(ceJoueur);
 	}
 	
+	/**
+	 * Cacher.
+	 *
+	 * @param carte the carte
+	 */
 	@Override
 	public void cacher(Carte carte) {
 		this.cache = carte;
 	}
 
+	/**
+	 * Choisir carte.
+	 *
+	 * @param ceJoueur the ce joueur
+	 * @return the joueur
+	 */
 	@Override
 	public Joueur choisirCarte(Joueur ceJoueur) {
 		String message = "";
-		// ArrayList<Joueur> joueurs = Partie.getInstance().getOffreDispo(ceJoueur);
-		while (victime == null) {
+		while (victime == null) {//modifier avec de l'attente passive
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -74,14 +94,30 @@ public class StratPhysique extends StrategieJoueur {
 
 	}
 
+	/**
+	 * Sets the victime.
+	 *
+	 * @param joueur the new victime
+	 */
 	public void setVictime(Joueur joueur) {
 		victime = joueur;
 	}
 
+	/**
+	 * Gets the victime.
+	 *
+	 * @return the victime
+	 */
 	public Joueur getVictime() {
 		return victime;
 	}
 
+	/**
+	 * Choix.
+	 *
+	 * @param visible the visible
+	 * @param victime the victime
+	 */
 	public void choix(boolean visible, Joueur victime) {
 
 		this.carteVisibleVictime = visible;

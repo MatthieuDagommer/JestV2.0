@@ -2,14 +2,12 @@ package fr.utt.rt.lo02.projet.controleur;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 import javax.swing.JLabel;
 
-import fr.utt.rt.lo02.projet.modele.Carte;
 import fr.utt.rt.lo02.projet.modele.Joueur;
 import fr.utt.rt.lo02.projet.modele.Partie;
 import fr.utt.rt.lo02.projet.modele.RegleStandard;
@@ -23,16 +21,31 @@ import fr.utt.rt.lo02.projet.vue.MenuInitialisation;
 import fr.utt.rt.lo02.projet.vue.VueJoueur;
 import fr.utt.rt.lo02.projet.vue.VuePartie;
 
+/**
+ * Constructeur du controleur de la partie.
+ */
 public class PartieControleur {
 
+	/** la partie. */
 	private static Partie partie;
 
+	/** la vue de la partie. */
 	private static VuePartie vuePartie;
 
+	/** le label pour pioche. */
 	private JLabel pioche;
 
+	/** la liste des label des offres. */
 	private LinkedList<JLabel> offres;
 
+	/**
+	 * Constructeur du controleur de la partie. On definit tout d'abbord la partie
+	 * et sa vue.
+	 * 
+	 *
+	 * @param partie    partie que l'on souhaite controler
+	 * @param vuePartie Vue de la partie que l'on souhaite ecouter
+	 */
 	public PartieControleur(Partie partie, VuePartie vuePartie) {
 		setPartie(partie);
 		setVuePartie(vuePartie);
@@ -55,6 +68,8 @@ public class PartieControleur {
 		Iterator<JLabel> itOffres = offres.iterator();
 		while (itOffres.hasNext()) {
 			JLabel c = itOffres.next();
+			// pour chaque carte des offres, on ajoute un mouse listner et on verifie si le
+			// joueur a le droit de cliquer
 			c.addMouseListener(new MouseAdapter() {
 				public void mouseClicked(MouseEvent me) {
 					if (partie.getJoueurActuel() != null
@@ -77,6 +92,11 @@ public class PartieControleur {
 		}
 	}
 
+	/**
+	 * Cette methode permet de lancer la fenetre d'initilisation. On va alors
+	 * recuperer les informations rentrees par l'utilisateur afin de definir les
+	 * regles, l'extension ainsi que le nombre de joueurs de la partie.
+	 */
 	public static void initialisationJest() {
 		MenuInitialisation dialog = new MenuInitialisation(null, "JEST menu", true);
 		dialog.setVisible(true);
@@ -95,45 +115,132 @@ public class PartieControleur {
 			Partie.getInstance().setRegle(new RegleStandard());
 			break;
 		}
-		Joueur ordi1 = new Joueur("ordi1", new StratFacile());
-		Joueur ordi2 = new Joueur("ordi2", new StratDifficile());
-		 Joueur ordi3 = new Joueur("ordi3", new StratDifficile());
-		// Joueur ordi4 = new Joueur("ordi4", new StratFacile());
-		//Joueur moi = new Joueur(dialog.getNom());
-		//Joueur louis = new Joueur("Louis");
-
-		Partie.getInstance().addJoueur(ordi1);
-		Partie.getInstance().addJoueur(ordi2);
-		Partie.getInstance().addJoueur(ordi3);
-		// Partie.getInstance().addJoueur(ordi4);
-		//Partie.getInstance().addJoueur(moi);
-		//Partie.getInstance().addJoueur(louis);
+		switch (dialog.getJoueurP()) {
+		case 0:
+			break;
+		case 1:
+			Joueur moi = new Joueur(dialog.getNom());
+			Partie.getInstance().addJoueur(moi);
+			break;
+		case 2:
+			Joueur moi2 = new Joueur(dialog.getNom());
+			Partie.getInstance().addJoueur(moi2);
+			Joueur moi3 = new Joueur("Louis");
+			Partie.getInstance().addJoueur(moi3);
+			break;
+		case 3:
+			Joueur moi4 = new Joueur(dialog.getNom());
+			Partie.getInstance().addJoueur(moi4);
+			Joueur moi5 = new Joueur("Louis");
+			Partie.getInstance().addJoueur(moi5);
+			Joueur moi6 = new Joueur("Maxime");
+			Partie.getInstance().addJoueur(moi6);
+			break;
+		case 4:
+			Joueur moi7 = new Joueur(dialog.getNom());
+			Partie.getInstance().addJoueur(moi7);
+			Joueur moi8 = new Joueur("Louis");
+			Partie.getInstance().addJoueur(moi8);
+			Joueur moi9 = new Joueur("Maxime");
+			Partie.getInstance().addJoueur(moi9);
+			Joueur moi10 = new Joueur("Lauris");
+			Partie.getInstance().addJoueur(moi10);
+			break;
+		default:
+			break;
+		}
+		switch (dialog.getJoueurV()) {
+		case 0:
+			break;
+		case 1:
+			Joueur ordi1 = new Joueur("ordi1", new StratFacile());
+			Partie.getInstance().addJoueur(ordi1);
+			break;
+		case 2:
+			Joueur ordi2 = new Joueur("ordi1", new StratFacile());
+			Partie.getInstance().addJoueur(ordi2);
+			Joueur ordi3 = new Joueur("ordi2", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi3);
+			break;
+		case 3:
+			Joueur ordi4 = new Joueur("ordi1", new StratFacile());
+			Partie.getInstance().addJoueur(ordi4);
+			Joueur ordi5 = new Joueur("ordi2", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi5);
+			Joueur ordi6 = new Joueur("ordi3", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi6);
+			break;
+		case 4:
+			Joueur ordi7 = new Joueur("ordi1", new StratFacile());
+			Partie.getInstance().addJoueur(ordi7);
+			Joueur ordi8 = new Joueur("ordi2", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi8);
+			Joueur ordi9 = new Joueur("ordi3", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi9);
+			Joueur ordi10 = new Joueur("ordi4", new StratDifficile());
+			Partie.getInstance().addJoueur(ordi10);
+			break;
+		default:
+			break;
+		}
 
 	}
 
+	/**
+	 * Methode de mise a jour de la fenetre des logs
+	 *
+	 * @param message le message que l'on souhaite afficher
+	 */
 	public static void updateJTextArea(String message) {
 		getVuePartie().getLog().append(message + "\n");
-		// Pour placer le curseur à la fin, afin d'émuler un scroll automatique
 		getVuePartie().getLog().setCaretPosition(getVuePartie().getLog().getDocument().getLength());
 	}
-	
+
+	/**
+	 * Cette methode permet de definir la fenetre des offres pour un joueur physique
+	 * rentre en parametre.
+	 *
+	 * @param joueur Joueur physique pour lequel on souhaite obtenir la fenetre de
+	 *               choix. Celle-ci affichera les deux cartes que le joueur a dans
+	 *               sa main.
+	 */
 	public static void fenetreChoixOffre(Joueur joueur) {
 		FenetreChoixOffre fenetreChoix = new FenetreChoixOffre(joueur);
-		
+
 	}
 
+	/**
+	 * Getter de la partie.
+	 *
+	 * @return the partie partie courante du controleur.
+	 */
 	public static Partie getPartie() {
 		return partie;
 	}
 
+	/**
+	 * Setter de la partie
+	 *
+	 * @param partie partie que l'on souhiate definir.
+	 */
 	public static void setPartie(Partie partie) {
 		PartieControleur.partie = partie;
 	}
 
+	/**
+	 * Getter de la vue de la Partie de type VuePartie.
+	 *
+	 * @return the vue partie La vue de la partie courante.
+	 */
 	public static VuePartie getVuePartie() {
 		return vuePartie;
 	}
 
+	/**
+	 * Setter de la vue de la partie.
+	 *
+	 * @param vuePartie la vue de la partie que l'on souhaite definir
+	 */
 	public static void setVuePartie(VuePartie vuePartie) {
 		PartieControleur.vuePartie = vuePartie;
 	}
